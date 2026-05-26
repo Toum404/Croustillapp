@@ -1,15 +1,24 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+# Fichiers de build générés par Android et Gradle
+.gradle/
+build/
+app/build/
+
+# Fichiers de configuration locale (clés secrètes, chemins PC)
 local.properties
+
+# Fichiers d'environnement Android Studio / IntelliJ (Bloque tout le dossier d'un coup)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Dossiers temporaires de Kotlin
+.kotlin/
+
+# Fichiers système spécifiques (Mac / Windows)
+.DS_Store
+Thumbs.db
+
+# Captures d'écran et logs
+/captures/
+*.log
