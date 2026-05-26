@@ -1,0 +1,10 @@
+Croustill'app es una interfaz para la API pública CROUStillant. Esta aplicación te permite acceder al menú, la dirección y el contacto de casi 1 000 restaurantes universitarios CROUS registrados.
+
+Croustill'app no recopila ningún dato personal y NO es una aplicación oficial del CROUS ni del proyecto CROUStillant.
+
+¿Por qué Croustill'app?
+- Accesible: Una barra de búsqueda, una barra de filtros y todos los restaurantes a mano.
+- Práctica: Permite filtrar los restaurantes abiertos, adaptados para PMR, según su región y su categoría.
+- Privacidad: Sin permisos sensibles, solo requiere acceso a internet.
+- Multilingüe: Francés, inglés, español y alemán (Los menús no están traducidos).
+- Transparencia: Código fuente 100% abierto y consultable por todos, basado en una API que también es abierta.

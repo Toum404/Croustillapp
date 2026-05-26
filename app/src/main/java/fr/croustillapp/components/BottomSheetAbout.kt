@@ -36,6 +36,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -63,6 +64,21 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
     val scope = rememberCoroutineScope()
     val sheetColor = BottomSheetDefaults.ContainerColor
     val context = LocalContext.current
+
+    // Les URLs et l'erreur sont déclarées ici pour être accessibles dans TOUT le composable
+    val webSiteUrl = stringResource(id = R.string.url_site_web)
+    val gitHubUrl = stringResource(id = R.string.url_github)
+    val erreurAction = stringResource(id = R.string.url_action_erreur)
+
+    // Logique globale et réutilisable pour ouvrir les liens externes
+    val openUrl = { url: String ->
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+        try {
+            context.startActivity(intent)
+        } catch (_: Exception) {
+            Toast.makeText(context, erreurAction, Toast.LENGTH_SHORT).show()
+        }
+    }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -123,9 +139,6 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    val webSiteUrl = stringResource(id = R.string.url_site_web)
-                    val erreurAction = stringResource(id = R.string.url_action_erreur)
-
                     val appName = stringResource(R.string.app_name)
                     val apiNom = stringResource(R.string.api_nom)
                     val crousMention = stringResource(R.string.crous_mention)
@@ -174,14 +187,7 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
                             Spacer(modifier = Modifier.height(16.dp))
 
                             Button(
-                                onClick = {
-                                    val intent = Intent(Intent.ACTION_VIEW, webSiteUrl.toUri())
-                                    try {
-                                        context.startActivity(intent)
-                                    } catch (_: Exception) {
-                                        Toast.makeText(context, erreurAction, Toast.LENGTH_SHORT).show()
-                                    }
-                                },
+                                onClick = { openUrl(webSiteUrl) },
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = MaterialTheme.colorScheme.primary,
                                     contentColor = MaterialTheme.colorScheme.onPrimary
@@ -235,15 +241,16 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
             )
 
             Icon(
-                painter = painterResource(id = R.drawable.ic_plus),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurface,
+                painter = painterResource(id = R.drawable.ic_git),
+                contentDescription = stringResource(id = R.string.url_github),
+                tint = Color(0xFF9155FD),
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(16.dp)
                     .size(36.dp)
                     .clip(CircleShape)
                     .background(MaterialTheme.colorScheme.surface)
+                    .clickable { openUrl(gitHubUrl) }
                     .padding(8.dp)
             )
         }

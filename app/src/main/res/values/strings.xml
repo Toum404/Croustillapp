@@ -14,6 +14,8 @@
     <string name="url_site_web" translatable="false">https://croustillant.menu/fr</string>
     <string name="url_action_erreur">Impossible d\'ouvrir le lien.</string>
 
+    <string name="url_github" translatable="false">https://github.com/Toum404/Croustillapp</string>
+
     <string name="action_fermer">Fermer</string>
     <string name="action_favoriser">Favori</string>
     <string name="action_visiter">Visiter %1$s</string>
