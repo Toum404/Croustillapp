@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="mention">Croustill\'app 1.0\nBy Toum</string>
+
+    <string name="app_name">Croustill\'app</string>
+    <string name="statut_code">Code</string>
+
+    <string name="api_mention">"Data provided by "</string>
+    <string name="url_action_erreur">Unable to open the link.</string>
+
+    <string name="action_fermer">Close</string>
+    <string name="action_favoriser">Favorite</string>
+    <string name="action_visiter">Visit %1$s</string>
+
+    <string name="action_effacer">Clear</string>
+
+    <string name="statut_actuellement">Currently %1$s</string>
+    <string name="statut_ouvert">Open</string>
+    <string name="statut_ferme">Closed</string>
+
+    <string name="label_type">Type</string>
+    <string name="label_region">Region</string>
+
+    <string name="label_tout">All</string>
+    <string name="recherche">Search for a place…</string>
+    <string name="toast_favoris">Maximum %d favorites.</string>
+
+    <string name="inconnu_titre">No places found</string>
+    <string name="inconnu_description">Remove some filters or change your search.</string>
+
+    <string name="connexion_titre">No connection</string>
+    <string name="connexion_description">Check your Wi-Fi or mobile data.</string>
+
+    <string name="description_informations">About</string>
+    <string name="description_app">%1$s is a free, non-profit application powered by the public %2$s API, accessible via the link below. %1$s is not the official application of %2$s.\n\n%1$s is a student project, by students, for students. The application does not collect any personal or usage data and is in no way linked to the %3$s and its services.</string>
+
+    <string name="copie_toast">" copied!"</string>
+    <string name="copie_action">Copy</string>
+
+    <string name="label_btn_adresse">Address</string>
+    <string name="label_btn_telephone">Phone</string>
+    <string name="label_btn_courriel">Email</string>
+    <string name="label_btn_partager">Share</string>
+
+    <string name="action_btn_carte">View</string>
+    <string name="action_btn_telephoner">Call</string>
+    <string name="action_btn_courriel">Write</string>
+    <string name="action_btn_partager">Send</string>
+
+    <string name="toast_btn_adresse">Location</string>
+    <string name="toast_btn_telephone">Number</string>
+    <string name="toast_btn_courriel">Email</string>
+    <string name="toast_btn_partager">Link</string>
+
+    <string name="toast_non_carte">No map service available.</string>
+    <string name="toast_non_telephone">No phone service available.</string>
+    <string name="toast_non_courriel">No email service available.</string>
+    <string name="toast_non_partage">Unable to share.</string>
+
+    <string name="titre_horaires">Hours</string>
+    <string name="horaires_non_disponibles">Hours not available</string>
+
+    <string name="label_menu">Menu</string>
+    <string name="aucun_menu">\nMenu not available.\n</string>
+
+    <string name="erreur_menu">Unable to load the menu</string>
+    <string name="recharger_menu">Tap to retry</string>
+
+    <string name="error_deeplink_invalid">Invalid link.</string>
+    <string name="error_deeplink_offline">No connection.</string>
+    <string name="error_deeplink_not_found">Restaurant does not exist.</string>
+    <string name="error_deeplink_generic">An error occurred.</string>
+
+</resources>

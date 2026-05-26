@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="mention">Croustill\'app 1.0\nPor Toum</string>
+
+    <string name="app_name">Croustill\'app</string>
+    <string name="statut_code">Código</string>
+
+    <string name="api_mention">"Datos proporcionados por "</string>
+    <string name="url_action_erreur">No se pudo abrir el enlace.</string>
+
+    <string name="action_fermer">Cerrar</string>
+    <string name="action_favoriser">Favorito</string>
+    <string name="action_visiter">Visitar %1$s</string>
+
+    <string name="action_effacer">Borrar</string>
+
+    <string name="statut_actuellement">Actualmente %1$s</string>
+    <string name="statut_ouvert">Abierto</string>
+    <string name="statut_ferme">Cerrado</string>
+
+    <string name="label_type">Tipo</string>
+    <string name="label_region">Región</string>
+
+    <string name="label_tout">Todo</string>
+    <string name="recherche">Buscar un establecimiento…</string>
+    <string name="toast_favoris">Máximo %d favoritos.</string>
+
+    <string name="inconnu_titre">No se encontraron establecimientos</string>
+    <string name="inconnu_description">Elimine algunos filtros o modifique su búsqueda.</string>
+
+    <string name="connexion_titre">Sin conexión</string>
+    <string name="connexion_description">Compruebe su Wi-Fi o sus datos móviles.</string>
+
+    <string name="description_informations">Acerca de</string>
+    <string name="description_app">%1$s es una aplicación libre y sin fines de lucro impulsada por la API pública %2$s, accesible a través del siguiente enlace. %1$s no es la aplicación oficial de %2$s.\n\n%1$s es un proyecto de estudiantes, por estudiantes y para estudiantes. La aplicación no recopila ningún dato personal ni de uso y no está vinculada de ninguna manera al %3$s ni a sus servicios.</string>
+
+    <string name="copie_toast">" ¡copiado!"</string>
+    <string name="copie_action">Copiar</string>
+
+    <string name="label_btn_adresse">Dirección</string>
+    <string name="label_btn_telephone">Teléfono</string>
+    <string name="label_btn_courriel">Correo</string>
+    <string name="label_btn_partager">Compartir</string>
+
+    <string name="action_btn_carte">Ver</string>
+    <string name="action_btn_telephoner">Llamar</string>
+    <string name="action_btn_courriel">Escribir</string>
+    <string name="action_btn_partager">Enviar</string>
+
+    <string name="toast_btn_adresse">Ubicación</string>
+    <string name="toast_btn_telephone">Número</string>
+    <string name="toast_btn_courriel">Correo</string>
+    <string name="toast_btn_partager">Enlace</string>
+
+    <string name="toast_non_carte">No hay ningún servicio de mapas disponible.</string>
+    <string name="toast_non_telephone">No hay ningún servicio telefónico disponible.</string>
+    <string name="toast_non_courriel">No hay ningún servicio de correo disponible.</string>
+    <string name="toast_non_partage">No se pudo compartir.</string>
+
+    <string name="titre_horaires">Horarios</string>
+    <string name="horaires_non_disponibles">Horarios no disponibles</string>
+
+    <string name="label_menu">Menú</string>
+    <string name="aucun_menu">\nMenú no disponible.\n</string>
+
+    <string name="erreur_menu">No se pudo cargar el menú</string>
+    <string name="recharger_menu">Toque para reintentar</string>
+
+    <string name="error_deeplink_invalid">Enlace no válido.</string>
+    <string name="error_deeplink_offline">Sin conexión.</string>
+    <string name="error_deeplink_not_found">El restaurante no existe.</string>
+    <string name="error_deeplink_generic">Ha ocurrido un error.</string>
+
+</resources>

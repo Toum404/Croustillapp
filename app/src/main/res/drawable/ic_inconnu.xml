@@ -1,0 +1,5 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:viewportHeight="32" android:viewportWidth="32" android:width="24dp">
+      
+    <path android:fillColor="#FF000000" android:pathData="m14,4v1,1h-1v1h-1v1h-1v-1h-3v1,2h-1v-1h-1,-3v1,2h1v1h1v1h2v3h1v3h-1v5h1v1h2v1h3v1h3v-1h1v-2h1v-1h1v1h1v1h3v-1h1v-1h1v-1h1v-3h-1v-1h-1v-3h-1v-1h1v-1h1v-1h1v-1h1v-3,-1h-4v-1h-2v-1h-1v-1h-2v-1h-4zM15,5h2v1h2v1h1v1h2v1h4v2h-1v1h-1v1h-1v1h-1v3h1v3h1v1h1v1h-1v1h-1v1h-1v1h-1v-1h-1v-1h-2,-1v1h-1v2h-1v1h-1v-1h-3v-1h-2v-1h-1v-3h1v-2h1v-1h-1v-2h-1v-3h-1,-1v-1h-1v-1h-1v-1h2v1h1,1 1v-3h1v1h1,1 1v-1h1v-1h1v-2zM14.5,12v1h3v-1h-3zM17.5,13v3h1v-3h-1zM17.5,16h-1v1h1v-1zM16.5,17h-1v1h1v-1zM14.5,13h-1v1,1h1v-1,-1zM15.5,19v1h1v-1h-1zM27,24v1h-1v1h1v3h1v-5h-1zM27,29h-1v1h1v-1zM26,29v-3h-1v3h1z" android:strokeWidth=".26458"/>
+    
+</vector>

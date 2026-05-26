@@ -1,0 +1,80 @@
+<resources>
+
+    <string name="mention">Croustill\'app 1.0\nPar Toum</string>
+
+    <string name="app_name">Croustill\'app</string>
+    <string name="service_nom" translatable="false">CROUStillant API</string>
+    <string name="api_nom" translatable="false">CROUStillant.menu</string>
+    <string name="crous_mention" translatable="false">CROUS</string>
+    <string name="statut_izly" translatable="false">IZLY</string>
+    <string name="statut_pmr" translatable="false">PMR</string>
+    <string name="statut_code">Code</string>
+
+    <string name="api_mention">"Données fournies par "</string>
+    <string name="url_site_web" translatable="false">https://croustillant.menu/fr</string>
+    <string name="url_action_erreur">Impossible d\'ouvrir le lien.</string>
+
+    <string name="action_fermer">Fermer</string>
+    <string name="action_favoriser">Favori</string>
+    <string name="action_visiter">Visiter %1$s</string>
+
+    <string name="action_effacer">Effacer</string>
+
+    <string name="statut_actuellement">Actuellement %1$s</string>
+    <string name="statut_ouvert">Ouvert</string>
+    <string name="statut_ferme">Fermé</string>
+
+    <string name="label_type">Type</string>
+    <string name="label_region">Région</string>
+
+    <string name="label_tout">Tout</string>
+    <string name="recherche">Chercher un établissement…</string>
+    <string name="toast_favoris">Maximum %d favoris.</string>
+
+    <string name="inconnu_titre">Aucun établissement trouvé</string>
+    <string name="inconnu_description">Retirez des filtres ou modifiez votre recherche.</string>
+
+    <string name="connexion_titre">Aucune connexion</string>
+    <string name="connexion_description">Vérifiez votre Wi-Fi ou vos données mobiles.</string>
+
+    <string name="description_informations">À propos</string>
+    <string name="description_app">%1$s est une application libre à but non-lucratif propulsée par l\'API publique %2$s, accessible via le lien ci-dessous. %1$s n\'est pas l\'application officielle de %2$s.\n\n%1$s est un projet d\'étudiants, par les étudiants, pour les étudiants. L\'application ne collecte aucune donnée personnelle ou d\'utilisation et n\'est aucunement liée au %3$s et à ses services.</string>
+
+    <string name="copie_toast">" copié !"</string>
+    <string name="copie_action">Copier</string>
+
+    <string name="label_btn_adresse">Adresse</string>
+    <string name="label_btn_telephone">Téléphone</string>
+    <string name="label_btn_courriel">Courriel</string>
+    <string name="label_btn_partager">Partager</string>
+
+    <string name="action_btn_carte">Afficher</string>
+    <string name="action_btn_telephoner">Téléphoner</string>
+    <string name="action_btn_courriel">Écrire</string>
+    <string name="action_btn_partager">Envoyer</string>
+
+    <string name="toast_btn_adresse">Emplacement</string>
+    <string name="toast_btn_telephone">Numéro</string>
+    <string name="toast_btn_courriel">Courriel</string>
+    <string name="toast_btn_partager">Lien</string>
+
+    <string name="toast_non_carte">Aucun service cartographique.</string>
+    <string name="toast_non_telephone">Aucun service téléphonique.</string>
+    <string name="toast_non_courriel">Aucun service courriel.</string>
+    <string name="toast_non_partage">Impossible de partager.</string>
+
+    <string name="titre_horaires">Horaires</string>
+    <string name="horaires_non_disponibles">Horaires non communiqués</string>
+
+    <string name="label_menu">Menu</string>
+    <string name="aucun_menu">\nMenu non communiqué.\n</string>
+
+    <string name="erreur_menu">Impossible de charger le menu</string>
+    <string name="recharger_menu">Appuyez pour réessayer</string>
+
+    <string name="error_deeplink_invalid">Lien invalide.</string>
+    <string name="error_deeplink_offline">Aucune connexion.</string>
+    <string name="error_deeplink_not_found">Restaurant inexistant.</string>
+    <string name="error_deeplink_generic">Une erreur est survenue.</string>
+
+</resources>
