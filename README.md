@@ -1,92 +1,122 @@
-# 🔴 Croustill'app
+# 🔴 Croutsillapp
 
-[Français](#français) | [English](#english) | [Español](#español) | [Deutsch](#deutsch)
+[Français](#français) | [English](#english) | [Español](#español) | [Deutsch](#deutsch)　　　　　[Code](#code)  |  [Credits](#credits)
 
 ---
 
 <p style="text-align: center;">
-  <img src="screenshots/home_screen_day.jpg" width="24%" alt="Main Screen Day">
-  <img src="screenshots/bottom_sheet_day.jpg" width="24%" alt="Details Day">
-  <img src="screenshots/home_screen_night.jpg" width="24%" alt="Main Screen Night">
-  <img src="screenshots/bottom_sheet_nigh.jpg" width="24%" alt="Details Night">
+  <img src="images/home_screen_day.jpg" width="20%" alt="Main Screen Day">
+  <img src="images/bottom_sheet_day.jpg" width="20%" alt="Details Day">
+  <img src="images/home_screen_night.jpg" width="20%" alt="Main Screen Night">
+  <img src="images/bottom_sheet_night.jpg" width="20%" alt="Details Night">
 </p>
 
 ---
 
-## Français
+## 🇫🇷 Français
 
-**Croustill'app** est une interface de l'API publique [CROUStillant](https://croustillant.menu). Cette application vous permet d'accéder au menu, à l'adresse et au contact de près de 1 000 restaurants CROUS référencés.
+**Croustillapp** est une interface pour l'API publique [CROUStillant](https://croustillant.menu). Cette application vous permet d'accéder au menu, à l'adresse et au contact de près de 1 000 restaurants CROUS référencés.
 
-Croustill'app ne collecte aucune donnée personnelle, et n'est **PAS** une application officielle du CROUS ni du projet CROUStillant.
+L'application est reconnue par l'équipe CROUStillant, mais est **INDÉPENDANTE** de ce projet **AINSI** que des services du CROUS.
 
-### Pourquoi Croustill'app ?
+### Pourquoi Croustillapp ?
 
-* ✨ **Accessible** : Une barre de recherche, une barre de filtres, les restaurants.
+* ✨ **Accessible** : Une barre de recherche, des filtres, les restaurants.
 
-* ⚡ **Pratique** : Possibilité de filtrer les restaurants ouverts, adaptés au PMR, selon leur région et leur catégorie.
+* ⚡ **Pratique** : Possibilité de filtrer les restaurants ouverts, ceux adaptés aux PMR, ainsi que par région et par catégorie.
 
-* 🔒 **Confidentialité** : Aucune autorisitation sensible, seulement l'accès à internet.
+* 🔒 **Confidentialité** : Aucune autorisation sensible, requiert seulement un accès à Internet.
 
-* 🌍 **Multilingue** : Français, anglais, espagnol, allemand (Traduit par IA. Les menus ne sont pas traduits).
+* 🌍 **Multilingue** : Application disponible en français, anglais, espagnol et allemand.
 
-* 🤝 **Transparence** : Code source 100 % ouvert et consultable par tous, basé sur une API elle aussi ouverte.
-
----
-
-## English
-
-**Croustill'app** is an interface for the public [CROUStillant](https://croustillant.menu) API. This application allows you to access the menu, address, and contact information for nearly 1,000 listed CROUS restaurants.
-
-Croustill'app does not collect any personal data, and is **NOT** an official application of the CROUS or the CROUStillant project.
-
-### Why Croustill'app?
-
-* ✨ **Accessible**: A search bar, a filter bar, and the restaurants.
-
-* ⚡ **Practical**: Ability to filter restaurants that are open, PRM-accessible (wheelchair friendly), and by their region or category.
-
-* 🔒 **Privacy**: No sensitive permissions required, only internet access.
-
-* 🌍 **Multilingual**: French, English, Spanish, German (AI-translated. Menus are not translated).
-
-* 🤝 **Transparency**: 100% open-source code available for everyone to review, based on an API that is also open.
+* 🤝 **Transparence** : Code source 100 % ouvert, consultable par tous.
 
 ---
 
-## Español
+## 🇬🇧 English
 
-**Croustill'app** es una interfaz para la API pública [CROUStillant](https://croustillant.menu). Esta aplicación le permite acceder al menú, la dirección y la información de contacto de casi 1.000 restaurantes universitarios CROUS registrados.
+**Croustillapp** is a frontend interface for the public [CROUStillant](https://croustillant.menu) API. This application allows you to access the menu, address, and contact information for nearly 1,000 listed CROUS student restaurants.
 
-Croustill'app no recopila ningún dato personal y **NO** es una aplicación oficial del CROUS ni del proyecto CROUStillant.
+The application is recognized by the CROUStillant team, but remains **INDEPENDENT** of that project **AS WELL AS** the CROUS services.
 
-### ¿Por qué Croustill'app?
+### Why Croustillapp?
 
-* ✨ **Accesible**: Una barra de búsqueda, una barra de filtros y los restaurantes.
+* ✨ **Accessible**: A search bar, filters, and the restaurants.
 
-* ⚡ **Práctica**: Posibilidad de filtrar los restaurantes abiertos, adaptados para PMR (personas con movilidad reducida), según su región y su categoría.
+* ⚡ **Practical**: Easily filter restaurants that are currently open, PRM-accessible (wheelchair friendly), or by region and category.
 
-* 🔒 **Privacidad**: Sin permisos sensibles, solo acceso a internet.
+* 🔒 **Privacy**: No sensitive permissions required, only needs Internet access.
 
-* 🌍 **Multilingüe**: Francés, inglés, español, alemán (Traducido por IA. Los menús no están traducidos).
+* 🌍 **Multilingual**: App available in French, English, Spanish, and German.
 
-* 🤝 **Transparencia**: Código fuente 100% abierto y consultable por todos, basado en una API que también es abierta.
+* 🤝 **Transparency**: 100% open-source code, available for everyone to review.
 
 ---
 
-## Deutsch
+## 🇪🇸 Español
 
-**Croustill'app** ist eine Benutzeroberfläche für die öffentliche [CROUStillant](https://croustillant.menu)-API. Diese Anwendung ermöglicht Ihnen den Zugriff auf das Menü, die Adresse und die Kontaktdaten von fast 1.000 gelisteten CROUS-Mensen und -Cafeterien.
+**Croustillapp** es una interfaz para la API pública [CROUStillant](https://croustillant.menu). Esta aplicación le permite acceder al menú, la dirección y la información de contacto de casi 1.000 comedores universitarios CROUS registrados.
 
-Croustill'app sammelt keine personenbezogenen Daten und ist **KEINE** offizielle Anwendung des CROUS oder des CROUStillant-Projekts.
+La aplicación está reconocida por el equipo de CROUStillant, pero es **INDEPENDIENTE** tanto de este proyecto **COMO** de los servicios del CROUS.
 
-### Warum Croustill'app?
+### ¿Por qué Croustillapp?
 
-* ✨ **Barrierefrei & Einfach**: Eine Suchleiste, eine Filterleiste und die Restaurants.
+* ✨ **Accesible**: Una barra de búsqueda, filtros y los restaurantes.
 
-* ⚡ **Praktisch**: Möglichkeit, geöffnete, barrierefreie (für Menschen mit eingeschränkter Mobilität geeignete) Restaurants nach Region und Kategorie zu filtern.
+* ⚡ **Práctica**: Posibilidad de filtrar los restaurantes abiertos, los adaptados para PMR (personas con movilidad reducida), así como por región y categoría.
 
-* 🔒 **Datenschutz**: Keine sensiblen Berechtigungen erforderlich, nur Internetzugang.
+* 🔒 **Privacidad**: Sin permisos sensibles, solo requiere acceso a Internet.
 
-* 🌍 **Mehrsprachig**: Französisch, Englisch, Spanisch, Deutsch (KI-übersetzt. Die Menüs sind nicht übersetzt).
+* 🌍 **Multilingüe**: Aplicación disponible en francés, inglés, español y alemán.
 
-* 🤝 **Transparenz**: 100 % offener Quellcode, der für jeden einsehbar ist, basierend auf einer ebenfalls offenen API.
+* 🤝 **Transparencia**: Código fuente 100% abierto y consultable por todos.
+
+---
+
+## 🇩🇪 Deutsch
+
+**Croustillapp** ist eine Benutzeroberfläche für die öffentliche [CROUStillant](https://croustillant.menu)-API. Diese Anwendung ermöglicht Ihnen den Zugriff auf das Menü, die Adresse und die Kontaktdaten von fast 1.000 gelisteten CROUS-Mensen und -Cafeterien.
+
+Die App wird vom CROUStillant-Team anerkannt, ist jedoch **UNABHÄNGIG** von diesem Projekt **SOWIE** von den Dienstleistungen des CROUS.
+
+### Warum Croustillapp?
+
+* ✨ **Barrierefrei & Einfach**: Eine Suchleiste, Filter und die Restaurants.
+
+* ⚡ **Praktisch**: Möglichkeit, geöffnete oder barrierefreie (für Menschen mit eingeschränkter Mobilität geeignete) Restaurants nach Region und Kategorie zu filtern.
+
+* 🔒 **Datenschutz**: Keine sensiblen Berechtigungen erforderlich, benötigt nur Internetzugang.
+
+* 🌍 **Mehrsprachig**: App verfügbar auf Französisch, Englisch, Spanisch und Deutsch.
+
+* 🤝 **Transparenz**: 100 % offener Quellcode, der für jeden einsehbar ist.
+
+---
+
+## 🛠️ Code
+
+* **Langage / Language** : Kotlin
+
+* **Android SDK** : Target API 36 (Android 16) / Min API 33 (Android 13)
+
+* **Interface / UI** : Jetpack Compose
+
+* **Base de données / Database** : Room
+
+* **Asynchronisme / Asynchrony** : Kotlin Coroutines & Flow
+
+* **Réseau / Network** : Retrofit & Kotlinx Serialization
+
+* **Stockage des données / Data Storage** : Jetpack DataStore
+
+* **Permissions** : `android.permission.INTERNET` & `android.permission.ACCESS_NETWORK_STATE`
+
+---
+
+## ℹ️ Credits
+
+* **Développeur / Author** : Toum404
+
+* **API** : [CROUStillant](https://github.com/CROUStillant-Developpement/CROUStillantAPI) par / by [Paul Bayfield](https://github.com/PaulBayfield)
+
+* **Licence / License** : [Apache 2.0](LICENSE)

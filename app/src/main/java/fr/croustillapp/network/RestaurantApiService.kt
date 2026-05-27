@@ -22,7 +22,6 @@ interface RestaurantApiService {
     @GET("v1/restaurants")
     suspend fun getRestaurants(): ApiResponse
 
-    // Ta nouvelle route :
     @Headers("Cache-Control: public, max-age=604800")
     @GET("v1/restaurants/{code}")
     suspend fun getRestaurantById(@Path("code") code: String): SingleRestaurantResponse

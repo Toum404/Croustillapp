@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class SingleRestaurantResponse(
     val success: Boolean,
-    val data: RestaurantDto // 👈 C'est le même DTO que tu as déjà défini !
+    val data: RestaurantDto
 )
 
 @Dao

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="mention">Croustill\'app 1.0\nPor Toum</string>
+    <string name="mention">Croustillapp 1.0\nPor Toum</string>
 
-    <string name="app_name">Croustill\'app</string>
+    <string name="app_name">Croustillapp</string>
     <string name="statut_code">Código</string>
 
     <string name="api_mention">"Datos proporcionados por "</string>

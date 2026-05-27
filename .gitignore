@@ -22,3 +22,8 @@ Thumbs.db
 # Captures d'écran et logs
 /captures/
 *.log
+
+# Signatures et Keystores (Sécurité Android)
+*.jks
+*.keystore
+*.p12

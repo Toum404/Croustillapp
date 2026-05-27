@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="mention">Croustill\'app 1.0\nPar Toum</string>
+    <string name="mention">Croustillapp 1.0\nPar Toum</string>
 
-    <string name="app_name">Croustill\'app</string>
+    <string name="app_name">Croustillapp</string>
     <string name="service_nom" translatable="false">CROUStillant API</string>
     <string name="api_nom" translatable="false">CROUStillant.menu</string>
     <string name="crous_mention" translatable="false">CROUS</string>
@@ -40,7 +40,7 @@
     <string name="connexion_description">Vérifiez votre Wi-Fi ou vos données mobiles.</string>
 
     <string name="description_informations">À propos</string>
-    <string name="description_app">%1$s est une application libre à but non-lucratif propulsée par l\'API publique %2$s, accessible via le lien ci-dessous. %1$s n\'est pas l\'application officielle de %2$s.\n\n%1$s est un projet d\'étudiants, par les étudiants, pour les étudiants. L\'application ne collecte aucune donnée personnelle ou d\'utilisation et n\'est aucunement liée au %3$s et à ses services.</string>
+    <string name="description_app">%1$s est une application libre à but non-lucratif propulsée par l\'API publique %2$s, accessible via le lien ci-dessous. %1$s n\'est pas l\'application officielle de %2$s.\n\n%1$s est un projet d\'étudiants, par les étudiants, pour les étudiants. L\'application ne collecte aucune donnée personnelle ou d\'utilisation et n\'est aucunement liée au %3$s et ses services.</string>
 
     <string name="copie_toast">" copié !"</string>
     <string name="copie_action">Copier</string>

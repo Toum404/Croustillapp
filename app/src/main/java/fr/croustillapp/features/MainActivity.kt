@@ -93,7 +93,7 @@ class MainActivity : ComponentActivity() {
                 val favoriteIds by viewModel.favoriteIds.collectAsStateWithLifecycle()
 
                 val deepLinkResto by viewModel.deepLinkRestaurant.collectAsStateWithLifecycle()
-                val context = LocalContext.current
+                val appContext = LocalContext.current.applicationContext
 
                 LaunchedEffect(Unit) {
                     if (intent?.data != null) {
@@ -103,9 +103,8 @@ class MainActivity : ComponentActivity() {
 
                 LaunchedEffect(Unit) {
                     viewModel.errorEvents.collect { stringResId ->
-                        val errorMessage = context.getString(stringResId)
-
-                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+                        val errorMessage = appContext.getString(stringResId)
+                        Toast.makeText(appContext, errorMessage, Toast.LENGTH_LONG).show()
                     }
                 }
 

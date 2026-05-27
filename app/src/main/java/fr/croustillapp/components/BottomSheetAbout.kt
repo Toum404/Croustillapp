@@ -65,12 +65,10 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
     val sheetColor = BottomSheetDefaults.ContainerColor
     val context = LocalContext.current
 
-    // Les URLs et l'erreur sont déclarées ici pour être accessibles dans TOUT le composable
     val webSiteUrl = stringResource(id = R.string.url_site_web)
     val gitHubUrl = stringResource(id = R.string.url_github)
     val erreurAction = stringResource(id = R.string.url_action_erreur)
 
-    // Logique globale et réutilisable pour ouvrir les liens externes
     val openUrl = { url: String ->
         val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         try {

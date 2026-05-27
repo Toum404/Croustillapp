@@ -32,7 +32,10 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
+
                 <data android:host="croustillant.menu" />
+                <data android:host="beta.croustillant.menu" />
+
                 <data android:pathPattern="/fr/restaurants/.*" />
             </intent-filter>
 

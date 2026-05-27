@@ -83,7 +83,10 @@ fun RestaurantList(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    items(sortedRestaurants, key = { it.id }) { restaurant ->
+                    items(
+                        items = sortedRestaurants,
+                        key = { restaurant -> "${restaurant.id}_${restaurant.id in favoriteIds}" }
+                    ) { restaurant ->
                         RestaurantCard(
                             restaurant = restaurant,
                             isFavorite = restaurant.id in favoriteIds,
