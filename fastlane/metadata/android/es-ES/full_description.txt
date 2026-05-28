@@ -1,11 +1,11 @@
-Croustillapp is a frontend interface for the public CROUStillant API. This application allows you to access the menu, address, and contact information for nearly 1,000 listed CROUS student restaurants.
+Croustillapp es una interfaz para la API pública CROUStillant. Esta aplicación le permite acceder al menú, la dirección y la información de contacto de casi 1.000 comedores universitarios CROUS registrados.
 
-The application is recognized by the CROUStillant team, but remains INDEPENDENT of that project AS WELL AS the CROUS services.
+La aplicación está reconocida por el equipo de CROUStillant, pero es INDEPENDIENTE tanto de este proyecto COMO de los servicios del CROUS.
 
-Why choose Croustillapp?
+¿Por qué elegir Croustillapp?
 
-- Accessible: A simple search bar, quick filters, and the list of restaurants.
-- Practical: Easily filter restaurants that are currently open, PRM-accessible (wheelchair friendly), or by region and category.
-- Privacy: No sensitive permissions required, the app only needs Internet access.
-- Multilingual: The application interface is available in French, English, Spanish, and German.
-- Transparency: 100% open-source code, available for everyone to review.
+- Accesible: Una barra de búsqueda sencilla, filtros rápidos y la lista de los restaurantes.
+- Práctica: Posibilidad de filtrar los restaurantes abiertos, los adaptados para PMR (personas con movilidad reducida), así como por región y categoría.
+- Privacidad: Sin permisos sensibles, solo requiere acceso a Internet.
+- Multilingüe: Aplicación disponible en francés, inglés, español y alemán.
+- Transparencia: Código fuente 100% abierto y consultable por todos.
