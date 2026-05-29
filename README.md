@@ -1,6 +1,6 @@
 # 🔴 Croutsillapp
 
-[Français](#français) | [English](#english) | [Español](#español) | [Deutsch](#deutsch)　　　　　[Code](#code)  |  [Credits](#credits)
+[Français](#-français) | [English](#-english) | [Español](#-español) | [Deutsch](#-deutsch)　　　　　[Code](#️-code)  |  [Credits](#️-credits)
 
 ---
 
