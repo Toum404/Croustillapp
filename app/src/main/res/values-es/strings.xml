@@ -64,8 +64,40 @@
     <string name="label_menu">Menú</string>
     <string name="aucun_menu">\nMenú no disponible.\n</string>
 
-    <string name="erreur_menu">No se pudo cargar el menú</string>
+    <string name="erreur_menu">No se pudo cargar el menú.</string>
     <string name="recharger_menu">Toque para reintentar</string>
+
+    <string name="holiday_alert_today">Hoy: %1$s</string>
+    <string name="holiday_alert_tomorrow">Mañana: %1$s (festivo)</string>
+
+    <string name="holiday_new_year">Año Nuevo</string>
+    <string name="holiday_labor_day">Día del Trabajo</string>
+    <string name="holiday_victory_1945">Día de la Victoria</string>
+    <string name="holiday_national_day">Fiesta Nacional</string>
+    <string name="holiday_assumption">Asunción de la Virgen</string>
+    <string name="holiday_all_saints">Día de Todos los Santos</string>
+    <string name="holiday_armistice_1914">Día del Armisticio</string>
+    <string name="holiday_christmas">Navidad</string>
+    <string name="holiday_easter_monday">Lunes de Pascua</string>
+    <string name="holiday_ascension">Día de la Ascensión</string>
+    <string name="holiday_whit_monday">Lunes de Pentecostés</string>
+    <string name="holiday_good_friday">Viernes Santo</string>
+    <string name="holiday_boxing_day">Día de San Esteban</string>
+
+    <string name="filtre_tous">Todos</string>
+    <string name="type_brasserie">Cervecería</string>
+    <string name="type_cafeteria">Cafetería</string>
+    <string name="type_coffee">Cafetería de especialidad</string>
+    <string name="type_kiosque">Quiosco</string>
+    <string name="type_libre_service">Autoservicio</string>
+    <string name="type_pizzeria">Pizzería</string>
+    <string name="type_restaurant">Restaurante</string>
+    <string name="type_resto_admin">Restaurante administrativo</string>
+    <string name="type_resto_agree">Restaurante asociado</string>
+    <string name="type_resto_gere">Restaurante gestionado</string>
+    <string name="type_sandwicherie">Bocatería</string>
+    <string name="type_triporteur">Carrito de comida</string>
+    <string name="type_epicerie">Tienda de comestibles</string>
 
     <string name="error_deeplink_invalid">Enlace no válido.</string>
     <string name="error_deeplink_offline">Sin conexión.</string>

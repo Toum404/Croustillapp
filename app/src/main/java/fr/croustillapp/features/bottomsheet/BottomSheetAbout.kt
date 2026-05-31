@@ -1,4 +1,4 @@
-package fr.croustillapp.components
+package fr.croustillapp.features.bottomsheet
 
 import android.content.Intent
 import android.widget.Toast
@@ -32,6 +32,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,9 +54,15 @@ import fr.croustillapp.R
 import fr.croustillapp.ui.theme.Jersey10Family
 import kotlinx.coroutines.launch
 
+/**
+ * Feuille secondaire affichant les détails de l'application
+ * Secondary bottom sheet displaying application telemetry
+ *
+ * @param onDismiss Callback de fermeture de la feuille.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsBottomSheet(onDismiss: () -> Unit) {
+fun bottomSheetInformation(onDismiss: () -> Unit) {
 
     val sheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
@@ -69,12 +76,16 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
     val gitHubUrl = stringResource(id = R.string.url_github)
     val erreurAction = stringResource(id = R.string.url_action_erreur)
 
-    val openUrl = { url: String ->
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        try {
-            context.startActivity(intent)
-        } catch (_: Exception) {
-            Toast.makeText(context, erreurAction, Toast.LENGTH_SHORT).show()
+    // Optimisation de la lambda d'ouverture d'URL pour éviter les allocations inutiles lors des recompositions
+    // Caching URL intent trigger logic to bypass unnecessary recomposition overhead
+    val openUrl = remember(context, erreurAction) {
+        { url: String ->
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            try {
+                context.startActivity(intent)
+            } catch (_: Exception) {
+                Toast.makeText(context, erreurAction, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -100,6 +111,8 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
                         .height(170.dp)
                         .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                 ) {
+                    // Intégration du décodeur d'images de Coil capable de traiter les formats avancés
+                    // Leveraging Coil's specialized decoder factory to support advanced formats smoothly
                     AsyncImage(
                         model = ImageRequest.Builder(LocalContext.current)
                             .data(R.drawable.img_pixil)
@@ -153,6 +166,7 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
 
                     Spacer(modifier = Modifier.height(24.dp))
 
+                    // Encadré du service externe d'API / External API service card slot
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -218,6 +232,7 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
                 }
             }
 
+            // Boutons de contrôle supérieurs superposés / Universal top overlay action headers
             Icon(
                 painter = painterResource(id = R.drawable.ic_fermer),
                 contentDescription = stringResource(id = R.string.action_fermer),
@@ -241,7 +256,7 @@ fun SettingsBottomSheet(onDismiss: () -> Unit) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_git),
                 contentDescription = stringResource(id = R.string.url_github),
-                tint = Color(0xFF9155FD),
+                tint = Color(0xFF9155FD), // GitHub
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(16.dp)

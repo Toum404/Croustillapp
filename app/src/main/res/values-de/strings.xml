@@ -64,8 +64,40 @@
     <string name="label_menu">Menü</string>
     <string name="aucun_menu">\nMenü nicht bekannt gegeben.\n</string>
 
-    <string name="erreur_menu">Menü konnte nicht geladen werden</string>
+    <string name="erreur_menu">Menü konnte nicht geladen werden.</string>
     <string name="recharger_menu">Zum Wiederholen tippen</string>
+
+    <string name="holiday_alert_today">Heute: %1$s</string>
+    <string name="holiday_alert_tomorrow">Morgen: %1$s</string>
+
+    <string name="holiday_new_year">Neujahr</string>
+    <string name="holiday_labor_day">Tag der Arbeit</string>
+    <string name="holiday_victory_1945">Tag de Sieges 1945</string>
+    <string name="holiday_national_day">Nationalfeiertag</string>
+    <string name="holiday_assumption">Mariä Himmelfahrt</string>
+    <string name="holiday_all_saints">Allerheiligen</string>
+    <string name="holiday_armistice_1914">Waffenstillstand von 1914</string>
+    <string name="holiday_christmas">Weihnachten</string>
+    <string name="holiday_easter_monday">Ostermontag</string>
+    <string name="holiday_ascension">Christi Himmelfahrt</string>
+    <string name="holiday_whit_monday">Pfingstmontag</string>
+    <string name="holiday_good_friday">Karfreitag</string>
+    <string name="holiday_boxing_day">Stephanstag</string>
+
+    <string name="filtre_tous">Alle</string>
+    <string name="type_brasserie">Brasserie</string>
+    <string name="type_cafeteria">Cafeteria</string>
+    <string name="type_coffee">Café</string>
+    <string name="type_kiosque">Kiosk</string>
+    <string name="type_libre_service">Selbstbedienung</string>
+    <string name="type_pizzeria">Pizzeria</string>
+    <string name="type_restaurant">Restaurant</string>
+    <string name="type_resto_admin">Verwaltungsrestaurant</string>
+    <string name="type_resto_agree">Partner-Restaurant</string>
+    <string name="type_resto_gere">Geführtes Restaurant</string>
+    <string name="type_sandwicherie">Sandwichbar</string>
+    <string name="type_triporteur">Verkaufswagen</string>
+    <string name="type_epicerie">Lebensmittelgeschäft</string>
 
     <string name="error_deeplink_invalid">Ungültiger Link.</string>
     <string name="error_deeplink_offline">Keine Verbindung.</string>

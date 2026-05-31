@@ -1,4 +1,4 @@
-package fr.croustillapp.features
+package fr.croustillapp.features.elements
 
 import android.app.Application
 import android.content.Context
@@ -6,15 +6,15 @@ import androidx.core.content.edit
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import fr.croustillapp.R
-import fr.croustillapp.data.AppDatabase
-import fr.croustillapp.data.DailyMenuDto
-import fr.croustillapp.data.FavoriteManager
-import fr.croustillapp.data.Restaurant
-import fr.croustillapp.data.StatusUpdatePartial
-import fr.croustillapp.data.toDomain
-import fr.croustillapp.data.toEntity
-import fr.croustillapp.network.NetworkMonitor
-import fr.croustillapp.network.RetrofitClient
+import fr.croustillapp.core.database.AppDatabase
+import fr.croustillapp.features.data.DailyMenuDto
+import fr.croustillapp.features.data.FavoriteManager
+import fr.croustillapp.features.data.Restaurant
+import fr.croustillapp.core.database.StatusUpdatePartial
+import fr.croustillapp.features.data.toDomain
+import fr.croustillapp.features.data.toEntity
+import fr.croustillapp.core.network.NetworkMonitor
+import fr.croustillapp.core.network.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job

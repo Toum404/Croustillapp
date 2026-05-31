@@ -1,4 +1,4 @@
-package fr.croustillapp.features
+package fr.croustillapp.features.elements
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
@@ -16,13 +16,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import fr.croustillapp.components.EmptyState
-import fr.croustillapp.components.NoInternetState
-import fr.croustillapp.components.RestaurantCard
-import fr.croustillapp.components.RestaurantCardSkeleton
-import fr.croustillapp.components.rememberShimmerBrush
-import fr.croustillapp.data.Restaurant
+import fr.croustillapp.core.components.EmptyState
+import fr.croustillapp.core.components.NoInternetState
+import fr.croustillapp.features.data.Restaurant
 
+/**
+ * Grille adaptative gérant les états de chargement, d'erreur et le tri des restaurants.
+ * Adaptive grid controller steering layout sorting logic, placeholders and data lists.
+ */
 @Composable
 fun RestaurantList(
     restaurants: List<Restaurant>,

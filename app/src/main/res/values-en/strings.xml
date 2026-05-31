@@ -64,8 +64,40 @@
     <string name="label_menu">Menu</string>
     <string name="aucun_menu">\nMenu not available.\n</string>
 
-    <string name="erreur_menu">Unable to load the menu</string>
+    <string name="erreur_menu">Unable to load the menu.</string>
     <string name="recharger_menu">Tap to retry</string>
+
+    <string name="holiday_alert_today">Today: %1$s</string>
+    <string name="holiday_alert_tomorrow">Tomorrow: %1$s</string>
+
+    <string name="holiday_new_year">New Year’s Day</string>
+    <string name="holiday_labor_day">Labour Day</string>
+    <string name="holiday_victory_1945">Victory in Europe Day</string>
+    <string name="holiday_national_day">National Day</string>
+    <string name="holiday_assumption">Assumption of Mary</string>
+    <string name="holiday_all_saints">All Saints’ Day</string>
+    <string name="holiday_armistice_1914">Armistice Day</string>
+    <string name="holiday_christmas">Christmas Day</string>
+    <string name="holiday_easter_monday">Easter Monday</string>
+    <string name="holiday_ascension">Ascension Day</string>
+    <string name="holiday_whit_monday">Whit Monday</string>
+    <string name="holiday_good_friday">Good Friday</string>
+    <string name="holiday_boxing_day">St. Stephen’s Day</string>
+
+    <string name="filtre_tous">All</string>
+    <string name="type_brasserie">Brasserie</string>
+    <string name="type_cafeteria">Cafeteria</string>
+    <string name="type_coffee">Coffee Shop</string>
+    <string name="type_kiosque">Kiosk</string>
+    <string name="type_libre_service">Self-service</string>
+    <string name="type_pizzeria">Pizzeria</string>
+    <string name="type_restaurant">Restaurant</string>
+    <string name="type_resto_admin">Administrative restaurant</string>
+    <string name="type_resto_agree">Partner restaurant</string>
+    <string name="type_resto_gere">Managed restaurant</string>
+    <string name="type_sandwicherie">Sandwich bar</string>
+    <string name="type_triporteur">Food cart</string>
+    <string name="type_epicerie">Grocery store</string>
 
     <string name="error_deeplink_invalid">Invalid link.</string>
     <string name="error_deeplink_offline">No connection.</string>

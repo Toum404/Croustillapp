@@ -1,4 +1,4 @@
-package fr.croustillapp.features
+package fr.croustillapp.main
 
 import android.net.Uri
 import android.os.Bundle
@@ -64,9 +64,12 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import fr.croustillapp.R
-import fr.croustillapp.components.RestaurantBottomSheet
-import fr.croustillapp.components.SettingsBottomSheet
-import fr.croustillapp.data.Restaurant
+import fr.croustillapp.features.bottomsheet.RestaurantBottomSheet
+import fr.croustillapp.features.bottomsheet.bottomSheetInformation
+import fr.croustillapp.features.data.getTranslationForType
+import fr.croustillapp.features.data.Restaurant
+import fr.croustillapp.features.elements.RestaurantList
+import fr.croustillapp.features.elements.RestaurantViewModel
 import fr.croustillapp.ui.theme.CroustillappTheme
 import fr.croustillapp.ui.theme.Jersey10Family
 
@@ -74,17 +77,22 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Interception et décodage des intentions de liens profonds entrantes (Deep Links)
+        // Intercepts and parses incoming URI telemetry intents for Deep Links routing
         val intentData: Uri? = intent?.data
         val initialRestaurantId = intentData?.let { uri ->
             extractRestaurantIdFromUrl(uri.toString())
         }
 
         enableEdgeToEdge()
+
         setContent {
             CroustillappTheme {
                 val viewModel: RestaurantViewModel = viewModel()
 
-                val showSettingsState = rememberSaveable { mutableStateOf(false) }
+                // États persistés pour la survie aux changements de configuration (ex: rotation)
+                // Configuration-stable remembered state targets surviving activity recreations
+                val showInformationState = rememberSaveable { mutableStateOf(false) }
                 val selectedRestaurantState = rememberSaveable { mutableStateOf<Restaurant?>(null) }
 
                 val restaurants by viewModel.filteredRestaurants.collectAsStateWithLifecycle()
@@ -95,12 +103,16 @@ class MainActivity : ComponentActivity() {
                 val deepLinkResto by viewModel.deepLinkRestaurant.collectAsStateWithLifecycle()
                 val appContext = LocalContext.current.applicationContext
 
+                // Bloc de traitement initial des requêtes de liens profonds
+                // Dispatches single deep-link processing updates on boot
                 LaunchedEffect(Unit) {
                     if (intent?.data != null) {
                         viewModel.loadSingleRestaurantFromDeepLink(initialRestaurantId)
                     }
                 }
 
+                // Collecte et distribution des événements d'erreurs ponctuels (Toasts)
+                // Collects one-shot asynchronous stream errors to fire system notifications
                 LaunchedEffect(Unit) {
                     viewModel.errorEvents.collect { stringResId ->
                         val errorMessage = appContext.getString(stringResId)
@@ -108,6 +120,8 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
+                // Affichage immédiat du restaurant ciblé si un lien profond est validé
+                // Observes deep-link resolutions to launch contextual modal targets
                 LaunchedEffect(deepLinkResto) {
                     deepLinkResto?.let { resto ->
                         selectedRestaurantState.value = resto
@@ -115,6 +129,8 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
+                // États d'observation des critères de tri de la barre supérieure
+                // Filter state parameters collected to compute structural list updates
                 val searchText by viewModel.searchText.collectAsStateWithLifecycle()
                 val showOnlyOpen by viewModel.showOnlyOpen.collectAsStateWithLifecycle()
                 val showOnlyPmr by viewModel.showOnlyPmr.collectAsStateWithLifecycle()
@@ -129,6 +145,8 @@ class MainActivity : ComponentActivity() {
 
                 val listState = rememberLazyGridState()
 
+                // Styles graphiques uniformisés pour les puces de filtres (Chips Material 3)
+                // Reusable Material 3 tag layouts configurations and palette colors
                 val chipBorder = FilterChipDefaults.filterChipBorder(
                     enabled = true,
                     selected = true,
@@ -193,7 +211,7 @@ class MainActivity : ComponentActivity() {
                                             }
                                         } else {
                                             IconButton(
-                                                onClick = { showSettingsState.value = true },
+                                                onClick = { showInformationState.value = true },
                                                 modifier = Modifier.padding(end = 4.dp)
                                             ) {
                                                 Icon(
@@ -274,7 +292,7 @@ class MainActivity : ComponentActivity() {
                                         colors = chipColors,
                                         label = {
                                             Text(
-                                                text = if (selectedType == "Tous") stringResource(R.string.label_type) else selectedType,
+                                                text = if (selectedType == "Tous") stringResource(R.string.label_type) else getTranslationForType(selectedType),
                                                 maxLines = 1,
                                                 overflow = TextOverflow.Ellipsis
                                             )
@@ -294,7 +312,7 @@ class MainActivity : ComponentActivity() {
                                     ) {
                                         typesList.forEach { typeLabel ->
                                             DropdownMenuItem(
-                                                text = { Text(typeLabel) },
+                                                text = { Text(getTranslationForType(typeLabel)) },
                                                 onClick = {
                                                     viewModel.updateType(typeLabel)
                                                     isTypeMenuExpanded = false
@@ -338,7 +356,9 @@ class MainActivity : ComponentActivity() {
                                     ) {
                                         regionsList.forEach { regionName ->
                                             DropdownMenuItem(
-                                                text = { Text(regionName) },
+                                                text = {
+                                                    Text(if (regionName == "Toutes") stringResource(R.string.filtre_tous) else regionName)
+                                                },
                                                 onClick = {
                                                     viewModel.updateRegion(regionName)
                                                     isRegionMenuExpanded = false
@@ -379,6 +399,8 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 ) { innerPadding ->
+                    // Conteneur central recevant le composant de la liste de restaurants
+                    // Core scaffolding adapter distributing grid data items components
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -407,9 +429,9 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    if (showSettingsState.value) {
-                        SettingsBottomSheet(
-                            onDismiss = { showSettingsState.value = false }
+                    if (showInformationState.value) {
+                        bottomSheetInformation(
+                            onDismiss = { showInformationState.value = false }
                         )
                     }
 
@@ -425,6 +447,8 @@ class MainActivity : ComponentActivity() {
 
                 val isFirstLoadState = rememberSaveable { mutableStateOf(true) }
 
+                // Remontée automatique en haut de la liste quand l'utilisateur efface sa saisie
+                // Automated scrolling pipeline returning the viewport to item 0 when clearing inputs
                 LaunchedEffect(searchText) {
                     if (isFirstLoadState.value) {
                         isFirstLoadState.value = false
@@ -437,6 +461,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Extrait l'identifiant numérique d'un restaurant d'une URL de type Deep Link via des expressions régulières.
+ * Regular expression utility isolating alphanumeric restaurant codes from raw incoming URI strings.
+ */
 fun extractRestaurantIdFromUrl(url: String?): String? {
     if (url == null) return null
 

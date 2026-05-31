@@ -1,4 +1,4 @@
-package fr.croustillapp.components
+package fr.croustillapp.features.elements
 
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -41,9 +41,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.croustillapp.R
-import fr.croustillapp.data.Restaurant
+import fr.croustillapp.core.components.AppImage
+import fr.croustillapp.features.data.Restaurant
 import fr.croustillapp.ui.theme.Jersey10Family
 
+/**
+ * Composant d'affichage carte d'un restaurant individuel pour les grilles Compose.
+ * Individual grid item card layout displaying restaurant telemetry thumbnails.
+ */
 @Composable
 fun RestaurantCard(
     restaurant: Restaurant,
@@ -101,7 +106,7 @@ fun RestaurantCard(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = restaurant.region,
+                        text = restaurant.zone,
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.75f),
                         maxLines = 1,
@@ -118,13 +123,16 @@ fun RestaurantCard(
     }
 }
 
+/**
+ * Badge de statut compact indiquant si le point de vente est actuellement ouvert ou fermé.
+ * Micro layout tag visualizing active open or closed status parameters.
+ */
 @Composable
 fun StatusChip(isOpen: Boolean) {
     val statusText = if (isOpen) stringResource(id = R.string.statut_ouvert) else stringResource(id = R.string.statut_ferme)
 
     val backgroundColor = if (isOpen) MaterialTheme.colorScheme.primaryContainer else Color.Transparent
     val contentColor = if (isOpen) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
-
     val borderColor = if (isOpen) Color.Transparent else MaterialTheme.colorScheme.outlineVariant
 
     Text(
@@ -141,6 +149,10 @@ fun StatusChip(isOpen: Boolean) {
     )
 }
 
+/**
+ * Squelette d'attente (Placeholder Shimmer) reproduisant l'exacte structure tridimensionnelle d'un RestaurantCard.
+ * Empty layout mockup leveraging shimmer pipelines to match loading states gracefully.
+ */
 @Composable
 fun RestaurantCardSkeleton(brush: Brush) {
     val cardShape = RoundedCornerShape(8.dp)
@@ -158,7 +170,6 @@ fun RestaurantCardSkeleton(brush: Brush) {
             )
 
             Column(modifier = Modifier.padding(7.5.dp)) {
-
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.7f)
@@ -203,6 +214,10 @@ fun RestaurantCardSkeleton(brush: Brush) {
     }
 }
 
+/**
+ * Génère un pinceau de dégradé linéaire animé à l'infini pour simuler l'effet Shimmer.
+ * Remembers a memory-stable infinite linear gradient flow translation for shimmer brushes.
+ */
 @Composable
 fun rememberShimmerBrush(): Brush {
     val transition = rememberInfiniteTransition(label = "master_shimmer")

@@ -1,4 +1,4 @@
-package fr.croustillapp.data
+package fr.croustillapp.features.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
