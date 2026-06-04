@@ -64,10 +64,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import fr.croustillapp.R
+import fr.croustillapp.features.bottomsheet.BottomSheetInformation
 import fr.croustillapp.features.bottomsheet.RestaurantBottomSheet
-import fr.croustillapp.features.bottomsheet.bottomSheetInformation
-import fr.croustillapp.features.data.getTranslationForType
 import fr.croustillapp.features.data.Restaurant
+import fr.croustillapp.features.data.getTranslationForType
 import fr.croustillapp.features.elements.RestaurantList
 import fr.croustillapp.features.elements.RestaurantViewModel
 import fr.croustillapp.ui.theme.CroustillappTheme
@@ -77,8 +77,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Interception et décodage des intentions de liens profonds entrantes (Deep Links)
-        // Intercepts and parses incoming URI telemetry intents for Deep Links routing
+        // FR: Extraction de l'ID du restaurant depuis le Deep Link (Intent) à l'ouverture de l'app.
+        // EN: Extracting the restaurant ID from the Deep Link (Intent) upon app initialization.
         val intentData: Uri? = intent?.data
         val initialRestaurantId = intentData?.let { uri ->
             extractRestaurantIdFromUrl(uri.toString())
@@ -90,29 +90,31 @@ class MainActivity : ComponentActivity() {
             CroustillappTheme {
                 val viewModel: RestaurantViewModel = viewModel()
 
-                // États persistés pour la survie aux changements de configuration (ex: rotation)
-                // Configuration-stable remembered state targets surviving activity recreations
+                // FR: États persistants lors des changements de configuration (ex: rotation d'écran).
+                // EN: Persistent states across configuration changes (e.g., screen rotation).
                 val showInformationState = rememberSaveable { mutableStateOf(false) }
                 val selectedRestaurantState = rememberSaveable { mutableStateOf<Restaurant?>(null) }
 
+                // FR: Collecte des flux d'état réactifs du ViewModel respectant le cycle de vie Android.
+                // EN: Collecting reactive state flows from the ViewModel in a lifecycle-aware manner.
                 val restaurants by viewModel.filteredRestaurants.collectAsStateWithLifecycle()
                 val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
-                val isError by viewModel.isError.collectAsStateWithLifecycle()
+                val errorType by viewModel.errorType.collectAsStateWithLifecycle()
                 val favoriteIds by viewModel.favoriteIds.collectAsStateWithLifecycle()
 
                 val deepLinkResto by viewModel.deepLinkRestaurant.collectAsStateWithLifecycle()
                 val appContext = LocalContext.current.applicationContext
 
-                // Bloc de traitement initial des requêtes de liens profonds
-                // Dispatches single deep-link processing updates on boot
+                // FR: Déclenche le chargement des données si l'application s'ouvre via un Deep Link.
+                // EN: Triggers data loading if the application opens via a Deep Link.
                 LaunchedEffect(Unit) {
                     if (intent?.data != null) {
                         viewModel.loadSingleRestaurantFromDeepLink(initialRestaurantId)
                     }
                 }
 
-                // Collecte et distribution des événements d'erreurs ponctuels (Toasts)
-                // Collects one-shot asynchronous stream errors to fire system notifications
+                // FR: Écouteur d'événements unique pour afficher les Toasts natifs d'erreurs globales.
+                // EN: Single event listener to display native global error Toasts.
                 LaunchedEffect(Unit) {
                     viewModel.errorEvents.collect { stringResId ->
                         val errorMessage = appContext.getString(stringResId)
@@ -120,8 +122,8 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                // Affichage immédiat du restaurant ciblé si un lien profond est validé
-                // Observes deep-link resolutions to launch contextual modal targets
+                // FR: Ouvre automatiquement la BottomSheet du restaurant récupéré par le Deep Link.
+                // EN: Automatically displays the BottomSheet of the restaurant retrieved via the Deep Link.
                 LaunchedEffect(deepLinkResto) {
                     deepLinkResto?.let { resto ->
                         selectedRestaurantState.value = resto
@@ -129,8 +131,8 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                // États d'observation des critères de tri de la barre supérieure
-                // Filter state parameters collected to compute structural list updates
+                // FR: Récupération des filtres de l'interface utilisateur.
+                // EN: Fetching user interface filter properties.
                 val searchText by viewModel.searchText.collectAsStateWithLifecycle()
                 val showOnlyOpen by viewModel.showOnlyOpen.collectAsStateWithLifecycle()
                 val showOnlyPmr by viewModel.showOnlyPmr.collectAsStateWithLifecycle()
@@ -145,8 +147,8 @@ class MainActivity : ComponentActivity() {
 
                 val listState = rememberLazyGridState()
 
-                // Styles graphiques uniformisés pour les puces de filtres (Chips Material 3)
-                // Reusable Material 3 tag layouts configurations and palette colors
+                // FR: Configuration par défaut pour les puces de filtrage (Chips).
+                // EN: Default styling configuration for UI FilterChips.
                 val chipBorder = FilterChipDefaults.filterChipBorder(
                     enabled = true,
                     selected = true,
@@ -163,6 +165,8 @@ class MainActivity : ComponentActivity() {
                     selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
                     selectedTrailingIconColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
+
+                val isPrecisionExact by viewModel.isPrecisionExact.collectAsStateWithLifecycle()
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -190,7 +194,7 @@ class MainActivity : ComponentActivity() {
                                     leadingIcon = {
                                         Box(modifier = Modifier.padding(start = 8.dp)) {
                                             Icon(
-                                                painter = painterResource(id = R.drawable.ic_loupe),
+                                                painter = painterResource(id = R.drawable.ic_main_search),
                                                 contentDescription = null,
                                                 modifier = Modifier.size(24.dp)
                                             )
@@ -203,7 +207,7 @@ class MainActivity : ComponentActivity() {
                                                 modifier = Modifier.padding(end = 4.dp)
                                             ) {
                                                 Icon(
-                                                    painter = painterResource(id = R.drawable.ic_effacer),
+                                                    painter = painterResource(id = R.drawable.ic_main_clear),
                                                     contentDescription = stringResource(id = R.string.action_effacer),
                                                     tint = MaterialTheme.colorScheme.primary,
                                                     modifier = Modifier.size(24.dp)
@@ -215,7 +219,7 @@ class MainActivity : ComponentActivity() {
                                                 modifier = Modifier.padding(end = 4.dp)
                                             ) {
                                                 Icon(
-                                                    painter = painterResource(id = R.drawable.ic_informations),
+                                                    painter = painterResource(id = R.drawable.ic_main_information),
                                                     contentDescription = stringResource(id = R.string.description_informations),
                                                     tint = MaterialTheme.colorScheme.onSurface,
                                                     modifier = Modifier.size(24.dp)
@@ -299,7 +303,7 @@ class MainActivity : ComponentActivity() {
                                         },
                                         trailingIcon = {
                                             Icon(
-                                                painter = painterResource(id = R.drawable.ic_fleche),
+                                                painter = painterResource(id = R.drawable.ic_ddm),
                                                 contentDescription = null,
                                                 modifier = Modifier.size(18.dp)
                                             )
@@ -319,7 +323,7 @@ class MainActivity : ComponentActivity() {
                                                 },
                                                 leadingIcon = {
                                                     if (selectedType == typeLabel) {
-                                                        Icon(painter = painterResource(id = R.drawable.ic_valide), contentDescription = null, modifier = Modifier.size(18.dp))
+                                                        Icon(painter = painterResource(id = R.drawable.ic_visual_check), contentDescription = null, modifier = Modifier.size(18.dp))
                                                     }
                                                 }
                                             )
@@ -343,7 +347,7 @@ class MainActivity : ComponentActivity() {
                                         },
                                         trailingIcon = {
                                             Icon(
-                                                painter = painterResource(id = R.drawable.ic_fleche),
+                                                painter = painterResource(id = R.drawable.ic_ddm),
                                                 contentDescription = null,
                                                 modifier = Modifier.size(18.dp)
                                             )
@@ -365,7 +369,7 @@ class MainActivity : ComponentActivity() {
                                                 },
                                                 leadingIcon = {
                                                     if (selectedRegion == regionName) {
-                                                        Icon(painter = painterResource(id = R.drawable.ic_valide), contentDescription = null, modifier = Modifier.size(18.dp))
+                                                        Icon(painter = painterResource(id = R.drawable.ic_visual_check), contentDescription = null, modifier = Modifier.size(18.dp))
                                                     }
                                                 }
                                             )
@@ -399,8 +403,6 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 ) { innerPadding ->
-                    // Conteneur central recevant le composant de la liste de restaurants
-                    // Core scaffolding adapter distributing grid data items components
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -419,8 +421,9 @@ class MainActivity : ComponentActivity() {
                             RestaurantList(
                                 restaurants = restaurants,
                                 isLoading = isLoading,
-                                isError = isError,
+                                errorType = errorType,
                                 favoriteIds = favoriteIds,
+                                isPrecisionExact = isPrecisionExact,
                                 onRestaurantClick = { selectedRestaurantState.value = it },
                                 modifier = Modifier.fillMaxSize(),
                                 contentPadding = PaddingValues(0.dp),
@@ -430,8 +433,11 @@ class MainActivity : ComponentActivity() {
                     }
 
                     if (showInformationState.value) {
-                        bottomSheetInformation(
-                            onDismiss = { showInformationState.value = false }
+                        BottomSheetInformation(
+                            onDismiss = { showInformationState.value = false },
+                            onPermissionGranted = {
+                                viewModel.checkLocationPermissionAndFetch()
+                            }
                         )
                     }
 
@@ -447,12 +453,12 @@ class MainActivity : ComponentActivity() {
 
                 val isFirstLoadState = rememberSaveable { mutableStateOf(true) }
 
-                // Remontée automatique en haut de la liste quand l'utilisateur efface sa saisie
-                // Automated scrolling pipeline returning the viewport to item 0 when clearing inputs
-                LaunchedEffect(searchText) {
+                // FR: Force le défilement de la liste vers le haut lors d'une mise à jour des filtres.
+                // EN: Forces the list to scroll back to top whenever active filter outputs update.
+                LaunchedEffect(restaurants) {
                     if (isFirstLoadState.value) {
                         isFirstLoadState.value = false
-                    } else if (searchText.isEmpty()) {
+                    } else {
                         listState.scrollToItem(0)
                     }
                 }
@@ -462,8 +468,8 @@ class MainActivity : ComponentActivity() {
 }
 
 /**
- * Extrait l'identifiant numérique d'un restaurant d'une URL de type Deep Link via des expressions régulières.
- * Regular expression utility isolating alphanumeric restaurant codes from raw incoming URI strings.
+ * FR: Extrait l'ID unique du restaurant depuis l'URL de l'application.
+ * EN: Extracts the unique venue ID from deep-linked application context URLs.
  */
 fun extractRestaurantIdFromUrl(url: String?): String? {
     if (url == null) return null

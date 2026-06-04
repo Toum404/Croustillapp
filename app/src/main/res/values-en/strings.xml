@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="mention">Croustillapp 1.0\nBy Toum</string>
-
-    <string name="app_name">Croustillapp</string>
     <string name="statut_code">Code</string>
 
+    <string name="service_description">CROUStillant is a project that aims to provide menus for university restaurants in France and overseas territories.</string>
+
     <string name="api_mention">"Data provided by "</string>
-    <string name="url_action_erreur">Unable to open the link.</string>
+    <string name="url_action_erreur">Unable to open the link</string>
 
     <string name="action_fermer">Close</string>
     <string name="action_favoriser">Favorite</string>
@@ -24,18 +22,21 @@
 
     <string name="label_tout">All</string>
     <string name="recherche">Search for a place…</string>
-    <string name="toast_favoris">Maximum %d favorites.</string>
+    <string name="toast_favoris">Maximum %d favorites</string>
 
     <string name="inconnu_titre">No places found</string>
-    <string name="inconnu_description">Remove some filters or change your search.</string>
+    <string name="inconnu_description">Try removing filters or changing your search.</string>
 
     <string name="connexion_titre">No connection</string>
-    <string name="connexion_description">Check your Wi-Fi or mobile data.</string>
+    <string name="connexion_description">Unable to access the internet. Please check your Wi-Fi or mobile data.</string>
 
-    <string name="description_informations">About</string>
-    <string name="description_app">%1$s is a free, non-profit application powered by the public %2$s API, accessible via the link below. %1$s is not the official application of %2$s.\n\n%1$s is a student project, by students, for students. The application does not collect any personal or usage data and is in no way linked to the %3$s and its services.</string>
+    <string name="serveur_titre">Request interrupted</string>
+    <string name="serveur_description">The server is temporarily unavailable. Please try again later.</string>
 
-    <string name="copie_toast">" copied!"</string>
+    <string name="description_informations">Information</string>
+    <string name="description_app">%1$s is a free and open-source application powered by the %2$s public API, accessible via the link below. %1$s is not an official application of the %2$s project and is in no way linked to %3$s and its services.</string>
+
+    <string name="copie_toast">Copied to clipboard!</string>
     <string name="copie_action">Copy</string>
 
     <string name="label_btn_adresse">Address</string>
@@ -43,30 +44,30 @@
     <string name="label_btn_courriel">Email</string>
     <string name="label_btn_partager">Share</string>
 
-    <string name="action_btn_carte">View</string>
+    <string name="action_btn_carte">Open</string>
     <string name="action_btn_telephoner">Call</string>
     <string name="action_btn_courriel">Write</string>
     <string name="action_btn_partager">Send</string>
 
-    <string name="toast_btn_adresse">Location</string>
-    <string name="toast_btn_telephone">Number</string>
-    <string name="toast_btn_courriel">Email</string>
-    <string name="toast_btn_partager">Link</string>
-
-    <string name="toast_non_carte">No map service available.</string>
-    <string name="toast_non_telephone">No phone service available.</string>
-    <string name="toast_non_courriel">No email service available.</string>
+    <string name="toast_non_carte">No map service available</string>
+    <string name="toast_non_telephone">No phone service available</string>
+    <string name="toast_non_courriel">No email service available</string>
     <string name="toast_non_partage">Unable to share.</string>
 
     <string name="titre_horaires">Hours</string>
     <string name="horaires_non_disponibles">Hours not available</string>
 
-    <string name="label_menu">Menu</string>
-    <string name="aucun_menu">\nMenu not available.\n</string>
+    <string name="colonne_matin">Morning</string>
+    <string name="colonne_midi">Lunch</string>
+    <string name="colonne_soir">Dinner</string>
 
-    <string name="erreur_menu">Unable to load the menu.</string>
+    <string name="label_menu">Menu</string>
+    <string name="aucun_menu">\nMenu not available\n</string>
+
+    <string name="erreur_menu">Unable to load the menu</string>
     <string name="recharger_menu">Tap to retry</string>
 
+    <string name="ajd">Today</string>
     <string name="holiday_alert_today">Today: %1$s</string>
     <string name="holiday_alert_tomorrow">Tomorrow: %1$s</string>
 
@@ -76,7 +77,7 @@
     <string name="holiday_national_day">National Day</string>
     <string name="holiday_assumption">Assumption of Mary</string>
     <string name="holiday_all_saints">All Saints’ Day</string>
-    <string name="holiday_armistice_1914">Armistice Day</string>
+    <string name="holiday_armistice_1918">Armistice Day</string>
     <string name="holiday_christmas">Christmas Day</string>
     <string name="holiday_easter_monday">Easter Monday</string>
     <string name="holiday_ascension">Ascension Day</string>
@@ -99,9 +100,30 @@
     <string name="type_triporteur">Food cart</string>
     <string name="type_epicerie">Grocery store</string>
 
-    <string name="error_deeplink_invalid">Invalid link.</string>
-    <string name="error_deeplink_offline">No connection.</string>
-    <string name="error_deeplink_not_found">Restaurant does not exist.</string>
-    <string name="error_deeplink_generic">An error occurred.</string>
+    <string name="error_deeplink_invalid">Invalid link</string>
+    <string name="error_deeplink_offline">No connection</string>
+    <string name="error_deeplink_not_found">Restaurant does not exist</string>
+    <string name="error_deeplink_generic">An error occurred</string>
 
+    <string name="mini_distance">Nearby</string>
+
+    <string name="distance_meters">%1$d m away</string>
+    <string name="distance_kilometers">%1$.1f km away</string>
+
+    <string name="location_card_title_fine">Precise location active</string>
+    <string name="location_card_title_coarse">Approximate location active</string>
+    <string name="location_card_title_none">Allow geolocation</string>
+
+    <string name="location_card_desc_fine">Restaurants are accurately sorted by proximity. Distances are calculated internally: %1$s does not share your data.</string>
+    <string name="location_card_desc_coarse">The app sorts restaurants based on an estimated location. Switch to precise location to display distances under 5 kilometers.</string>
+    <string name="location_card_desc_none">Allow access to your location to display the nearest restaurants and their distances. Your location is not shared with any third party.</string>
+
+    <string name="location_card_button_fine">Access granted!</string>
+    <string name="location_card_button_coarse">Change my location</string>
+    <string name="location_card_button_none">Grant access</string>
+
+    <string name="aucune_position">Location services disabled</string>
+
+    <string name="toast_mode_cache">Offline mode</string>
+    <string name="toast_mode_en_ligne">Connection restored</string>
 </resources>

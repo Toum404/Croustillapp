@@ -46,33 +46,40 @@ import fr.croustillapp.R
 import fr.croustillapp.features.data.DailyMenuDto
 import fr.croustillapp.features.data.DayType
 import fr.croustillapp.features.data.HolidayHelper
+import fr.croustillapp.features.data.JourOuvert
 import fr.croustillapp.features.data.Restaurant
 import fr.croustillapp.ui.theme.Jersey10Family
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-// Affiche le menu du restaurant avec un sélecteur déroulant pour les dates disponibles.
-// Displays the restaurant's menu with a dropdown selector for available dates.
+/**
+ * FR: Section affichant les menus du jour avec un sélecteur déroulant (DropdownMenu) pour changer de date.
+ * EN: Section presenting daily menus along with a DropdownMenu selector to toggle dates.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MenuSection(
     dailyMenus: List<DailyMenuDto>,
     onMenuSelected: (DailyMenuDto?) -> Unit,
 ) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+
     var selectedIndex by remember { mutableIntStateOf(0) }
     var expanded by remember { mutableStateOf(false) }
 
     val hasMenus = dailyMenus.isNotEmpty()
     val selectedMenu = if (hasMenus) dailyMenus.getOrNull(selectedIndex) else null
 
+    // FR: Notifie le composant parent dès que le menu sélectionné change.
+    // EN: Notifies the parent component as soon as the selected menu state updates.
     LaunchedEffect(selectedMenu) {
         onMenuSelected(selectedMenu)
     }
 
-    val todayDateFormatted = remember {
+    val todayDateFormatted = remember(context) {
         val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE)
-        formatApiDate(sdf.format(Date()))
+        formatApiDate(context, sdf.format(Date()))
     }
 
     val sheetColor = BottomSheetDefaults.ContainerColor
@@ -116,14 +123,14 @@ fun MenuSection(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = selectedMenu?.let { formatApiDate(it.date) } ?: todayDateFormatted,
+                        text = selectedMenu?.let { formatApiDate(context, it.date) } ?: todayDateFormatted,
                         color = if (hasMenus) MaterialTheme.colorScheme.onSurface
                         else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
                         maxLines = 1
                     )
 
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_fleche),
+                        painter = painterResource(id = R.drawable.ic_ddm),
                         contentDescription = null,
                         modifier = Modifier.size(18.dp),
                         tint = if (hasMenus) MaterialTheme.colorScheme.primary
@@ -143,7 +150,7 @@ fun MenuSection(
                         DropdownMenuItem(
                             text = {
                                 Text(
-                                    text = formatApiDate(menu.date),
+                                    text = formatApiDate(context, menu.date),
                                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                                     color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
                                 )
@@ -160,9 +167,9 @@ fun MenuSection(
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        // Affiche les plats triés par catégorie, ou un message d'absence de données
-        // Renders meals categorized by headers, fallback to empty layout notice
         if (hasMenus && selectedMenu != null) {
+            // FR: Itération sur les catégories (Entrées, Plats, Desserts) et affichage sous forme de liste à puces.
+            // EN: Iterating through meal categories (Starters, Mains, Desserts) and listing them using bullet points.
             selectedMenu.repas.firstOrNull()?.categories?.forEach { cat ->
                 Text(
                     text = cat.libelle.uppercase(),
@@ -195,10 +202,14 @@ fun MenuSection(
     }
 }
 
-// Affiche les horaires de la semaine et superpose dynamiquement un bandeau d'alerte jour férié en dessous si nécessaire.
-// Displays weekly schedules and stacks an upcoming holiday alert banner dynamically underneath if needed.
+/**
+ * FR: Section gérant l'affichage des horaires d'ouverture avec injection d'une alerte en cas de jour férié.
+ * EN: Section managing the schedule layout injection along with banner alerts for upcoming public holidays.
+ */
 @Composable
-fun ScheduleSection(horaires: List<String>?, isStrasbourg: Boolean) {
+fun ScheduleSection(horaires: List<String>?, joursOuverts: List<JourOuvert>?, isStrasbourg: Boolean) {
+    // FR: Recours à l'aide HolidayHelper pour intercepter la proximité d'un jour férié.
+    // EN: Leverages HolidayHelper utilities to detect the proximity of exceptional holiday closures.
     val holidayAlert = remember(isStrasbourg) { HolidayHelper.checkUpcomingHoliday(isStrasbourg) }
 
     Box(modifier = Modifier.fillMaxWidth()) {
@@ -221,7 +232,7 @@ fun ScheduleSection(horaires: List<String>?, isStrasbourg: Boolean) {
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_calendrier),
+                        painter = painterResource(id = R.drawable.ic_visual_calendrier),
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onPrimaryContainer,
                         modifier = Modifier.size(12.dp)
@@ -242,8 +253,6 @@ fun ScheduleSection(horaires: List<String>?, isStrasbourg: Boolean) {
             }
         }
 
-        // Cette colonne recouvre l'alerte du dessous grâce au comportement de la Box
-        // Layer stacks above the alert background using the Box overlapping method
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -259,34 +268,48 @@ fun ScheduleSection(horaires: List<String>?, isStrasbourg: Boolean) {
                 fontFamily = Jersey10Family
             )
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
-            if (!horaires.isNullOrEmpty()) {
-                horaires.forEach { ligne ->
+            when {
+                // FR: Option 1 : Affichage des lignes de texte d'horaires préformatées reçues de l'API.
+                // EN: Option 1: Rendering raw pre-formatted schedule text lines fetched from the backend API.
+                !horaires.isNullOrEmpty() -> {
+                    horaires.forEach { ligne ->
+                        Text(
+                            text = ligne.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.FRANCE) else it.toString() },
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(vertical = 2.dp)
+                        )
+                    }
+                }
+
+                // FR: Option 2 : Construction d'un tableau d'horaires structuré si les lignes brutes manquent.
+                // EN: Option 2: Building a structured schedule table view if raw textual data lines are missing.
+                !joursOuverts.isNullOrEmpty() -> {
+                    PixelScheduleTable(joursOuverts = joursOuverts)
+                }
+
+                else -> {
                     Text(
-                        text = ligne.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.FRANCE) else it.toString() },
+                        text = stringResource(R.string.horaires_non_disponibles),
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(vertical = 2.dp)
+                        modifier = Modifier
+                            .padding(vertical = 16.dp)
+                            .alpha(0.5f)
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center
                     )
                 }
-            } else {
-                Text(
-                    text = stringResource(R.string.horaires_non_disponibles),
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier
-                        .padding(vertical = 24.dp)
-                        .alpha(0.5f)
-                        .fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
             }
         }
     }
 }
 
-// Grille d'affichage des métadonnées (Code interne, accessibilité PMR, paiements Izly).
-// Technical metadata display panel (Internal code, PMR accessibility, Izly payments).
+/**
+ * FR: Section d'affichage des caractéristiques techniques de l'établissement (Identifiant, Accessibilité PMR, Izly).
+ * EN: Infrastructure and features display row highlighting attributes (Identifier, PMR Accessibility, Izly).
+ */
 @Composable
 fun RestaurantFeaturesSection(restaurant: Restaurant) {
     Row(
@@ -318,7 +341,7 @@ fun RestaurantFeaturesSection(restaurant: Restaurant) {
 
         Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
             FeatureIcon(
-                iconRes = R.drawable.ic_pmr,
+                iconRes = R.drawable.ic_visual_pmr,
                 label = stringResource(id = R.string.statut_pmr),
                 isActive = restaurant.pmr
             )
@@ -328,7 +351,7 @@ fun RestaurantFeaturesSection(restaurant: Restaurant) {
 
         Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
             FeatureIcon(
-                iconRes = R.drawable.ic_izly,
+                iconRes = R.drawable.ic_visual_izly,
                 label = stringResource(id = R.string.statut_izly),
                 isActive = restaurant.acceptsIzly
             )
@@ -336,8 +359,10 @@ fun RestaurantFeaturesSection(restaurant: Restaurant) {
     }
 }
 
-// Conteneur d'attente visuel affiché pendant le chargement réseau des menus.
-// Shimmering or spinning loading card state placeholder for menu requests.
+/**
+ * FR: Vue d'attente contenant un indicateur de progression circulaire pour le chargement asynchrone des cartes de menus.
+ * EN: Placeholder loading view containing a centered circular progress indicator for asynchronous menus data fetches.
+ */
 @Composable
 fun MenuLoadingView() {
     Column(
@@ -366,8 +391,10 @@ fun MenuLoadingView() {
     }
 }
 
-// Bloc d'erreur complet invitant l'utilisateur à cliquer pour recharger.
-// Full component error placeholder displaying alternative retry interaction states.
+/**
+ * FR: Vue d'erreur interactive incitant l'utilisateur à cliquer pour re-déclencher la requête réseau échouée.
+ * EN: Interactive fallback error view encouraging users to tap in order to clear and retry failed network tasks.
+ */
 @Composable
 fun MenuErrorView(onRetry: () -> Unit) {
     Column(

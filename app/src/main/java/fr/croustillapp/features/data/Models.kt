@@ -1,11 +1,12 @@
 package fr.croustillapp.features.data
 
+import android.os.Parcelable
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /**
@@ -28,8 +29,9 @@ data class RestaurantEntity(
     val longitude: Double,
     val email: String?,
     val telephone: String?,
-    val horaires: String?,
-    val acces: String?
+    val horaires: List<String>?,
+    val acces: List<String>?,
+    val joursOuvert: List<JourOuvertDto>?
 )
 
 /**
@@ -37,6 +39,7 @@ data class RestaurantEntity(
  * UI Domain business model tagged as @Immutable for optimal Jetpack Compose recomposition metrics.
  */
 @Immutable
+@Parcelize
 data class Restaurant(
     val id: String,
     val name: String,
@@ -53,8 +56,16 @@ data class Restaurant(
     val email: String?,
     val telephone: String?,
     val horaires: List<String>? = null,
-    val acces: List<String>? = null // Changement de type String? vers List<String>? pour correspondre au domaine
-)
+    val acces: List<String>? = null,
+    val joursOuvert: List<JourOuvert>? = null,
+    val distance: Float? = null
+) : Parcelable
+
+@Parcelize
+data class JourOuvert(val jour: String, val ouverture: Ouverture) : Parcelable
+
+@Parcelize
+data class Ouverture(val matin: Boolean, val midi: Boolean, val soir: Boolean) : Parcelable
 
 // Réseau / Network DTO declarations
 @Serializable
@@ -129,8 +140,9 @@ fun RestaurantDto.toEntity(): RestaurantEntity {
         longitude = longitude,
         email = email,
         telephone = telephone,
-        horaires = horaires?.let { MyJsonParser.encodeToString(it) },
-        acces = acces?.let { MyJsonParser.encodeToString(it) } // Sérialisation en chaîne plate JSON
+        horaires = horaires,
+        acces = acces,
+        joursOuvert = joursOuvert
     )
 }
 
@@ -154,9 +166,18 @@ fun RestaurantEntity.toDomain(): Restaurant {
         longitude = longitude,
         email = email,
         telephone = telephone,
-        horaires = horaires?.let { MyJsonParser.decodeFromString<List<String>>(it) },
-        // CORRECTION : Utilisation de decodeFromString au lieu de encodeToString pour reconstruire la liste
-        acces = acces?.let { MyJsonParser.decodeFromString<List<String>>(it) }
+        horaires = horaires,
+        acces = acces,
+        joursOuvert = joursOuvert?.map { dto ->
+            JourOuvert(
+                jour = dto.jour,
+                ouverture = Ouverture(
+                    matin = dto.ouverture.matin,
+                    midi = dto.ouverture.midi,
+                    soir = dto.ouverture.soir
+                )
+            )
+        }
     )
 }
 

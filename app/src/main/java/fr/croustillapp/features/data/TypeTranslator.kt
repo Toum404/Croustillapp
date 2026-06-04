@@ -5,9 +5,15 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.res.stringResource
 import fr.croustillapp.R
 
+/**
+ * FR: Traduit dynamiquement le type d'établissement reçu de l'API vers une ressource localisée.
+ * EN: Dynamically maps the facility type string from the API onto a localized application resource.
+ */
 @Composable
 @ReadOnlyComposable
 fun getTranslationForType(type: String): String {
+    // FR: Nettoyage préventif des espaces et normalisation en minuscules.
+    // EN: Defensive whitespace trimming and lowercase casing normalization.
     return when (type.trim().lowercase()) {
         "tous", "toutes" -> stringResource(id = R.string.filtre_tous)
         "brasserie" -> stringResource(id = R.string.type_brasserie)
@@ -23,6 +29,8 @@ fun getTranslationForType(type: String): String {
         "sandwicherie" -> stringResource(id = R.string.type_sandwicherie)
         "triporteur" -> stringResource(id = R.string.type_triporteur)
         "épicerie" -> stringResource(id = R.string.type_epicerie)
+        // FR: Repli sécurisé renvoyant la chaîne brute si le type n'est pas répertorié.
+        // EN: Secure fallback returning the raw string value if the target type is unmapped.
         else -> type
     }
 }

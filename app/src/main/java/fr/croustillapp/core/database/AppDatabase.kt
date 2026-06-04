@@ -4,40 +4,35 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import fr.croustillapp.features.data.DataConverters
 import fr.croustillapp.features.data.RestaurantEntity
 
-/**
- * Point d'accès principal pour la base de données relationnelle locale Room de l'application.
- * Main abstract architectural entry point hosting the local relational Room database.
- */
-@Database(entities = [RestaurantEntity::class], version = 2, exportSchema = false) // -------------- Version 2 : "zone"
+// FR: Déclaration de la base de données Room avec ses entités, sa version et la désactivation de l'export du schéma.
+// EN: Room database declaration specifying entities, version number, and disabling schema export.
+@Database(entities = [RestaurantEntity::class], version = 3, exportSchema = false)
+@TypeConverters(DataConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    /**
-     * Fournit le DAO pour interagir avec la table des restaurants.
-     * Provides the Data Access Object interface for restaurant table operations.
-     */
     abstract fun restaurantDao(): RestaurantDao
 
     companion object {
-        // L'annotation @Volatile garantit que les modifications de l'instance sont immédiatement visibles par tous les threads
-        // @Volatile ensures atomic variable mutations remain instantly visible across active thread boundaries
+        // FR: Garantie que les modifications de INSTANCE sont immédiatement visibles par tous les threads.
+        // EN: Ensures that updates to INSTANCE are immediately visible across all execution threads.
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        /**
-         * Récupère l'instance unique (Singleton) de la base de données. Initialisation thread-safe.
-         * Retrieves the unique database thread-safe Singleton instance.
-         */
         fun getDatabase(context: Context): AppDatabase {
+            // FR: Pattern Singleton : renvoie l'instance existante ou la crée de manière synchronisée si elle n'existe pas.
+            // EN: Singleton pattern: returns the existing instance or creates it synchronously if it does not exist yet.
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "croustillapp_database"
                 )
-                    // Stratégie de repli en cas de changement de version sans script de migration (recréation brute)
-                    // Recreates database tables forcefully if schema updates lack explicit migration paths
+                    // FR: Reconstruit la base de données en cas de changement de version sans migration explicite (à manipuler prudemment en production).
+                    // EN: Rebuilds the database during version increments without explicit migration paths (handle with care in production).
                     .fallbackToDestructiveMigration()
                     .build()
 

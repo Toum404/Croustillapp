@@ -4,14 +4,14 @@ import fr.croustillapp.R
 import java.util.Calendar
 
 /**
- * Utilitaire de calcul et d'analyse des jours fériés français avec prise en compte de l'Alsace.
- * Calendar compute provider checking country and regional holidays to match operational alerts.
+ * FR: Classe utilitaire pour le calcul des jours fériés fixes et mobiles (Algorithme de Meeus).
+ * EN: Utility helper tracking fixed and moving public holidays (Meeus/Jones/Butcher algorithm).
  */
 object HolidayHelper {
 
     /**
-     * Calcule le dimanche de Pâques pour une année donnée via l'algorithme Meeus/Jones/Butcher.
-     * Computes Easter Sunday matching an explicit calendar timeline loop via the Meeus/Jones/Butcher method.
+     * FR: Classe utilitaire pour le calcul des jours fériés fixes et mobiles (Algorithme de Meeus).
+     * EN: Utility helper tracking fixed and moving public holidays (Meeus/Jones/Butcher algorithm).
      */
     private fun getEasterSunday(year: Int): Calendar {
         val a = year % 19
@@ -41,46 +41,44 @@ object HolidayHelper {
     }
 
     /**
-     * Recherche la ressource de chaîne associée à un jour férié pour une date et une zone données.
-     * Resolves matching string labels for legal dates, including custom local regional checks.
-     *
-     * @param isStrasbourg Activer pour inclure les règles d'Alsace-Moselle (Vendredi Saint, Saint-Étienne).
-     * @return L'identifiant de la ressource String ou null s'il s'agit d'un jour ouvrable standard.
+     * FR: Renvoie la ressource de chaîne associée à un jour férié, incluant les spécificités d'Alsace-Moselle.
+     * EN: Returns the string resource attached to a specific holiday, featuring localized Alsace-Moselle checks.
      */
     fun getHolidayNameRes(calendar: Calendar, isStrasbourg: Boolean): Int? {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         val month = calendar.get(Calendar.MONTH) + 1
         val year = calendar.get(Calendar.YEAR)
 
-        // 1. Jours fériés nationaux fixes / Universal statutory localized fixed days
+        // FR: Jours fériés fixes nationaux
+        // EN: Static country-wide public holidays
         if (day == 1 && month == 1) return R.string.holiday_new_year
         if (day == 1 && month == 5) return R.string.holiday_labor_day
         if (day == 8 && month == 5) return R.string.holiday_victory_1945
         if (day == 14 && month == 7) return R.string.holiday_national_day
         if (day == 15 && month == 8) return R.string.holiday_assumption
         if (day == 1 && month == 11) return R.string.holiday_all_saints
-        if (day == 11 && month == 11) return R.string.holiday_armistice_1914
+        if (day == 11 && month == 11) return R.string.holiday_armistice_1918
         if (day == 25 && month == 12) return R.string.holiday_christmas
 
-        // Concordance régionale d'Alsace-Moselle (Saint-Étienne) / Regional local rule
+        // FR: Droit local (Saint-Étienne)
+        // EN: Local regional law (Boxing Day)
         if (isStrasbourg && day == 26 && month == 12) return R.string.holiday_boxing_day
 
-        // 2. Jours fériés mobiles basés sur Pâques / Dynamic legal holidays offset calculations
         val easter = getEasterSunday(year)
 
-        // Lundi de Pâques (+1 jour) / Easter Monday
+        // FR: Jours fériés mobiles basés sur Pâques (Pâques + 1, + 39, + 50)
+        // EN: Dynamic shifting holidays computed relative to Easter Sunday offsets
         val easterMonday = (easter.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         if (isSameDay(calendar, easterMonday)) return R.string.holiday_easter_monday
 
-        // Ascension (+39 jours) / Ascension Thursday
         val ascension = (easter.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 39) }
         if (isSameDay(calendar, ascension)) return R.string.holiday_ascension
 
-        // Lundi de Pentecôte (+50 jours) / Whit Monday
         val whitMonday = (easter.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 50) }
         if (isSameDay(calendar, whitMonday)) return R.string.holiday_whit_monday
 
-        // Vendredi Saint d'Alsace (-2 jours avant Pâques) / Good Friday exception rule
+        // FR: Droit local (Vendredi Saint : Pâques - 2)
+        // EN: Local regional law (Good Friday)
         if (isStrasbourg) {
             val goodFriday = (easter.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, -2) }
             if (isSameDay(calendar, goodFriday)) return R.string.holiday_good_friday
@@ -95,8 +93,8 @@ object HolidayHelper {
     }
 
     /**
-     * Analyse l'existence d'une fête légale aujourd'hui ou demain pour déclencher un bandeau d'alerte.
-     * Evaluates active date configurations against today or tomorrow vectors to feed info banners.
+     * FR: Évalue la présence d'un jour férié aujourd'hui ou demain pour déclencher une alerte visuelle.
+     * EN: Evaluates holiday triggers for today or tomorrow timelines to fire a proactive UI alert state.
      */
     fun checkUpcomingHoliday(isStrasbourg: Boolean): HolidayAlertData? {
         val current = Calendar.getInstance().apply {
@@ -106,12 +104,10 @@ object HolidayHelper {
             set(Calendar.MILLISECOND, 0)
         }
 
-        // Évaluation pour "Aujourd'hui" / Check for "Today"
         getHolidayNameRes(current, isStrasbourg)?.let { resId ->
             return HolidayAlertData(targetDayType = DayType.TODAY, holidayStringRes = resId)
         }
 
-        // Évaluation pour "Demain" / Check for "Tomorrow"
         current.add(Calendar.DAY_OF_YEAR, 1)
         getHolidayNameRes(current, isStrasbourg)?.let { resId ->
             return HolidayAlertData(targetDayType = DayType.TOMORROW, holidayStringRes = resId)

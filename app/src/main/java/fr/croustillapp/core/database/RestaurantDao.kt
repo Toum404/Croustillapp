@@ -10,51 +10,41 @@ import fr.croustillapp.features.data.RestaurantEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
- * Interface d'accès aux données (DAO) pour exécuter des requêtes SQL sur la table "restaurants".
- * Data Access Object (DAO) providing structured SQLite entry points for the "restaurants" table.
+ * FR: Interface d'accès aux données (DAO) pour gérer les opérations SQL liées aux restaurants.
+ * EN: Data Access Object (DAO) interface defining SQL operations for restaurant entities.
  */
 @Dao
 interface RestaurantDao {
 
-    /**
-     * Récupère un flux continu (Flow) de tous les restaurants triés localement.
-     * Observes a continuous data stream monitoring the entire local restaurants catalog.
-     */
+    // FR: Récupère tous les restaurants sous forme de Flow pour une mise à jour réactive de l'UI.
+    // EN: Retrieves all restaurants as a Flow stream to ensure reactive UI updates.
     @Query("SELECT * FROM restaurants")
     fun getAllRestaurants(): Flow<List<RestaurantEntity>>
 
-    /**
-     * Insère une liste de restaurants. Écrase les anciennes données en cas de conflit d'ID.
-     * Persists multiple restaurant rows. Overwrites overlapping entries on conflict.
-     */
+    // FR: Insère une liste de restaurants et remplace les doublons existants (via l'ID).
+    // EN: Inserts a list of restaurants, replacing any conflicting duplicates based on primary keys.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(restaurants: List<RestaurantEntity>)
 
-    /**
-     * Met à jour uniquement des champs partiels ciblés (comme le statut d'ouverture) pour économiser des ressources.
-     * Performs lightweight target row updates focusing exclusively on specific partial property updates.
-     */
+    // FR: Met à jour partiellement les entités pour rafraîchir uniquement les statuts d'ouverture.
+    // EN: Performs a partial entity update targeting exclusively the opening status fields.
     @Update(entity = RestaurantEntity::class)
     suspend fun updateAllStatuses(statusUpdates: List<StatusUpdatePartial>)
 
-    /**
-     * Vide complètement la table des restaurants (utile pour forcer un rafraîchissement complet).
-     * Clears all entries from the local repository table.
-     */
+    // FR: Vide intégralement la table des restaurants (utilisé pour rafraîchir le cache local).
+    // EN: Clears the entire restaurants table (typically used during local cache invalidation).
     @Query("DELETE FROM restaurants")
     suspend fun deleteAll()
 
-    /**
-     * Compte le nombre total d'entrées en cache. Utile pour savoir si la base est vide au démarrage.
-     * Checks existing cache depth by counting total rows stored inside the table.
-     */
+    // FR: Compte le nombre total de restaurants actuellement stockés dans la base locale.
+    // EN: Counts the total number of restaurant records currently stored in the local cache.
     @Query("SELECT COUNT(*) FROM restaurants")
     suspend fun getRestaurantsCount(): Int
 }
 
 /**
- * Modèle partiel utilisé par Room pour mettre à jour efficacement le statut d'ouverture sans réécrire toute la ligne.
- * Lightweight partial data transfer object used by Room to patch rows without re-writing full entities.
+ * FR: Classe de données partielle optimisant les requêtes de mise à jour des horaires d'ouverture.
+ * EN: Partial data class optimized for targeting specific layout updates regarding business hours.
  */
 data class StatusUpdatePartial(
     @ColumnInfo(name = "id") val id: String,

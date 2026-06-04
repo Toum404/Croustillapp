@@ -1,9 +1,7 @@
 <resources>
-
-    <string name="mention">Croustillapp 1.0\nPar Toum</string>
-
-    <string name="app_name">Croustillapp</string>
+    <string name="app_name" translatable="false">Croustillapp</string>
     <string name="service_nom" translatable="false">CROUStillant API</string>
+    <string name="service_description">CROUStillant est un projet qui a pour but de fournir les menus des restaurants universitaires en France et en Outre-Mer.</string>
     <string name="api_nom" translatable="false">CROUStillant.menu</string>
     <string name="crous_mention" translatable="false">CROUS</string>
     <string name="statut_izly" translatable="false">IZLY</string>
@@ -12,7 +10,7 @@
 
     <string name="api_mention">"Données fournies par "</string>
     <string name="url_site_web" translatable="false">https://croustillant.menu/fr</string>
-    <string name="url_action_erreur">Impossible d\'ouvrir le lien.</string>
+    <string name="url_action_erreur">Impossible d’ouvrir le lien</string>
 
     <string name="url_github" translatable="false">https://github.com/Toum404/Croustillapp</string>
 
@@ -31,18 +29,21 @@
 
     <string name="label_tout">Tout</string>
     <string name="recherche">Chercher un établissement…</string>
-    <string name="toast_favoris">Maximum %d favoris.</string>
+    <string name="toast_favoris">Maximum %d favoris</string>
 
     <string name="inconnu_titre">Aucun établissement trouvé</string>
-    <string name="inconnu_description">Retirez des filtres ou modifiez votre recherche.</string>
+    <string name="inconnu_description">Essayez de retirer des filtres ou de modifier votre recherche.</string>
 
     <string name="connexion_titre">Aucune connexion</string>
-    <string name="connexion_description">Vérifiez votre Wi-Fi ou vos données mobiles.</string>
+    <string name="connexion_description">Impossible d’accéder à internet. Vérifiez votre Wi-Fi ou vos données mobiles.</string>
 
-    <string name="description_informations">À propos</string>
-    <string name="description_app">%1$s est une application libre à but non-lucratif propulsée par l\'API publique %2$s, accessible via le lien ci-dessous. %1$s n\'est pas l\'application officielle de %2$s.\n\n%1$s est un projet d\'étudiants, par les étudiants, pour les étudiants. L\'application ne collecte aucune donnée personnelle ou d\'utilisation et n\'est aucunement liée au %3$s et ses services.</string>
+    <string name="serveur_titre">Requête interrompue</string>
+    <string name="serveur_description">Le serveur est momentanément indisponible. Veuillez réessayer ultérieurement.</string>
 
-    <string name="copie_toast">" copié !"</string>
+    <string name="description_informations">Informations</string>
+    <string name="description_app">%1$s est une application libre propulsée par l’API publique %2$s, accessible via le lien ci-dessous. %1$s n’est pas une application officielle du projet %2$s et n’est aucunement lié au %3$s et ses services.</string>
+
+    <string name="copie_toast">Copié dans le presse-papiers !</string>
     <string name="copie_action">Copier</string>
 
     <string name="label_btn_adresse">Adresse</string>
@@ -50,40 +51,40 @@
     <string name="label_btn_courriel">Courriel</string>
     <string name="label_btn_partager">Partager</string>
 
-    <string name="action_btn_carte">Afficher</string>
+    <string name="action_btn_carte">Ouvrir</string>
     <string name="action_btn_telephoner">Téléphoner</string>
     <string name="action_btn_courriel">Écrire</string>
     <string name="action_btn_partager">Envoyer</string>
 
-    <string name="toast_btn_adresse">Emplacement</string>
-    <string name="toast_btn_telephone">Numéro</string>
-    <string name="toast_btn_courriel">Courriel</string>
-    <string name="toast_btn_partager">Lien</string>
-
-    <string name="toast_non_carte">Aucun service cartographique.</string>
-    <string name="toast_non_telephone">Aucun service téléphonique.</string>
-    <string name="toast_non_courriel">Aucun service courriel.</string>
-    <string name="toast_non_partage">Impossible de partager.</string>
+    <string name="toast_non_carte">Aucun service cartographique</string>
+    <string name="toast_non_telephone">Aucun service téléphonique</string>
+    <string name="toast_non_courriel">Aucun service courriel</string>
+    <string name="toast_non_partage">Impossible de partager</string>
 
     <string name="titre_horaires">Horaires</string>
     <string name="horaires_non_disponibles">Horaires non communiqués</string>
 
-    <string name="label_menu">Menu</string>
-    <string name="aucun_menu">\nMenu non communiqué.\n</string>
+    <string name="colonne_matin">Matin</string>
+    <string name="colonne_midi">Midi</string>
+    <string name="colonne_soir">Soir</string>
 
-    <string name="erreur_menu">Impossible de charger le menu.</string>
+    <string name="label_menu">Menu</string>
+    <string name="aucun_menu">\nMenu non communiqué\n</string>
+
+    <string name="erreur_menu">Impossible de charger le menu</string>
     <string name="recharger_menu">Appuyez pour réessayer</string>
 
+    <string name="ajd">Aujourd’hui</string>
     <string name="holiday_alert_today">Aujourd’hui : %1$s</string>
     <string name="holiday_alert_tomorrow">Demain : %1$s</string>
 
-    <string name="holiday_new_year">Jour de l’an</string>
+    <string name="holiday_new_year">Jour de l\’an</string>
     <string name="holiday_labor_day">Fête du Travail</string>
     <string name="holiday_victory_1945">Victoire 1945</string>
     <string name="holiday_national_day">Fête nationale</string>
     <string name="holiday_assumption">Assomption</string>
     <string name="holiday_all_saints">Toussaint</string>
-    <string name="holiday_armistice_1914">Armistice de 1914</string>
+    <string name="holiday_armistice_1918">Armistice de 1918</string>
     <string name="holiday_christmas">Noël</string>
     <string name="holiday_easter_monday">Lundi de Pâques</string>
     <string name="holiday_ascension">Ascension</string>
@@ -106,9 +107,30 @@
     <string name="type_triporteur">Triporteur</string>
     <string name="type_epicerie">Épicerie</string>
 
-    <string name="error_deeplink_invalid">Lien invalide.</string>
-    <string name="error_deeplink_offline">Aucune connexion.</string>
-    <string name="error_deeplink_not_found">Restaurant inexistant.</string>
-    <string name="error_deeplink_generic">Une erreur est survenue.</string>
+    <string name="error_deeplink_invalid">Lien invalide</string>
+    <string name="error_deeplink_offline">Aucune connexion</string>
+    <string name="error_deeplink_not_found">Restaurant inexistant</string>
+    <string name="error_deeplink_generic">Une erreur est survenue</string>
 
+    <string name="mini_distance">À proximité</string>
+
+    <string name="distance_meters">À %1$d m</string>
+    <string name="distance_kilometers">À %1$.1f km</string>
+
+    <string name="location_card_title_fine">Position précise active</string>
+    <string name="location_card_title_coarse">Position approximative active</string>
+    <string name="location_card_title_none">Autorisez la géolocalisation</string>
+
+    <string name="location_card_desc_fine">Les restaurants sont triés par proximité avec précision. Les distances sont calculées en interne : %1$s ne partage pas vos données.</string>
+    <string name="location_card_desc_coarse">L’application trie les restaurants selon une position estimée. Passez à la position précise pour afficher les distances inférieures à 5 kilomètres.</string>
+    <string name="location_card_desc_none">Autorisez l’accès à votre position pour afficher les restaurants les plus proches et leurs distances. Votre position n’est partagée avec aucun tiers.</string>
+
+    <string name="location_card_button_fine">Accès accordé !</string>
+    <string name="location_card_button_coarse">Modifier ma position</string>
+    <string name="location_card_button_none">Accorder l’accès</string>
+
+    <string name="aucune_position">Géolocalisation désactivée</string>
+
+    <string name="toast_mode_cache">Mode hors-ligne</string>
+    <string name="toast_mode_en_ligne">Connexion rétablie</string>
 </resources>

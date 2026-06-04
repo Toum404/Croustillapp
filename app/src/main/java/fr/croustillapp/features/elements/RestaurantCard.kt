@@ -1,5 +1,6 @@
 package fr.croustillapp.features.elements
 
+import android.content.Context
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -33,9 +34,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -44,19 +45,35 @@ import fr.croustillapp.R
 import fr.croustillapp.core.components.AppImage
 import fr.croustillapp.features.data.Restaurant
 import fr.croustillapp.ui.theme.Jersey10Family
+import java.util.Locale
+import kotlin.math.roundToInt
 
 /**
- * Composant d'affichage carte d'un restaurant individuel pour les grilles Compose.
- * Individual grid item card layout displaying restaurant telemetry thumbnails.
+ * FR: Composant carte principal affichant l'aperçu d'un restaurant (Image, Titre, Distance, Statut).
+ * EN: Primary card layout showcasing a restaurant snapshot (Image, Title, Distance, Status Badge).
  */
 @Composable
 fun RestaurantCard(
     restaurant: Restaurant,
     isFavorite: Boolean,
+    isPrecisionExact: Boolean,
     onClick: (Restaurant) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val cardShape = remember { RoundedCornerShape(8.dp) }
+
+    val context = LocalContext.current
+
+    // FR: Calcul mémorisé du libellé de distance pour éviter les allocations de chaînes répétitives.
+    // EN: Memoized calculation of the distance label string to avoid repetitive string allocations.
+    val subtitleText = remember(context, restaurant.distance, restaurant.zone, isPrecisionExact) {
+        formatDistance(
+            context = context,
+            distanceInMeters = restaurant.distance,
+            defaultZone = restaurant.zone,
+            isPrecisionExact = isPrecisionExact
+        )
+    }
 
     Card(
         modifier = modifier
@@ -76,7 +93,7 @@ fun RestaurantCard(
 
                 if (isFavorite) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_favori_oui),
+                        painter = painterResource(id = R.drawable.ic_bs_heart_filled),
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier
@@ -94,6 +111,8 @@ fun RestaurantCard(
                     text = restaurant.name,
                     fontFamily = Jersey10Family,
                     fontSize = 24.sp,
+                    // FR: Force une hauteur constante de 2 lignes pour préserver l'alignement de la grille.
+                    // EN: Forces a stable 2-line height constraint to keep consistent grid row alignment.
                     minLines = 2,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
@@ -106,7 +125,7 @@ fun RestaurantCard(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = restaurant.zone,
+                        text = subtitleText,
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.75f),
                         maxLines = 1,
@@ -124,8 +143,36 @@ fun RestaurantCard(
 }
 
 /**
- * Badge de statut compact indiquant si le point de vente est actuellement ouvert ou fermé.
- * Micro layout tag visualizing active open or closed status parameters.
+ * FR: Formate intelligemment la distance métrique en paliers ou bascule sur la zone globale de l'API.
+ * EN: Intelligently formats metric distances into increments or falls back to generic API zone values.
+ */
+private fun formatDistance(context: Context, distanceInMeters: Float?, defaultZone: String, isPrecisionExact: Boolean): String {
+    if (distanceInMeters == null) return defaultZone
+
+    val maxProximityDistance = 5000f // 5 Kilomètres
+
+    if (distanceInMeters >= maxProximityDistance) {
+        return defaultZone
+    }
+
+    return if (isPrecisionExact) {
+        if (distanceInMeters < 1000f) {
+            // FR: Arrondi propre par tranche de 10 mètres pour l'affichage de proximité immédiate.
+            // EN: Clean grouping rounded down to 10-meter boundaries for immediate proximity displays.
+            val roundedMeters = (distanceInMeters / 10f).roundToInt() * 10
+            "$roundedMeters m"
+        } else {
+            val kilometers = distanceInMeters / 1000f
+            String.format(Locale.US, "%.1f km", kilometers)
+        }
+    } else {
+        context.getString(R.string.mini_distance)
+    }
+}
+
+/**
+ * FR: Badge compact de statut stylisé indiquant si l'établissement est ouvert ou fermé.
+ * EN: Mini stylized status indicator pill stating if the facility is currently open or closed.
  */
 @Composable
 fun StatusChip(isOpen: Boolean) {
@@ -139,7 +186,6 @@ fun StatusChip(isOpen: Boolean) {
         text = statusText,
         textAlign = TextAlign.Center,
         style = MaterialTheme.typography.labelSmall,
-        fontWeight = FontWeight.Bold,
         modifier = Modifier
             .width(60.dp)
             .background(backgroundColor, RoundedCornerShape(8.dp))
@@ -150,8 +196,8 @@ fun StatusChip(isOpen: Boolean) {
 }
 
 /**
- * Squelette d'attente (Placeholder Shimmer) reproduisant l'exacte structure tridimensionnelle d'un RestaurantCard.
- * Empty layout mockup leveraging shimmer pipelines to match loading states gracefully.
+ * FR: Squelette d'attente (Skeleton) répliquant l'anatomie de la carte avec une animation Shimmer.
+ * EN: Placeholder skeleton replicating the exact card blueprint tied to a fluid Shimmer animation.
  */
 @Composable
 fun RestaurantCardSkeleton(brush: Brush) {
@@ -215,8 +261,8 @@ fun RestaurantCardSkeleton(brush: Brush) {
 }
 
 /**
- * Génère un pinceau de dégradé linéaire animé à l'infini pour simuler l'effet Shimmer.
- * Remembers a memory-stable infinite linear gradient flow translation for shimmer brushes.
+ * FR: Initialise et anime un Brush de gradient linéaire infini simulant un effet Shimmer scintillant.
+ * EN: Remembers and drives an infinite linear gradient Brush simulating a glossy sweep shimmer effect.
  */
 @Composable
 fun rememberShimmerBrush(): Brush {
@@ -244,4 +290,8 @@ fun rememberShimmerBrush(): Brush {
     )
 }
 
+/**
+ * FR: Modificateur d'extension appliquant le pinceau de scintillement sur l'arrière-plan du composant.
+ * EN: Extension Modifier node piping the shimmer sweep brush across the element's background surface.
+ */
 fun Modifier.shimmer(brush: Brush): Modifier = this.background(brush)

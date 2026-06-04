@@ -1,6 +1,6 @@
 # 🔴 Croutsillapp
 
-[Français](#-français) | [English](#-english) | [Español](#-español) | [Deutsch](#-deutsch)　　　　　[Code](#️-code)  |  [Credits](#️-credits)
+[Français](#-français) | [English](#-english) | [Español](#-español) | [Deutsch](#-deutsch)　　　　　[Code](#-code)  |  [Credits](#ℹ-credits)
 
 ---
 
@@ -25,7 +25,7 @@ L'application est reconnue par l'équipe CROUStillant, mais est **INDÉPENDANTE*
 
 * ⚡ **Pratique** : Possibilité de filtrer les restaurants ouverts, ceux adaptés aux PMR, ainsi que par région et par catégorie.
 
-* 🔒 **Confidentialité** : Aucune autorisation sensible, requiert seulement un accès à Internet.
+* 🔒 **Confidentialité** : Requiert seulement l'accès à Internet, l'accès à la position est optionnel et ne sert qu'à calculer les distances en interne.
 
 * 🌍 **Multilingue** : Application disponible en français, anglais, espagnol et allemand.
 
@@ -45,7 +45,7 @@ The application is recognized by the CROUStillant team, but remains **INDEPENDEN
 
 * ⚡ **Practical**: Easily filter restaurants that are currently open, PRM-accessible (wheelchair friendly), or by region and category.
 
-* 🔒 **Privacy**: No sensitive permissions required, only needs Internet access.
+* 🔒 **Privacy**: Only requires internet access; location access is optional and only used to calculate distances internally.
 
 * 🌍 **Multilingual**: App available in French, English, Spanish, and German.
 
@@ -65,7 +65,7 @@ La aplicación está reconocida por el equipo de CROUStillant, pero es **INDEPEN
 
 * ⚡ **Práctica**: Posibilidad de filtrar los restaurantes abiertos, los adaptados para PMR (personas con movilidad reducida), así como por región y categoría.
 
-* 🔒 **Privacidad**: Sin permisos sensibles, solo requiere acceso a Internet.
+* 🔒 **Privacidad**: Solo requiere acceso a Internet; el acceso a la ubicación es opcional y solo se utiliza para calcular distancias internamente.
 
 * 🌍 **Multilingüe**: Aplicación disponible en francés, inglés, español y alemán.
 
@@ -85,7 +85,7 @@ Die App wird vom CROUStillant-Team anerkannt, ist jedoch **UNABHÄNGIG** von die
 
 * ⚡ **Praktisch**: Möglichkeit, geöffnete oder barrierefreie (für Menschen mit eingeschränkter Mobilität geeignete) Restaurants nach Region und Kategorie zu filtern.
 
-* 🔒 **Datenschutz**: Keine sensiblen Berechtigungen erforderlich, benötigt nur Internetzugang.
+* 🔒 **Datenschutz**: Erfordert nur Internetzugriff; der Standortzugriff ist optional und dient nur zur internen Berechnung von Entfernungen.
 
 * 🌍 **Mehrsprachig**: App verfügbar auf Französisch, Englisch, Spanisch und Deutsch.
 
@@ -109,7 +109,7 @@ Die App wird vom CROUStillant-Team anerkannt, ist jedoch **UNABHÄNGIG** von die
 
 * **Stockage des données / Data Storage** : Jetpack DataStore
 
-* **Permissions** : `android.permission.INTERNET` & `android.permission.ACCESS_NETWORK_STATE`
+* **Permissions** : `android.permission.INTERNET` & `android.permission.ACCESS_NETWORK_STATE` + `android.permission.ACCESS_COARSE_LOCATION` & `android.permission.ACCESS_FINE_LOCATION`
 
 ---
 

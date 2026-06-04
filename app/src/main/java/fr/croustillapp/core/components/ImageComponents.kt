@@ -10,11 +10,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import coil.size.Size
 
 /**
- * Chargeur d'images distant optimisé, enveloppant AsyncImage de Coil avec des solutions de repli unifiées.
- * Optimized remote image loader wrapper hosting Coil's AsyncImage with unified fallback behaviors.
+ * FR: Composant personnalisé d'affichage d'images asynchrones utilisant la bibliothèque Coil.
+ * EN: Custom asynchronous image loading component leveraging the Coil library.
  */
+
 @Composable
 fun AppImage(url: String?, modifier: Modifier = Modifier) {
     val context = LocalContext.current
@@ -22,15 +24,20 @@ fun AppImage(url: String?, modifier: Modifier = Modifier) {
     val primaryColor = MaterialTheme.colorScheme.primary
     val surfaceColor = MaterialTheme.colorScheme.surfaceVariant
 
-    // Mise en cache des painters de couleur pour éliminer les allocations lors des recompositions de listes
-    // Caching color painters to reduce object allocation penalties during layout updates
+    // FR: Optimisation de la mémoire en mémorisant les instances de ColorPainter pour éviter des allocations répétées.
+    // EN: Memory optimization by remembering ColorPainter instances to avoid repeated allocations.
     val errorPainter = remember(primaryColor) { ColorPainter(primaryColor) }
     val placeholderPainter = remember(surfaceColor) { ColorPainter(surfaceColor) }
 
+    // FR: Mémorisation de la requête d'image Coil; elle ne se re-déclenche que si l'URL change.
+    // EN: Caching the Coil image request; it will only re-execute if the target URL updates.
     val request = remember(url) {
         ImageRequest.Builder(context)
             .data(url)
             .crossfade(true)
+            .dispatcher(kotlinx.coroutines.Dispatchers.IO)
+            .memoryCacheKey(url)
+            .diskCacheKey(url)
             .build()
     }
 
