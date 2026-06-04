@@ -6,6 +6,6 @@ Why choose Croustillapp?
 
 - Accessible: A simple search bar, quick filters, and the list of restaurants.
 - Practical: Easily filter restaurants that are currently open, PRM-accessible (wheelchair friendly), or by region and category.
-- Privacy: No sensitive permissions required, the app only needs Internet access.
+- Privacy: Only requires internet access; location access is optional and only used to calculate distances internally.
 - Multilingual: The application interface is available in French, English, Spanish, and German.
 - Transparency: 100% open-source code, available for everyone to review.

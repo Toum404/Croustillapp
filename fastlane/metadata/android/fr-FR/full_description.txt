@@ -6,6 +6,6 @@ Pourquoi choisir Croustillapp ?
 
 - Accessible : Une barre de recherche simple, des filtres rapides et la liste des restaurants.
 - Pratique : Filtrez facilement les restaurants ouverts, ceux adaptés aux PMR (personnes à mobilité réduite), ou par région et catégorie.
-- Confidentialité : Aucune autorisation sensible requise, l'application demande uniquement un accès à Internet.
+- Confidentialité : Requiert seulement l'accès à Internet, l'accès à la position est optionnel et ne sert qu'à calculer les distances en interne.
 - Multilingue : L'interface de l'application est entièrement disponible en français, anglais, espagnol et allemand.
 - Transparence : Le code source est 100 % ouvert et consultable par tous.

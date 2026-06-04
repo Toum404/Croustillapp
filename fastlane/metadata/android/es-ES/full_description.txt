@@ -6,6 +6,6 @@ La aplicación está reconocida por el equipo de CROUStillant, pero es INDEPENDI
 
 - Accesible: Una barra de búsqueda sencilla, filtros rápidos y la lista de los restaurantes.
 - Práctica: Posibilidad de filtrar los restaurantes abiertos, los adaptados para PMR (personas con movilidad reducida), así como por región y categoría.
-- Privacidad: Sin permisos sensibles, solo requiere acceso a Internet.
+- Privacidad: Solo requiere acceso a Internet; el acceso a la ubicación es opcional y solo se utiliza para calcular distancias internamente.
 - Multilingüe: Aplicación disponible en francés, inglés, español y alemán.
 - Transparencia: Código fuente 100% abierto y consultable por todos.

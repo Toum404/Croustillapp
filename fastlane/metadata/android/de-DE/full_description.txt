@@ -6,6 +6,6 @@ Warum Croustillapp wählen?
 
 - Barrierefrei & Einfach: Eine einfache Suchleiste, schnelle Filter und die Liste der Restaurants.
 - Praktisch: Möglichkeit, geöffnete oder barrierefreie (für Menschen mit eingeschränkter Mobilität geeignete) Restaurants nach Region und Kategorie zu filtern.
-- Datenschutz: Keine sensiblen Berechtigungen erforderlich, benötigt nur Internetzugang.
+- Datenschutz: Erfordert nur Internetzugriff; der Standortzugriff ist optional und dient nur zur internen Berechnung von Entfernungen.
 - Mehrsprachig: App verfügbar auf Französisch, Englisch, Spanisch und Deutsch.
 - Transparence: 100 % offener Quellcode, der für jeden einsehbar ist.
