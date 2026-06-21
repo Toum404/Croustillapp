@@ -27,3 +27,6 @@ Thumbs.db
 *.jks
 *.keystore
 *.p12
+
+*.apk
+/app/release/
