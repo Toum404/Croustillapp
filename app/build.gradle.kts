@@ -11,6 +11,15 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = rootProject.file("upload-keystore.jks")
+            storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+        }
+    }
+
     namespace = "fr.croustillapp"
     compileSdk {
         version = release(36)
@@ -33,6 +42,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
