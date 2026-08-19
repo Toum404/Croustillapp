@@ -4,13 +4,13 @@ import fr.croustillapp.R
 import java.util.Calendar
 
 /**
- * FR: Classe utilitaire pour le calcul des jours fériés fixes et mobiles (Algorithme de Meeus).
+ * FR: Classe utilitaire pour le calcul des jours feries fixes et mobiles (Algorithme de Meeus).
  * EN: Utility helper tracking fixed and moving public holidays (Meeus/Jones/Butcher algorithm).
  */
 object HolidayHelper {
 
     /**
-     * FR: Classe utilitaire pour le calcul des jours fériés fixes et mobiles (Algorithme de Meeus).
+     * FR: Classe utilitaire pour le calcul des jours feries fixes et mobiles (Algorithme de Meeus).
      * EN: Utility helper tracking fixed and moving public holidays (Meeus/Jones/Butcher algorithm).
      */
     private fun getEasterSunday(year: Int): Calendar {
@@ -41,7 +41,7 @@ object HolidayHelper {
     }
 
     /**
-     * FR: Renvoie la ressource de chaîne associée à un jour férié, incluant les spécificités d'Alsace-Moselle.
+     * FR: Renvoie la ressource de chaine associee a un jour ferie, incluant les specificites d'Alsace-Moselle.
      * EN: Returns the string resource attached to a specific holiday, featuring localized Alsace-Moselle checks.
      */
     fun getHolidayNameRes(calendar: Calendar, isStrasbourg: Boolean): Int? {
@@ -49,7 +49,7 @@ object HolidayHelper {
         val month = calendar.get(Calendar.MONTH) + 1
         val year = calendar.get(Calendar.YEAR)
 
-        // FR: Jours fériés fixes nationaux
+        // FR: Jours feries fixes nationaux
         // EN: Static country-wide public holidays
         if (day == 1 && month == 1) return R.string.holiday_new_year
         if (day == 1 && month == 5) return R.string.holiday_labor_day
@@ -60,13 +60,13 @@ object HolidayHelper {
         if (day == 11 && month == 11) return R.string.holiday_armistice_1918
         if (day == 25 && month == 12) return R.string.holiday_christmas
 
-        // FR: Droit local (Saint-Étienne)
+        // FR: Droit local (Saint-etienne)
         // EN: Local regional law (Boxing Day)
         if (isStrasbourg && day == 26 && month == 12) return R.string.holiday_boxing_day
 
         val easter = getEasterSunday(year)
 
-        // FR: Jours fériés mobiles basés sur Pâques (Pâques + 1, + 39, + 50)
+        // FR: Jours feries mobiles bases sur Pâques (Pâques + 1, + 39, + 50)
         // EN: Dynamic shifting holidays computed relative to Easter Sunday offsets
         val easterMonday = (easter.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
         if (isSameDay(calendar, easterMonday)) return R.string.holiday_easter_monday
@@ -93,7 +93,7 @@ object HolidayHelper {
     }
 
     /**
-     * FR: Évalue la présence d'un jour férié aujourd'hui ou demain pour déclencher une alerte visuelle.
+     * FR: evalue la presence d'un jour ferie aujourd'hui ou demain pour declencher une alerte visuelle.
      * EN: Evaluates holiday triggers for today or tomorrow timelines to fire a proactive UI alert state.
      */
     fun checkUpcomingHoliday(isStrasbourg: Boolean): HolidayAlertData? {

@@ -5,19 +5,19 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /**
- * FR: Convertisseurs Room permettant de sérialiser/désérialiser les types complexes en String JSON dans SQLite.
+ * FR: Convertisseurs Room permettant de serialiser/deserialiser les types complexes en String JSON dans SQLite.
  * EN: Room TypeConverters mapping complex embedded data types into plain JSON Strings within SQLite columns.
  */
 class DataConverters {
 
     companion object {
-        // FR: Configuration de Json pour ignorer les clés inconnues en cas d'évolution future de l'API.
+        // FR: Configuration de Json pour ignorer les cles inconnues en cas d'evolution future de l'API.
         // EN: Json configuration setup to safely ignore unknown keys during structural API updates.
         private val json = Json { ignoreUnknownKeys = true }
     }
 
     /**
-     * FR: Convertit une liste de chaînes de caractères en texte JSON pour le stockage.
+     * FR: Convertit une liste de chaines de caracteres en texte JSON pour le stockage.
      * EN: Serializes a list of primitive string tokens into a persistent JSON block.
      */
     @TypeConverter
@@ -26,7 +26,7 @@ class DataConverters {
     }
 
     /**
-     * FR: Reconstitue la liste de chaînes de caractères depuis le texte JSON SQLite.
+     * FR: Reconstitue la liste de chaines de caracteres depuis le texte JSON SQLite.
      * EN: Deserializes a persistent JSON block back into a standard string list structure.
      */
     @TypeConverter
@@ -35,7 +35,7 @@ class DataConverters {
     }
 
     /**
-     * FR: Sérialise la structure complexe des jours d'ouverture (DTO) en texte JSON.
+     * FR: Serialise la structure complexe des jours d'ouverture (DTO) en texte JSON.
      * EN: Serializes structural operational calendar models (DTO list) into a JSON text string.
      */
     @TypeConverter

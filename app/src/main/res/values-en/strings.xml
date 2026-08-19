@@ -5,11 +5,16 @@
     <string name="service_description">CROUStillant is a project that aims to provide menus for university restaurants in France and overseas territories.</string>
 
     <string name="api_mention">"Data provided by "</string>
+    <string name="url_api">https://croustillant.menu/en</string>
     <string name="url_action_erreur">Unable to open the link</string>
+    <string name="restaurants_found">%d restaurant(s) found</string>
+
+    <string name="url_application">https://croustillant.menu/en/mobile/android</string>
 
     <string name="action_fermer">Close</string>
     <string name="action_favoriser">Favorite</string>
     <string name="action_visiter">Visit %1$s</string>
+    <string name="action_rejoindre">Join the Discord</string>
 
     <string name="action_effacer">Clear</string>
 
@@ -34,47 +39,67 @@
     <string name="serveur_description">The server is temporarily unavailable. Please try again later.</string>
 
     <string name="description_informations">Information</string>
-    <string name="description_app">%1$s is a free and open-source application powered by the %2$s public API, accessible via the link below. %1$s is not an official application of the %2$s project and is in no way linked to %3$s and its services.</string>
+    <string name="description_app">%1$s is a free and open-source application powered by the %2$s public API. %1$s is not an official application of the %2$s project and is in no way linked to %3$s and its services.</string>
+    <string name="info_api_discord">Discord</string>
+    <string name="info_api_website">Website</string>
+    <string name="info_api_app">App</string>
 
     <string name="copie_toast">Copied to clipboard!</string>
     <string name="copie_action">Copy</string>
 
+    <string name="menu_act_export">Export (png)</string>
+    <string name="menu_act_copy">Copy all</string>
+    <string name="menu_act_error">An error occurred</string>
+
     <string name="label_btn_adresse">Address</string>
     <string name="label_btn_telephone">Phone</string>
     <string name="label_btn_courriel">Email</string>
-    <string name="label_btn_partager">Share</string>
+    <string name="label_btn_plus">More</string>
 
     <string name="action_btn_carte">Open</string>
     <string name="action_btn_telephoner">Call</string>
     <string name="action_btn_courriel">Write</string>
-    <string name="action_btn_partager">Send</string>
+    <string name="action_btn_partager">Share</string>
+    <string name="action_btn_web">View online</string>
+    <string name="action_btn_widget">Widget</string>
 
     <string name="toast_non_carte">No map service available</string>
     <string name="toast_non_telephone">No phone service available</string>
     <string name="toast_non_courriel">No email service available</string>
-    <string name="toast_non_partage">Unable to share.</string>
+    <string name="toast_non_partage">Unable to share</string>
+    <string name="toast_non_web">No web browser</string>
+    <string name="toast_non_widget">Unable to add widget</string>
 
     <string name="titre_horaires">Hours</string>
     <string name="horaires_non_disponibles">Hours not available</string>
+    <string name="info_horaires">Automatically generated. Indicative schedule.</string>
 
     <string name="colonne_matin">Morning</string>
     <string name="colonne_midi">Lunch</string>
     <string name="colonne_soir">Dinner</string>
 
     <string name="label_menu">Menu</string>
-    <string name="aucun_menu">\nMenu not available\n</string>
+    <string name="aucun_menu">No menu communicated</string>
+
+    <string name="menu_empty">No menu to display</string>
+    <string name="menu_select">Select a day</string>
 
     <string name="erreur_menu">Unable to load the menu</string>
     <string name="recharger_menu">Tap to retry</string>
 
-    <string name="ajd">Today</string>
     <string name="holiday_alert_today">Today: %1$s</string>
     <string name="holiday_alert_tomorrow">Tomorrow: %1$s</string>
+
+    <string name="date_today">Today</string>
+    <string name="date_tomorrow">Tomorrow</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="select">Select</string>
 
     <string name="holiday_new_year">New Year’s Day</string>
     <string name="holiday_labor_day">Labour Day</string>
     <string name="holiday_victory_1945">Victory in Europe Day</string>
-    <string name="holiday_national_day">National Day</string>
+    <string name="holiday_national_day">Bastille Day</string>
     <string name="holiday_assumption">Assumption of Mary</string>
     <string name="holiday_all_saints">All Saints’ Day</string>
     <string name="holiday_armistice_1918">Armistice Day</string>
@@ -100,10 +125,8 @@
     <string name="type_triporteur">Food cart</string>
     <string name="type_epicerie">Grocery store</string>
 
-    <string name="error_deeplink_invalid">Invalid link</string>
-    <string name="error_deeplink_offline">No connection</string>
-    <string name="error_deeplink_not_found">Restaurant does not exist</string>
-    <string name="error_deeplink_generic">An error occurred</string>
+    <string name="oups">Oops !</string>
+    <string name="deeplink_error_not_found">This restaurant doesn\'t exist or is not yet available in the app.</string>
 
     <string name="mini_distance">Nearby</string>
 
@@ -121,9 +144,11 @@
     <string name="location_card_button_fine">Access granted!</string>
     <string name="location_card_button_coarse">Change my location</string>
     <string name="location_card_button_none">Grant access</string>
+    <string name="localisation_desactivee">Location disabled</string>
 
-    <string name="aucune_position">Location services disabled</string>
+    <string name="bts_cache">Offline display</string>
 
-    <string name="toast_mode_cache">Offline mode</string>
-    <string name="toast_mode_en_ligne">Connection restored</string>
+    <string name="widget_info">To add a Croustillapp widget:\n\n1. Select a restaurant\n\n2. Tap "More"\n\n3. Tap "Widget"</string>
+    <string name="widget_chargement">Loading…</string>
+    <string name="widget_erreur">Unable to load the menu</string>
 </resources>

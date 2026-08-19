@@ -9,14 +9,18 @@
     <string name="statut_code">Code</string>
 
     <string name="api_mention">"Données fournies par "</string>
-    <string name="url_site_web" translatable="false">https://croustillant.menu/fr</string>
+    <string name="url_api">https://croustillant.menu/fr</string>
     <string name="url_action_erreur">Impossible d’ouvrir le lien</string>
+    <string name="restaurants_found">%d restaurant(s) trouvé(s)</string>
 
     <string name="url_github" translatable="false">https://github.com/Toum404/Croustillapp</string>
+    <string name="url_discord" translatable="false">>https://discord.com/invite/yG6FjqbWtk</string>
+    <string name="url_application">https://croustillant.menu/fr/mobile/android</string>
 
     <string name="action_fermer">Fermer</string>
     <string name="action_favoriser">Favori</string>
     <string name="action_visiter">Visiter %1$s</string>
+    <string name="action_rejoindre">Rejoignez le Discord</string>
 
     <string name="action_effacer">Effacer</string>
 
@@ -41,47 +45,67 @@
     <string name="serveur_description">Le serveur est momentanément indisponible. Veuillez réessayer ultérieurement.</string>
 
     <string name="description_informations">Informations</string>
-    <string name="description_app">%1$s est une application libre propulsée par l’API publique %2$s, accessible via le lien ci-dessous. %1$s n’est pas une application officielle du projet %2$s et n’est aucunement lié au %3$s et ses services.</string>
+    <string name="description_app">%1$s est une application libre propulsée par l’API publique %2$s. %1$s n’est pas une application officielle du projet %2$s et n’est aucunement lié au %3$s et ses services.</string>
+    <string name="info_api_discord">Discord</string>
+    <string name="info_api_website">Site</string>
+    <string name="info_api_app">Appli</string>
 
     <string name="copie_toast">Copié dans le presse-papiers !</string>
     <string name="copie_action">Copier</string>
 
+    <string name="menu_act_export">Exporter (png)</string>
+    <string name="menu_act_copy">Tout copier</string>
+    <string name="menu_act_error">Une erreur est survenue</string>
+
     <string name="label_btn_adresse">Adresse</string>
     <string name="label_btn_telephone">Téléphone</string>
     <string name="label_btn_courriel">Courriel</string>
-    <string name="label_btn_partager">Partager</string>
+    <string name="label_btn_plus">Plus</string>
 
     <string name="action_btn_carte">Ouvrir</string>
     <string name="action_btn_telephoner">Téléphoner</string>
     <string name="action_btn_courriel">Écrire</string>
-    <string name="action_btn_partager">Envoyer</string>
+    <string name="action_btn_partager">Partager</string>
+    <string name="action_btn_web">Voir en ligne</string>
+    <string name="action_btn_widget">Widget</string>
 
     <string name="toast_non_carte">Aucun service cartographique</string>
     <string name="toast_non_telephone">Aucun service téléphonique</string>
     <string name="toast_non_courriel">Aucun service courriel</string>
     <string name="toast_non_partage">Impossible de partager</string>
+    <string name="toast_non_web">Aucun navigateur internet</string>
+    <string name="toast_non_widget">Impossible d\'ajouter le widget</string>
 
     <string name="titre_horaires">Horaires</string>
     <string name="horaires_non_disponibles">Horaires non communiqués</string>
+    <string name="info_horaires">Généré automatiquement. Horaires indicatifs.</string>
 
     <string name="colonne_matin">Matin</string>
     <string name="colonne_midi">Midi</string>
     <string name="colonne_soir">Soir</string>
 
     <string name="label_menu">Menu</string>
-    <string name="aucun_menu">\nMenu non communiqué\n</string>
+    <string name="aucun_menu">Aucun menu communiqué</string>
+
+    <string name="menu_empty">Aucun menu à afficher</string>
+    <string name="menu_select">Sélectionnez un jour</string>
 
     <string name="erreur_menu">Impossible de charger le menu</string>
     <string name="recharger_menu">Appuyez pour réessayer</string>
 
-    <string name="ajd">Aujourd’hui</string>
     <string name="holiday_alert_today">Aujourd’hui : %1$s</string>
     <string name="holiday_alert_tomorrow">Demain : %1$s</string>
+
+    <string name="date_today">Aujourd\'hui</string>
+    <string name="date_tomorrow">Demain</string>
+
+    <string name="cancel">Annuler</string>
+    <string name="select">Sélectionner</string>
 
     <string name="holiday_new_year">Jour de l’an</string>
     <string name="holiday_labor_day">Fête du Travail</string>
     <string name="holiday_victory_1945">Victoire 1945</string>
-    <string name="holiday_national_day">Fête nationale</string>
+    <string name="holiday_national_day">Prise de la Bastille</string>
     <string name="holiday_assumption">Assomption</string>
     <string name="holiday_all_saints">Toussaint</string>
     <string name="holiday_armistice_1918">Armistice de 1918</string>
@@ -107,10 +131,8 @@
     <string name="type_triporteur">Triporteur</string>
     <string name="type_epicerie">Épicerie</string>
 
-    <string name="error_deeplink_invalid">Lien invalide</string>
-    <string name="error_deeplink_offline">Aucune connexion</string>
-    <string name="error_deeplink_not_found">Restaurant inexistant</string>
-    <string name="error_deeplink_generic">Une erreur est survenue</string>
+    <string name="oups">Oups !</string>
+    <string name="deeplink_error_not_found">Ce restaurant n\'existe pas ou n\'est pas encore disponible dans l\'application.</string>
 
     <string name="mini_distance">À proximité</string>
 
@@ -128,9 +150,11 @@
     <string name="location_card_button_fine">Accès accordé !</string>
     <string name="location_card_button_coarse">Modifier ma position</string>
     <string name="location_card_button_none">Accorder l’accès</string>
+    <string name="localisation_desactivee">Localisation désactivée</string>
 
-    <string name="aucune_position">Géolocalisation désactivée</string>
+    <string name="bts_cache">Affichage hors-ligne</string>
 
-    <string name="toast_mode_cache">Mode hors-ligne</string>
-    <string name="toast_mode_en_ligne">Connexion rétablie</string>
+    <string name="widget_info">Pour ajouter un widget Croustillapp :\n\n1. Sélectionnez un restaurant\n\n2. Appuyez sur « Plus »\n\n3. Appuyez sur « Widget »</string>
+    <string name="widget_chargement">Chargement en cours…</string>
+    <string name="widget_erreur">Impossible de charger le menu</string>
 </resources>

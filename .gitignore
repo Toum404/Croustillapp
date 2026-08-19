@@ -1,9 +1,9 @@
-# Fichiers de build générés par Android et Gradle
+# Fichiers de build generes par Android et Gradle
 .gradle/
 build/
 app/build/
 
-# Fichiers de configuration locale (clés secrètes, chemins PC)
+# Fichiers de configuration locale (cles secretes, chemins PC)
 local.properties
 
 # Fichiers d'environnement Android Studio / IntelliJ (Bloque tout le dossier d'un coup)
@@ -15,18 +15,21 @@ local.properties
 # Dossiers temporaires de Kotlin
 .kotlin/
 
-# Fichiers système spécifiques (Mac / Windows)
+# Fichiers systeme specifiques (Mac / Windows)
 .DS_Store
 Thumbs.db
 
-# Captures d'écran et logs
+# Captures d'ecran et logs
 /captures/
 *.log
 
-# Signatures et Keystores (Sécurité Android)
+# Signatures et Keystores (Securite Android)
 *.jks
 *.keystore
 *.p12
 
 *.apk
 /app/release/
+
+# Ignorer tous les fichiers de metadonnees Dex (.dm)
+*.dm

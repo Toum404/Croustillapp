@@ -5,11 +5,16 @@
     <string name="service_description">CROUStillant es un proyecto que tiene como objetivo ofrecer los menús de los restaurantes universitarios en Francia y en ultramar.</string>
 
     <string name="api_mention">"Datos proporcionados por "</string>
+    <string name="url_api">https://croustillant.menu/en</string>
     <string name="url_action_erreur">No se pudo abrir el enlace</string>
+    <string name="restaurants_found">%d restaurante(s) encontrado(s)</string>
+
+    <string name="url_application">https://croustillant.menu/en/mobile/android</string>
 
     <string name="action_fermer">Cerrar</string>
     <string name="action_favoriser">Favorito</string>
     <string name="action_visiter">Visitar %1$s</string>
+    <string name="action_rejoindre">Únete al Discord</string>
 
     <string name="action_effacer">Borrar</string>
 
@@ -34,47 +39,67 @@
     <string name="serveur_description">El servidor no está disponible momentáneamente. Por favor, inténtalo de nuevo más tarde.</string>
 
     <string name="description_informations">Información</string>
-    <string name="description_app">%1$s es una aplicación libre y de código abierto impulsada por la API pública de %2$s, accesible a través del enlace de abajo. %1$s no es una aplicación oficial del proyecto %2$s y no está vinculada de ninguna manera con %3$s y sus servicios.</string>
+    <string name="description_app">%1$s es una aplicación libre y de código abierto impulsada por la API pública de %2$s. %1$s no es una aplicación oficial del proyecto %2$s y no está vinculada de ninguna manera con %3$s y sus servicios.</string>
+    <string name="info_api_discord">Discord</string>
+    <string name="info_api_website">Sitio web</string>
+    <string name="info_api_app">Aplicación</string>
 
     <string name="copie_toast">¡Copiado al portapapeles!</string>
     <string name="copie_action">Copiar</string>
 
+    <string name="menu_act_export">Exportar (png)</string>
+    <string name="menu_act_copy">Copiar todo</string>
+    <string name="menu_act_error">Ha ocurrido un error</string>
+
     <string name="label_btn_adresse">Dirección</string>
     <string name="label_btn_telephone">Teléfono</string>
     <string name="label_btn_courriel">Correo</string>
-    <string name="label_btn_partager">Compartir</string>
+    <string name="label_btn_plus">Más</string>
 
     <string name="action_btn_carte">Abrir</string>
     <string name="action_btn_telephoner">Llamar</string>
     <string name="action_btn_courriel">Escribir</string>
-    <string name="action_btn_partager">Enviar</string>
+    <string name="action_btn_partager">Compartir</string>
+    <string name="action_btn_web">Ver en línea</string>
+    <string name="action_btn_widget">Widget</string>
 
     <string name="toast_non_carte">No hay ningún servicio de mapas disponible</string>
     <string name="toast_non_telephone">No hay ningún servicio telefónico disponible</string>
     <string name="toast_non_courriel">No hay ningún servicio de correo disponible</string>
     <string name="toast_non_partage">No se pudo compartir</string>
+    <string name="toast_non_web">Ningún navegador web</string>
+    <string name="toast_non_widget">No se puede añadir el widget</string>
 
     <string name="titre_horaires">Horarios</string>
     <string name="horaires_non_disponibles">Horarios no disponibles</string>
+    <string name="info_horaires">Generado automáticamente. Horario orientativo.</string>
 
     <string name="colonne_matin">Mañana</string>
     <string name="colonne_midi">Mediodía</string>
     <string name="colonne_soir">Tarde</string>
 
     <string name="label_menu">Menú</string>
-    <string name="aucun_menu">\nMenú no disponible\n</string>
+    <string name="aucun_menu">Ningún menú comunicado</string>
+
+    <string name="menu_empty">Ningún menú para mostrar</string>
+    <string name="menu_select">Selecciona un día</string>
 
     <string name="erreur_menu">No se pudo cargar el menú</string>
     <string name="recharger_menu">Toque para reintentar</string>
 
-    <string name="ajd">Hoy</string>
     <string name="holiday_alert_today">Hoy: %1$s</string>
     <string name="holiday_alert_tomorrow">Mañana: %1$s</string>
+
+    <string name="date_today">Hoy</string>
+    <string name="date_tomorrow">Mañana</string>
+
+    <string name="cancel">Cancelar</string>
+    <string name="select">Seleccionar</string>
 
     <string name="holiday_new_year">Año Nuevo</string>
     <string name="holiday_labor_day">Día del Trabajo</string>
     <string name="holiday_victory_1945">Día de la Victoria</string>
-    <string name="holiday_national_day">Fiesta Nacional</string>
+    <string name="holiday_national_day">El Día de la Bastilla</string>
     <string name="holiday_assumption">Asunción de la Virgen</string>
     <string name="holiday_all_saints">Día de Todos los Santos</string>
     <string name="holiday_armistice_1918">Día del Armisticio</string>
@@ -100,10 +125,8 @@
     <string name="type_triporteur">Carrito de comida</string>
     <string name="type_epicerie">Tienda de comestibles</string>
 
-    <string name="error_deeplink_invalid">Enlace no válido</string>
-    <string name="error_deeplink_offline">Sin conexión</string>
-    <string name="error_deeplink_not_found">El restaurante no existe</string>
-    <string name="error_deeplink_generic">Ha ocurrido un error</string>
+    <string name="oups">¡Vaya!</string>
+    <string name="deeplink_error_not_found">Este restaurante no existe o aún no está disponible en la aplicación.</string>
 
     <string name="mini_distance">Cerca</string>
 
@@ -121,9 +144,11 @@
     <string name="location_card_button_fine">¡Acceso concedido!</string>
     <string name="location_card_button_coarse">Modificar mi ubicación</string>
     <string name="location_card_button_none">Conceder acceso</string>
+    <string name="localisation_desactivee">Ubicación desactivada</string>
 
-    <string name="aucune_position">Ubicación desactivada</string>
+    <string name="bts_cache">Vista sin conexión</string>
 
-    <string name="toast_mode_cache">Modo sin conexión</string>
-    <string name="toast_mode_en_ligne">Conexión restablecida</string>
+    <string name="widget_info">Para añadir un widget de Croustillapp:\n\n1. Selecciona un restaurante\n\n2. Pulsa "Más"\n\n3. Pulsa "Widget"</string>
+    <string name="widget_chargement">Cargando…</string>
+    <string name="widget_erreur">No se puede cargar el menú</string>
 </resources>

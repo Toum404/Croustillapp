@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-// FR: Extension déléguée initialisant une instance unique de DataStore par cycle de vie d'application.
+// FR: Extension deleguee initialisant une instance unique de DataStore par cycle de vie d'application.
 // EN: Singleton delegate extension initializing a single DataStore lifecycle instance across the app.
 private val Context.dataStore by preferencesDataStore(name = "favorites")
 
@@ -18,24 +18,24 @@ private val Context.dataStore by preferencesDataStore(name = "favorites")
  * EN: Persistence manager designed to save and observe the user's favorite restaurant identifiers.
  */
 class FavoriteManager(private val context: Context) {
-    // FR: Clé d'indexation unique pour le stockage de la chaîne JSON dans le magasin de préférences.
+    // FR: Cle d'indexation unique pour le stockage de la chaine JSON dans le magasin de preferences.
     // EN: Unique indexation preference key targeting the raw JSON string payload within the data store.
     private val favoriteKey = stringPreferencesKey("favorite_ids_json")
 
     /**
-     * FR: Flux asynchrone (Flow) observant les identifiants favoris, désérialisés depuis une structure JSON.
+     * FR: Flux asynchrone (Flow) observant les identifiants favoris, deserialises depuis une structure JSON.
      * EN: Asynchronous cold stream (Flow) observing favorite identifiers, deserialized from a JSON structure.
      */
     val favoriteIds: Flow<Set<String>> = context.dataStore.data
         .map { preferences ->
             val json = preferences[favoriteKey] ?: "[]"
-            // FR: Conversion en Set pour garantir l'unicité et optimiser le temps de recherche en O(1).
+            // FR: Conversion en Set pour garantir l'unicite et optimiser le temps de recherche en O(1).
             // EN: Decoded into a Set structure to enforce unique constraints and optimize lookup queries to O(1).
             Json.decodeFromString<List<String>>(json).toSet()
         }
 
     /**
-     * FR: Persiste de façon asynchrone la collection d'identifiants sous forme de tableau JSON sérialisé.
+     * FR: Persiste de façon asynchrone la collection d'identifiants sous forme de tableau JSON serialise.
      * EN: Asynchronously commits the active identifiers collection down into a serialized JSON array block.
      */
     suspend fun saveFavorites(ids: Set<String>) {

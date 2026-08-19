@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import fr.croustillapp.R
 import fr.croustillapp.ui.theme.Jersey10Family
 
-// FR: Composant affiché lorsqu'aucun restaurant ne correspond aux filtres ou à la recherche.
+// FR: Composant affiche lorsqu'aucun restaurant ne correspond aux filtres ou a la recherche.
 // EN: Component displayed when no restaurants match the active filters or search queries.
 @Composable
 fun EmptyState(modifier: Modifier = Modifier) {
@@ -38,7 +38,7 @@ fun EmptyState(modifier: Modifier = Modifier) {
     )
 }
 
-// FR: Composant affiché en cas de perte de connexion réseau.
+// FR: Composant affiche en cas de perte de connexion reseau.
 // EN: Component displayed when a network connection failure is detected.
 @Composable
 fun NoInternetState(modifier: Modifier = Modifier) {
@@ -50,7 +50,7 @@ fun NoInternetState(modifier: Modifier = Modifier) {
     )
 }
 
-// FR: Composant affiché en cas de problème ou de panne du serveur distant.
+// FR: Composant affiche en cas de probleme ou de panne du serveur distant.
 // EN: Component displayed during backend server issues or unreachable endpoints.
 @Composable
 fun ServerErrorState(modifier: Modifier = Modifier) {
@@ -63,7 +63,7 @@ fun ServerErrorState(modifier: Modifier = Modifier) {
 }
 
 /**
- * FR: Modèle de base privé pour les écrans d'état/erreur, gérant nativement l'orientation de l'appareil.
+ * FR: Modele de base prive pour les ecrans d'etat/erreur, gerant nativement l'orientation de l'appareil.
  * EN: Private core layout blueprint for error/state screens, natively handling device screen orientation.
  */
 @Composable
@@ -73,7 +73,7 @@ private fun BaseErrorState(
     description: String,
     modifier: Modifier = Modifier
 ) {
-    // FR: Détection dynamique de l'orientation de l'écran (Portrait vs Paysage).
+    // FR: Detection dynamique de l'orientation de l'ecran (Portrait vs Paysage).
     // EN: Dynamic runtime screen orientation detection (Portrait vs Landscape).
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
@@ -81,7 +81,7 @@ private fun BaseErrorState(
     val commonTint = MaterialTheme.colorScheme.onSurface.copy(alpha = contentAlpha)
 
     if (isLandscape) {
-        // FR: Disposition horizontale optimisée pour le mode paysage afin d'éviter les coupures verticales.
+        // FR: Disposition horizontale optimisee pour le mode paysage afin d'eviter les coupures verticales.
         // EN: Horizontal layout optimized for landscape mode to prevent vertical clipping.
         Row(
             modifier = modifier
@@ -112,12 +112,12 @@ private fun BaseErrorState(
             }
         }
     } else {
-        // FR: Disposition verticale standard centrée pour le mode portrait.
+        // FR: Disposition verticale standard centree pour le mode portrait.
         // EN: Standard centered vertical stack optimized for portrait viewing.
         Column(
             modifier = modifier
                 .fillMaxSize()
-                // FR: Évite que le contenu soit masqué ou chevauché lorsque le clavier virtuel (IME) apparaît.
+                // FR: evite que le contenu soit masque ou chevauche lorsque le clavier virtuel (IME) apparait.
                 // EN: Prevents content overlap when the software keyboard (IME) becomes visible.
                 .imePadding()
                 .padding(16.dp),

@@ -30,11 +30,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -46,6 +50,46 @@ import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
+import kotlin.math.roundToInt
+
+/**
+ * FR: Effet de transition pixelise personnalise dessine via l'API Canvas pour l'effet graphique inferieur de l'image.
+ * EN: Custom pixelated fade effect drawn via low-level Canvas API for the bottom image graphic transition.
+ */
+@Composable
+fun PixelNoiseFade(
+    modifier: Modifier = Modifier,
+    color: Color = Color.Black
+) {
+    val vectorPainter = painterResource(id = R.drawable.svg_pixel_noise)
+
+    Box(
+        modifier = modifier.drawBehind {
+            val colorFilter = ColorFilter.tint(color)
+
+            // FR: Calcul de la grille de repetition en fonction de la largeur dynamique de la vue.
+            // EN: Compute pattern repetition based on the dynamic runtime view width.
+            val patternWidthPx = 100.dp.toPx().roundToInt()
+            val patternHeightPx = size.height.roundToInt()
+            val totalRepetitions = (size.width.roundToInt() / patternWidthPx) + 1
+
+            for (i in 0 until totalRepetitions) {
+                val xOffset = i * patternWidthPx
+
+                drawContext.canvas.save()
+                drawContext.transform.translate(left = xOffset.toFloat(), top = 0f)
+
+                with(vectorPainter) {
+                    draw(
+                        size = Size((patternWidthPx + 1).toFloat(), patternHeightPx.toFloat()),
+                        colorFilter = colorFilter
+                    )
+                }
+                drawContext.canvas.restore()
+            }
+        }
+    )
+}
 
 /**
  * FR: Calcule une couleur de surface opaque en superposant une couleur transparente sur la couleur de fond de la feuille.
@@ -61,7 +105,7 @@ fun getOpaqueSurfaceVariant(alpha: Float = 0.75f): Color {
 }
 
 /**
- * FR: Élément de grille interactif affichant une icône d'action et un libellé textuel tronqué si nécessaire.
+ * FR: element de grille interactif affichant une icône d'action et un libelle textuel tronque si necessaire.
  * EN: Interactive grid item view displaying a contextual action icon alongside an optionally truncated text label.
  */
 @Composable
@@ -102,7 +146,7 @@ fun ActionIconItem(
 }
 
 /**
- * FR: Décorateur pour ActionIconItem ajoutant un menu contextuel déroulant (DropdownMenu) lors du clic.
+ * FR: Decorateur pour ActionIconItem ajoutant un menu contextuel deroulant (DropdownMenu) lors du clic.
  * EN: Decorator layout wrapping an ActionIconItem to attach an anchor-bound popup DropdownMenu context interaction upon tapping.
  */
 @Composable
@@ -151,8 +195,8 @@ fun ActionIconItemWithMenu(
 }
 
 /**
- * FR: Indicateur visuel d'état pour les caractéristiques de l'établissement (ex: PMR, Paiement Izly).
- * EN: Visual trait flag modifier presenting state details for facility features (e.g., PMR access, Izly payments).
+ * FR: Indicateur visuel d'etat pour les caracteristiques de l'etablissement (code / PMR / Izly).
+ * EN: Visual trait flag modifier presenting state details for facility features (code / PMR access / Izly payments).
  */
 @Composable
 fun FeatureIcon(
@@ -193,12 +237,12 @@ fun VerticalDivider() {
 }
 
 /**
- * FR: Tableau structuré présentant les plages d'ouverture hebdomadaires (matin, midi, soir) avec mise en valeur du jour actuel.
+ * FR: Tableau structure presentant les plages d'ouverture hebdomadaires (matin, midi, soir) avec mise en valeur du jour actuel.
  * EN: Matrix-style layout mapping weekly opening scopes (morning, noon, evening) highlighting the active current day.
  */
 @Composable
 fun PixelScheduleTable(joursOuverts: List<JourOuvert>) {
-    // FR: Résolution de la clé temporelle ISO pour cibler et formater le jour courant de la semaine.
+    // FR: Resolution de la cle temporelle ISO pour cibler et formater le jour courant de la semaine.
     // EN: Resolves ISO calendar timeline indices to match and distinctively highlight the active day of the week.
     val currentDayOfWeek = remember {
         LocalDate.now().dayOfWeek.value
@@ -243,7 +287,7 @@ fun PixelScheduleTable(joursOuverts: List<JourOuvert>) {
                     Text(
                         text = jourTraduit,
                         style = textStyle.merge(
-                            // FR: Désactivation forcée des marges de police système Android pour stabiliser l'alignement vertical.
+                            // FR: Desactivation forcee des marges de police systeme Android pour stabiliser l'alignement vertical.
                             // EN: Explicitly strips Android native font paddings to guarantee pixel-perfect baseline alignments.
                             androidx.compose.ui.text.TextStyle(
                                 platformStyle = PlatformTextStyle(includeFontPadding = false)
@@ -268,11 +312,23 @@ fun PixelScheduleTable(joursOuverts: List<JourOuvert>) {
                 }
             }
         }
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        Text(
+            text = stringResource(id = R.string.info_horaires),
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.bodySmall.copy(
+                fontStyle = FontStyle.Italic
+            ),
+            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+        )
     }
 }
 
 /**
- * FR: Icône unifiée matérialisant visuellement un état d'ouverture ou de fermeture d'un créneau donné.
+ * FR: Icône unifiee materialisant visuellement un etat d'ouverture ou de fermeture d'un creneau donne.
  * EN: Consolidated status glyph dynamically rendering checkpoint checkmarks or blank spaces based on operational hours.
  */
 @Composable

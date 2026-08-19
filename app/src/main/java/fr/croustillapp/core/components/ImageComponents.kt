@@ -10,10 +10,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import coil.size.Size
 
 /**
- * FR: Composant personnalisé d'affichage d'images asynchrones utilisant la bibliothèque Coil.
+ * FR: Composant personnalise d'affichage d'images asynchrones utilisant la bibliotheque Coil.
  * EN: Custom asynchronous image loading component leveraging the Coil library.
  */
 
@@ -24,12 +23,12 @@ fun AppImage(url: String?, modifier: Modifier = Modifier) {
     val primaryColor = MaterialTheme.colorScheme.primary
     val surfaceColor = MaterialTheme.colorScheme.surfaceVariant
 
-    // FR: Optimisation de la mémoire en mémorisant les instances de ColorPainter pour éviter des allocations répétées.
+    // FR: Optimisation de la memoire en memorisant les instances de ColorPainter pour eviter des allocations repetees.
     // EN: Memory optimization by remembering ColorPainter instances to avoid repeated allocations.
     val errorPainter = remember(primaryColor) { ColorPainter(primaryColor) }
     val placeholderPainter = remember(surfaceColor) { ColorPainter(surfaceColor) }
 
-    // FR: Mémorisation de la requête d'image Coil; elle ne se re-déclenche que si l'URL change.
+    // FR: Memorisation de la requête d'image Coil; elle ne se re-declenche que si l'URL change.
     // EN: Caching the Coil image request; it will only re-execute if the target URL updates.
     val request = remember(url) {
         ImageRequest.Builder(context)

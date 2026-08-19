@@ -36,13 +36,13 @@ fun RestaurantList(
     val shimmerBrush = rememberShimmerBrush()
     val orientation = LocalConfiguration.current.orientation
 
-    // FR: Adaptation du nombre de colonnes de la grille selon l'orientation de l'écran.
+    // FR: Adaptation du nombre de colonnes de la grille selon l'orientation de l'ecran.
     // EN: Adapts the layout grid column footprint matching current hardware screen orientation configurations.
     val columns = remember(orientation) {
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) 3 else 2
     }
 
-    // FR: Tri mémorisé remontant systématiquement les restaurants favoris en tête de liste.
+    // FR: Tri memorise remontant systematiquement les restaurants favoris en tête de liste.
     // EN: Memoized sorting pattern systematically bubbling favorite restaurants to the top of the stream.
     val displayedRestaurants = remember(restaurants, favoriteIds) {
         restaurants.sortedByDescending { it.id in favoriteIds }
@@ -50,7 +50,7 @@ fun RestaurantList(
 
     Box(modifier = modifier) {
         when {
-            // FR: État de chargement - Grille fixe non-scollable affichant 10 squelettes animés.
+            // FR: etat de chargement - Grille fixe non-scollable affichant 10 squelettes animes.
             // EN: Loading state - Fixed non-scrollable layout structure rendering 10 animated skeleton blocks.
             isLoading -> {
                 LazyVerticalGrid(
@@ -66,7 +66,7 @@ fun RestaurantList(
                 }
             }
 
-            // FR: État d'erreur - Affiche la vue dédiée (Réseau ou Serveur) si la liste locale est vide.
+            // FR: etat d'erreur - Affiche la vue dediee (Reseau ou Serveur) si la liste locale est vide.
             // EN: Error state - Presents standard error placeholders (No internet or API errors) when local data cache is empty.
             restaurants.isEmpty() && errorType != ErrorType.None -> {
                 when (errorType) {
@@ -76,13 +76,13 @@ fun RestaurantList(
                 }
             }
 
-            // FR: Liste vide - Déclenché si aucun restaurant ne correspond aux filtres appliqués.
+            // FR: Liste vide - Declenche si aucun restaurant ne correspond aux filtres appliques.
             // EN: Empty fallback - Triggered whenever filtering parameters return an empty local output scope.
             restaurants.isEmpty() -> {
                 EmptyState()
             }
 
-            // FR: État nominal - Rendu fluide de la liste des restaurants triée et animée.
+            // FR: Etat nominal - Rendu fluide de la liste des restaurants triee et animee.
             // EN: Nominal state - Seamlessly rendering the fully sorted and animated active restaurant catalog grid.
             else -> {
                 LazyVerticalGrid(
@@ -94,9 +94,12 @@ fun RestaurantList(
                 ) {
                     items(
                         items = displayedRestaurants,
-                        // FR: Clé incluant le statut de favori pour forcer l'animation de déplacement d'item de Compose.
+                        // FR: Cle incluant le statut de favori pour forcer l'animation de deplacement d'item de Compose.
                         // EN: Tracking key embedding favorite states to safely enforce native Compose item repositioning animations.
-                        key = { restaurant -> "${restaurant.id}_${restaurant.id in favoriteIds}" }
+                        key = { restaurant ->
+                            val isFav = restaurant.id in favoriteIds
+                            "${restaurant.id}_fav_$isFav"
+                        }
                     ) { restaurant ->
                         RestaurantCard(
                             restaurant = restaurant,

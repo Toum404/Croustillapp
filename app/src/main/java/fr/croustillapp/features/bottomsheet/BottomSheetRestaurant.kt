@@ -1,14 +1,22 @@
 package fr.croustillapp.features.bottomsheet
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
@@ -37,81 +45,46 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetValue
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import fr.croustillapp.R
 import fr.croustillapp.core.components.AppImage
+import fr.croustillapp.features.data.DailyMenuDto
 import fr.croustillapp.features.data.Restaurant
 import fr.croustillapp.features.elements.RestaurantViewModel
 import fr.croustillapp.ui.theme.Jersey10Family
+import fr.croustillapp.widget.RestaurantWidgetReceiver
 import kotlinx.coroutines.launch
 import java.util.Locale
 import kotlin.math.roundToInt
 
 /**
- * FR: Effet de transition pixélisé personnalisé dessiné via l'API Canvas pour l'effet graphique inférieur de l'image.
- * EN: Custom pixelated fade effect drawn via low-level Canvas API for the bottom image graphic transition.
- */
-@Composable
-fun PixelNoiseFade(
-    modifier: Modifier = Modifier,
-    color: Color = Color.Black
-) {
-    val vectorPainter = painterResource(id = R.drawable.svg_pixel_noise)
-
-    Box(
-        modifier = modifier.drawBehind {
-            val colorFilter = ColorFilter.tint(color)
-
-            // FR: Calcul de la grille de répétition en fonction de la largeur dynamique de la vue.
-            // EN: Compute pattern repetition based on the dynamic runtime view width.
-            val patternWidthPx = 100.dp.toPx().roundToInt()
-            val patternHeightPx = size.height.roundToInt()
-            val totalRepetitions = (size.width.roundToInt() / patternWidthPx) + 1
-
-            for (i in 0 until totalRepetitions) {
-                val xOffset = i * patternWidthPx
-
-                drawContext.canvas.save()
-                drawContext.transform.translate(left = xOffset.toFloat(), top = 0f)
-
-                with(vectorPainter) {
-                    draw(
-                        size = Size((patternWidthPx + 1).toFloat(), patternHeightPx.toFloat()),
-                        colorFilter = colorFilter
-                    )
-                }
-                drawContext.canvas.restore()
-            }
-        }
-    )
-}
-
-/**
- * FR: Panneau d'affichage détaillé du restaurant incluant la gestion d'état UI et d'animations de statut.
+ * FR: Panneau d'affichage detaille du restaurant incluant la gestion d'etat UI et d'animations de statut.
  * EN: Detailed bottom sheet panel for a restaurant, including UI state handling and status animations.
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -129,7 +102,10 @@ fun RestaurantBottomSheet(
     val clipboard = LocalClipboard.current
     val sheetColor = BottomSheetDefaults.ContainerColor
 
+    val isSheetStable = sheetState.currentValue == sheetState.targetValue
     val scrollState = rememberScrollState()
+
+    val isOffline by viewModel.isOffline.collectAsStateWithLifecycle()
 
     val closeInteractionSource = remember { MutableInteractionSource() }
     val favoriteInteractionSource = remember { MutableInteractionSource() }
@@ -143,24 +119,38 @@ fun RestaurantBottomSheet(
     val btnTel = stringResource(R.string.action_btn_telephoner)
     val btnEmail = stringResource(R.string.action_btn_courriel)
     val btnPartage = stringResource(R.string.action_btn_partager)
+    val btnBrowser = stringResource(R.string.action_btn_web)
+    val btnWidget = stringResource(R.string.action_btn_widget)
+
+    val errorWidget = stringResource(R.string.toast_non_widget)
 
     val shareUrl = remember(restaurant.id) { restaurant.generateShareUrl() }
     val menuState by viewModel.menuState.collectAsStateWithLifecycle()
 
     val isExact by viewModel.isPrecisionExact.collectAsStateWithLifecycle()
 
+    val isLocationEnabled by viewModel.isLocationEnabledOnDevice.collectAsStateWithLifecycle()
+
     val textMiniDistance = stringResource(R.string.mini_distance)
+    val textLocationDisabled = stringResource(R.string.localisation_desactivee)
 
     val distanceMetersTemplate = stringResource(R.string.distance_meters)
     val distanceKilometersTemplate = stringResource(R.string.distance_kilometers)
 
-    // FR: Calcul et formatage de la distance selon le degré de précision de la géolocalisation accordée.
-    // EN: Distance computing and layout formatting according to current geolocation accuracy level.
-    val distanceLabel = remember(restaurant.id, restaurant.distance, isExact, textMiniDistance, distanceMetersTemplate, distanceKilometersTemplate) {
-        val dist = restaurant.distance ?: return@remember ""
+    val filteredRestaurants by viewModel.filteredRestaurants.collectAsStateWithLifecycle()
+    val currentRestaurant = remember(filteredRestaurants, restaurant.id) {
+        filteredRestaurants.find { it.id == restaurant.id } ?: restaurant
+    }
 
-        // FR: Fonction utilitaire pure utilisant le formatage natif de chaînes Kotlin sans capture de contexte.
-        // EN: Pure utility helper function utilizing native Kotlin string formatting without context capture.
+    // FR: Calcul et formatage de la distance selon le degre de precision de la geolocalisation accordee.
+    // EN: Distance computing and layout formatting according to current geolocation accuracy level.
+    val distanceLabel = remember(currentRestaurant.id, currentRestaurant.distance, isExact, isLocationEnabled, textMiniDistance, textLocationDisabled) {
+        if (!isLocationEnabled) {
+            return@remember " | $textLocationDisabled"
+        }
+
+        val dist = currentRestaurant.distance ?: return@remember ""
+
         fun formatDistance(meters: Float): String {
             return if (meters < 1000f) {
                 " | " + String.format(Locale.getDefault(), distanceMetersTemplate, meters.roundToInt())
@@ -180,13 +170,13 @@ fun RestaurantBottomSheet(
         }
     }
 
-    // FR: Chargement asynchrone des données de menu lié à l'identifiant du restaurant.
+    // FR: Chargement asynchrone des donnees de menu lie a l'identifiant du currentRestaurant.
     // EN: Asynchronous loading execution pipeline linked to the active restaurant identifier.
-    LaunchedEffect(restaurant.id) {
-        viewModel.loadMenu(restaurant.id)
+    LaunchedEffect(currentRestaurant.id) {
+        viewModel.loadMenu(currentRestaurant.id)
     }
 
-    // FR: Réinitialisation automatique du défilement lorsque le composant change de taille ou d'état d'ancrage.
+    // FR: Reinitialisation automatique du defilement lorsque le composant change de taille ou d'etat d'ancrage.
     // EN: Automatic scroll state reset when the overlay component switches layout anchoring targets.
     LaunchedEffect(sheetState.currentValue) {
         if (sheetState.currentValue == SheetValue.PartiallyExpanded) {
@@ -207,7 +197,7 @@ fun RestaurantBottomSheet(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .verticalScroll(scrollState)
+                    .verticalScroll(scrollState, enabled = isSheetStable)
                     .navigationBarsPadding()
             ) {
                 Box(
@@ -218,7 +208,7 @@ fun RestaurantBottomSheet(
                         .background(MaterialTheme.colorScheme.primary)
                 ) {
                     AppImage(
-                        url = restaurant.imageUrl,
+                        url = currentRestaurant.imageUrl,
                         modifier = Modifier.fillMaxWidth().height(170.dp)
                     )
 
@@ -234,7 +224,7 @@ fun RestaurantBottomSheet(
                 Column(modifier = Modifier.fillMaxWidth().padding(16.dp, 8.dp, 16.dp, 16.dp)) {
 
                     Text(
-                        text = restaurant.name,
+                        text = currentRestaurant.name,
                         style = MaterialTheme.typography.headlineSmall,
                         fontFamily = Jersey10Family,
                         fontSize = 36.sp,
@@ -243,10 +233,10 @@ fun RestaurantBottomSheet(
                     )
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        val statusColor = if (restaurant.isOpen) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                        val statusColor = if (currentRestaurant.isOpen) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
 
-                        if (restaurant.isOpen) {
-                            // FR: Animation infinie simulant l'effet visuel de pulsation d'un radar pour les établissements ouverts.
+                        if (currentRestaurant.isOpen) {
+                            // FR: Animation infinie simulant l'effet visuel de pulsation d'un radar pour les etablissements ouverts.
                             // EN: Infinite animation setup mimicking a live sonar radar wave effect for open venues.
                             val infiniteTransition = rememberInfiniteTransition(label = "RadarTransition")
 
@@ -309,7 +299,7 @@ fun RestaurantBottomSheet(
                         Text(
                             text = stringResource(
                                 id = R.string.statut_actuellement,
-                                if (restaurant.isOpen) stringResource(R.string.statut_ouvert).lowercase(Locale.ROOT)
+                                if (currentRestaurant.isOpen) stringResource(R.string.statut_ouvert).lowercase(Locale.ROOT)
                                 else stringResource(R.string.statut_ferme).lowercase(Locale.ROOT)
                             ),
                             color = statusColor,
@@ -333,9 +323,9 @@ fun RestaurantBottomSheet(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        // FR: Configuration des Intents cartographiques avec gestion sécurisée des exceptions.
+                        // FR: Configuration des Intents cartographiques avec gestion securisee des exceptions.
                         // EN: Map routing Intents generation alongside safety exception handling wrappers.
-                        val adresseOptions = remember(restaurant.id) {
+                        val adresseOptions = remember(currentRestaurant.id) {
                             listOf(
                                 Triple(
                                     btnCarte,
@@ -343,9 +333,9 @@ fun RestaurantBottomSheet(
                                 )
                                 {
                                     try {
-                                        val labelResto = Uri.encode(restaurant.name)
+                                        val labelResto = Uri.encode(currentRestaurant.name)
                                         val uri =
-                                            "geo:${restaurant.latitude},${restaurant.longitude}?q=${restaurant.latitude},${restaurant.longitude}($labelResto)".toUri()
+                                            "geo:${currentRestaurant.latitude},${currentRestaurant.longitude}?q=${currentRestaurant.latitude},${currentRestaurant.longitude}($labelResto)".toUri()
                                         context.startActivity(Intent(Intent.ACTION_VIEW, uri))
                                     } catch (_: Exception) {
                                         Toast.makeText(
@@ -360,7 +350,7 @@ fun RestaurantBottomSheet(
                                     R.drawable.ic_ddm_copy
                                 )
                                 {
-                                    restaurant.adresse?.let {
+                                    currentRestaurant.adresse?.let {
                                         copyToClipboard(
                                             scope,
                                             clipboard,
@@ -376,13 +366,13 @@ fun RestaurantBottomSheet(
                             iconRes = R.drawable.ic_act_adress,
                             label = stringResource(R.string.label_btn_adresse),
                             modifier = Modifier.weight(1f),
-                            enabled = !restaurant.adresse.isNullOrBlank(),
+                            enabled = !currentRestaurant.adresse.isNullOrBlank(),
                             options = adresseOptions
                         )
 
-                        // FR: Configuration de l'Intent d'appel avec filtrage des caractères non numériques.
+                        // FR: Configuration de l'Intent d'appel avec filtrage des caracteres non numeriques.
                         // EN: Dial Intents generation featuring non-numeric string formatting filters.
-                        val telOptions = remember(restaurant.id) {
+                        val telOptions = remember(currentRestaurant.id) {
                             listOf(
                                 Triple(
                                     btnTel,
@@ -391,7 +381,7 @@ fun RestaurantBottomSheet(
                                 {
                                     try {
                                         val cleanNumber =
-                                            restaurant.telephone?.replace("[^0-9]".toRegex(), "")
+                                            currentRestaurant.telephone?.replace("[^0-9]".toRegex(), "")
                                         context.startActivity(
                                             Intent(
                                                 Intent.ACTION_DIAL,
@@ -411,7 +401,7 @@ fun RestaurantBottomSheet(
                                     R.drawable.ic_ddm_copy
                                 )
                                 {
-                                    restaurant.telephone?.let {
+                                    currentRestaurant.telephone?.let {
                                         copyToClipboard(
                                             scope,
                                             clipboard,
@@ -427,13 +417,13 @@ fun RestaurantBottomSheet(
                             iconRes = R.drawable.ic_act_phone,
                             label = stringResource(R.string.label_btn_telephone),
                             modifier = Modifier.weight(1f),
-                            enabled = !restaurant.telephone.isNullOrBlank(),
+                            enabled = !currentRestaurant.telephone.isNullOrBlank(),
                             options = telOptions
                         )
 
-                        // FR: Configuration de l'Intent de messagerie électronique (mailto:).
+                        // FR: Configuration de l'Intent de messagerie electronique (mailto:).
                         // EN: Mailing Intents initialization targeting specific endpoints (mailto:).
-                        val emailOptions = remember(restaurant.id) {
+                        val emailOptions = remember(currentRestaurant.id) {
                             listOf(
                                 Triple(
                                     btnEmail,
@@ -443,7 +433,7 @@ fun RestaurantBottomSheet(
                                     try {
                                         val intent = Intent(
                                             Intent.ACTION_SENDTO,
-                                            "mailto:${restaurant.email}".toUri()
+                                            "mailto:${currentRestaurant.email}".toUri()
                                         )
                                         context.startActivity(intent)
                                     } catch (_: Exception) {
@@ -459,7 +449,7 @@ fun RestaurantBottomSheet(
                                     R.drawable.ic_ddm_copy
                                 )
                                 {
-                                    restaurant.email?.let {
+                                    currentRestaurant.email?.let {
                                         copyToClipboard(
                                             scope,
                                             clipboard,
@@ -475,19 +465,16 @@ fun RestaurantBottomSheet(
                             iconRes = R.drawable.ic_act_email,
                             label = stringResource(R.string.label_btn_courriel),
                             modifier = Modifier.weight(1f),
-                            enabled = !restaurant.email.isNullOrBlank(),
+                            enabled = !currentRestaurant.email.isNullOrBlank(),
                             options = emailOptions
                         )
 
-                        // FR: Configuration du sélecteur natif d'applications de partage de texte.
-                        // EN: Intent chooser initialization supplying local URLs across system sharing pipelines.
-                        val shareOptions = remember(restaurant.id) {
+                        val actionsOptions = remember(currentRestaurant.id) {
                             listOf(
                                 Triple(
                                     btnPartage,
                                     R.drawable.ic_ddm_link
-                                )
-                                {
+                                ) {
                                     try {
                                         val sendIntent = Intent().apply {
                                             action = Intent.ACTION_SEND
@@ -509,38 +496,68 @@ fun RestaurantBottomSheet(
                                     }
                                 },
                                 Triple(
-                                    labelCopie,
-                                    R.drawable.ic_ddm_copy
-                                )
-                                {
-                                    copyToClipboard(
-                                        scope,
-                                        clipboard,
-                                        context,
-                                        shareUrl
-                                    )
+                                    btnBrowser,
+                                    R.drawable.ic_ddm_browse
+                                ) {
+                                    try {
+                                        val webIntent = Intent(Intent.ACTION_VIEW, shareUrl.toUri())
+                                        context.startActivity(webIntent)
+                                    } catch (_: Exception) {
+                                        Toast.makeText(
+                                            context,
+                                            R.string.toast_non_web,
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                },
+                                Triple(
+                                    btnWidget,
+                                    R.drawable.ic_ddm_widget
+                                ) {
+                                    val appWidgetManager = AppWidgetManager.getInstance(context)
+                                    val myWidgetProvider = ComponentName(context, RestaurantWidgetReceiver::class.java)
+
+                                    val sharedPrefs = context.getSharedPreferences("restaurant_widget_prefs", Context.MODE_PRIVATE)
+                                    sharedPrefs.edit {
+                                        putString(
+                                            "last_selected_restaurant_id",
+                                            currentRestaurant.id
+                                        )
+                                    }
+
+                                    if (appWidgetManager.isRequestPinAppWidgetSupported) {
+                                        appWidgetManager.requestPinAppWidget(myWidgetProvider, null, null)
+                                    } else {
+                                        Toast.makeText(context, errorWidget, Toast.LENGTH_SHORT).show()
+                                    }
+                                    Unit
                                 }
                             )
                         }
                         ActionIconItemWithMenu(
-                            iconRes = R.drawable.ic_act_share,
-                            label = stringResource(R.string.label_btn_partager),
+                            iconRes = R.drawable.ic_act_actions,
+                            label = stringResource(R.string.label_btn_plus),
                             modifier = Modifier.weight(1f),
-                            options = shareOptions
+                            options = actionsOptions
                         )
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // FR: Gestion de l'affichage de l'état du menu via une structure de contrôle scellée.
+                    var selectedMenu by remember { mutableStateOf<DailyMenuDto?>(null) }
+
+                    // FR: Gestion de l'affichage de l'etat du menu via une structure de contrôle scellee.
                     // EN: Dispatched layout routing based entirely on sealed menu UiState parameters.
                     when (val state = menuState) {
                         is RestaurantViewModel.MenuUiState.Loading -> MenuLoadingView()
-                        is RestaurantViewModel.MenuUiState.Error -> MenuErrorView { viewModel.loadMenu(restaurant.id) }
+                        is RestaurantViewModel.MenuUiState.Error -> MenuErrorView { viewModel.loadMenu(currentRestaurant.id) }
                         is RestaurantViewModel.MenuUiState.Success -> {
                             MenuSection(
+                                restaurantId = currentRestaurant.id,
                                 dailyMenus = state.data,
-                                onMenuSelected = { /* ... */ }
+                                onMenuSelected = { menu ->
+                                    selectedMenu = menu
+                                }
                             )
                         }
                         else -> Unit
@@ -549,9 +566,9 @@ fun RestaurantBottomSheet(
                     Spacer(modifier = Modifier.height(16.dp))
 
                     ScheduleSection(
-                        horaires = restaurant.horaires,
-                        joursOuverts = restaurant.joursOuvert,
-                        isStrasbourg = restaurant.region.equals("Strasbourg", ignoreCase = true)
+                        horaires = currentRestaurant.horaires,
+                        joursOuverts = currentRestaurant.joursOuvert,
+                        isStrasbourg = currentRestaurant.region.equals("Strasbourg", ignoreCase = true)
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -583,6 +600,34 @@ fun RestaurantBottomSheet(
                     }
                     .padding(8.dp)
             )
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .padding(top = 16.dp)
+            ) {
+                AnimatedVisibility(
+                    visible = isOffline,
+                    enter = fadeIn() + scaleIn(initialScale = 0.92f),
+                    exit = fadeOut() + scaleOut(targetScale = 0.92f)
+                ) {
+                    Surface(
+                        shape = RoundedCornerShape(50),
+                        color = MaterialTheme.colorScheme.surface,
+                        contentColor = MaterialTheme.colorScheme.primary,
+                        shadowElevation = 2.dp
+                    ) {
+                        Text(
+                            text = stringResource(R.string.bts_cache),
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.padding(horizontal = 50.dp, vertical = 10.dp)
+                        )
+                    }
+                }
+            }
 
             Icon(
                 painter = painterResource(

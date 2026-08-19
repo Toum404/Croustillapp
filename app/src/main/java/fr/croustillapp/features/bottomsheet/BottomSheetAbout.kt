@@ -8,15 +8,16 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,6 +35,7 @@ import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -82,12 +84,19 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
         skipPartiallyExpanded = true
     )
 
+    val isSheetStable = sheetState.currentValue == sheetState.targetValue
+    val scrollState = rememberScrollState()
+
     val scope = rememberCoroutineScope()
     val sheetColor = BottomSheetDefaults.ContainerColor
     val context = LocalContext.current
 
-    val webSiteUrl = stringResource(R.string.url_site_web)
     val gitHubUrl = stringResource(R.string.url_github)
+
+    val discordUrl = stringResource(R.string.url_discord)
+    val webSiteUrl = stringResource(R.string.url_api)
+    val appUrl = stringResource(R.string.url_application)
+
     val erreurAction = stringResource(R.string.url_action_erreur)
 
     val closeInteractionSource = remember { MutableInteractionSource() }
@@ -107,7 +116,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
 
     val onlyHasCoarse = isCoarseGranted && !isFineGranted
 
-    // FR: Synchronisation réactive de l'état des permissions lorsque l'utilisateur revient sur l'application.
+    // FR: Synchronisation reactive de l'etat des permissions lorsque l'utilisateur revient sur l'application.
     // EN: Reactive sync hook tracking authorization states when the application returns to foreground execution.
     val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
     androidx.compose.runtime.DisposableEffect(lifecycleOwner) {
@@ -130,7 +139,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    // FR: Lanceur d'activité asynchrone pour la demande simultanée de plusieurs permissions.
+    // FR: Lanceur d'activite asynchrone pour la demande simultanee de plusieurs permissions.
     // EN: Activity result launcher handling multiple concurrent asynchronous permission requests.
     val locationPermissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
@@ -144,7 +153,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
         }
     }
 
-    // FR: Intent explicite permettant de rediriger l'utilisateur vers la page de configuration système de l'application.
+    // FR: Intent explicite permettant de rediriger l'utilisateur vers la page de configuration systeme de l'application.
     // EN: Explicit Intent routing users directly to the native OS settings panel for this application.
     val openAppSettings = remember(context) {
         {
@@ -183,7 +192,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
+                    .verticalScroll(scrollState, enabled = isSheetStable)
                     .navigationBarsPadding()
             ) {
                 Box(
@@ -192,7 +201,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
                         .height(170.dp)
                         .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                 ) {
-                    // FR: Utilisation de ImageDecoderDecoder pour prendre en charge nativement les formats d'images spécifiques (webp).
+                    // FR: Utilisation de ImageDecoderDecoder pour prendre en charge nativement les formats d'images specifiques (webp).
                     // EN: Leveraging ImageDecoderDecoder to support special image decoding pipelines natively (webp).
                     AsyncImage(
                         model = ImageRequest.Builder(LocalContext.current)
@@ -218,58 +227,97 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
-                    Text(
-                        text = stringResource(R.string.description_informations),
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontFamily = Jersey10Family,
-                        fontSize = 36.sp,
-                        maxLines = 1,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .basicMarquee()
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    val appName = stringResource(R.string.app_name)
                     val apiNom = stringResource(R.string.api_nom)
+                    val appName = stringResource(R.string.app_name)
                     val crousMention = stringResource(R.string.crous_mention)
                     val fullText = stringResource(R.string.description_app, appName, apiNom, crousMention)
 
-                    Text(
-                        text = fullText,
-                        style = MaterialTheme.typography.bodySmall,
-                        fontSize = 13.sp,
-                        lineHeight = 18.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Justify
-                    )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
+                            .padding(16.dp)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.description_informations),
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontFamily = Jersey10Family,
+                            fontSize = 32.sp,
+                            maxLines = 1,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .basicMarquee()
+                        )
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(4.dp))
 
-                    InformationCard(
-                        title = stringResource(R.string.service_nom),
-                        description = stringResource(R.string.service_description),
-                        buttonText = stringResource(R.string.action_visiter, apiNom),
-                        onButtonClick = { openUrl(webSiteUrl) },
-                        modifier = Modifier.border(
-                            width = 1.5.dp,
-                            color = MaterialTheme.colorScheme.primary,
-                            shape = RoundedCornerShape(8.dp)
-                        ),
-                        iconSlot = {
-                            Image(
-                                painter = painterResource(R.drawable.img_api),
-                                contentDescription = null,
-                                modifier = Modifier.size(28.dp)
+                        Text(
+                            text = fullText,
+                            style = MaterialTheme.typography.bodySmall,
+                            fontSize = 13.sp,
+                            lineHeight = 18.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textAlign = TextAlign.Justify
+                        )
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            HorizontalDivider(
+                                modifier = Modifier.weight(1f),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.25f)
+                            )
+
+                            Text(
+                                text = apiNom,
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+                                modifier = Modifier.padding(horizontal = 16.dp)
+                            )
+
+                            HorizontalDivider(
+                                modifier = Modifier.weight(1f),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.25f)
                             )
                         }
-                    )
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            EpurButton(
+                                label = stringResource(R.string.info_api_discord),
+                                iconOutlinedRes = R.drawable.ic_info_discord_outlined,
+                                iconFilledRes = R.drawable.ic_info_discord_filled,
+                                modifier = Modifier.weight(1f),
+                                onClick = { openUrl(discordUrl) }
+                            )
+
+                            EpurButton(
+                                label = stringResource(R.string.info_api_website),
+                                iconOutlinedRes = R.drawable.ic_info_api_outlined,
+                                iconFilledRes = R.drawable.ic_info_api_filled,
+                                modifier = Modifier.weight(1f),
+                                onClick = { openUrl(webSiteUrl) }
+                            )
+
+                            EpurButton(
+                                label = stringResource(R.string.info_api_app),
+                                iconOutlinedRes = R.drawable.ic_info_android_outlined,
+                                iconFilledRes = R.drawable.ic_info_android_filled,
+                                modifier = Modifier.weight(1f),
+                                onClick = { openUrl(appUrl) }
+                            )
+                        }
+                    }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // FR: Adaptation dynamique des bordures et arrière-plans de la carte selon l'état de la permission.
-                    // EN: Dynamic container outline adaptation depending entirely on location permission compliance.
                     val cardShape = RoundedCornerShape(8.dp)
                     val locationModifier = when {
                         isFineGranted -> Modifier.background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f), cardShape)
@@ -284,7 +332,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
                             else -> stringResource(R.string.location_card_title_none)
                         },
                         description = when {
-                            isFineGranted -> stringResource(R.string.location_card_desc_fine, appName)
+                            isFineGranted -> stringResource(R.string.location_card_desc_fine, stringResource(R.string.app_name))
                             onlyHasCoarse -> stringResource(R.string.location_card_desc_coarse)
                             else -> stringResource(R.string.location_card_desc_none)
                         },
@@ -310,8 +358,6 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
                                         Manifest.permission.ACCESS_COARSE_LOCATION
                                     )
 
-                                    // FR: Routage intelligent : demande la permission via l'OS, ou redirige vers les paramètres si l'utilisateur a déjà refusé définitivement.
-                                    // EN: Smart routing logic: requests runtime permission or falls back to system settings if previously denied permanently.
                                     when {
                                         !isCoarseGranted && !showRationale -> {
                                             locationPermissionLauncher.launch(
@@ -369,8 +415,6 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
                         interactionSource = closeInteractionSource,
                         indication = androidx.compose.foundation.LocalIndication.current
                     ) {
-                        // FR: Animation fluide de fermeture de la BottomSheet avant de notifier l'UI globale.
-                        // EN: Animated programmatic dismissal sequence running prior to invoking final external callbacks.
                         scope.launch { sheetState.hide() }.invokeOnCompletion {
                             if (!sheetState.isVisible) {
                                 onDismiss()
@@ -405,8 +449,52 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
     }
 }
 
+@Composable
+fun EpurButton(
+    label: String,
+    iconFilledRes: Int,
+    iconOutlinedRes: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+
+    Button(
+        onClick = onClick,
+        interactionSource = interactionSource,
+        shape = RoundedCornerShape(8.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.surface,
+            contentColor = MaterialTheme.colorScheme.onSurface
+        ),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp),
+        modifier = modifier
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(vertical = 4.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = if (isPressed) iconFilledRes else iconOutlinedRes),
+                contentDescription = null,
+                modifier = Modifier.size(20.dp)
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = label,
+                style = MaterialTheme.typography.bodySmall,
+                fontSize = 11.sp,
+                maxLines = 1,
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
 /**
- * FR: Sous-composant réutilisable pour structurer les cartes d'informations.
+ * FR: Sous-composant reutilisable pour structurer les cartes d'informations.
  * EN: Modular sub-component layout utilized for structuring information card layouts.
  */
 @Composable
@@ -438,7 +526,7 @@ fun InformationCard(
 }
 
 /**
- * FR: Composant d'icône animée encapsulant un ImageView traditionnel pour exécuter une séquence d'images (flipbook).
+ * FR: Composant d'icônes animee encapsulant un ImageView traditionnel pour executer une sequence d'images (flipbook).
  * EN: Animated icon component encapsulating a legacy ImageView to execute an image-by-image sequence (flipbook).
  */
 @Composable
@@ -447,12 +535,8 @@ fun AnimatedRadarIcon(
     tint: Color,
     modifier: Modifier = Modifier
 ) {
-    // FR: Rétention locale de la référence de la vue native pour interagir avec le framework de drawables classiques.
-    // EN: Local retention of the native view reference to interact with the legacy drawable framework.
     val imageView = remember { mutableStateOf<ImageView?>(null) }
 
-    // FR: Déclenchement réactif de l'animation d'images lorsque le signal d'activation passe à vrai.
-    // EN: Reactive execution of the frame animation sequence when the trigger signal transitions to true.
     LaunchedEffect(isTriggered) {
         if (isTriggered) {
             val drawable = imageView.value?.drawable as? AnimationDrawable
@@ -461,8 +545,6 @@ fun AnimatedRadarIcon(
         }
     }
 
-    // FR: Interopérabilité : Intégration et mise à jour d'un composant UI Android natif au sein du moteur Compose.
-    // EN: Interoperability: Embedding and updating a native Android UI component inside the Compose engine.
     AndroidView(
         modifier = modifier,
         factory = { context ->

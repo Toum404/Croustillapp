@@ -64,7 +64,7 @@ fun RestaurantCard(
 
     val context = LocalContext.current
 
-    // FR: Calcul mémorisé du libellé de distance pour éviter les allocations de chaînes répétitives.
+    // FR: Calcul memorise du libelle de distance pour eviter les allocations de chaines repetitives.
     // EN: Memoized calculation of the distance label string to avoid repetitive string allocations.
     val subtitleText = remember(context, restaurant.distance, restaurant.zone, isPrecisionExact) {
         formatDistance(
@@ -111,7 +111,7 @@ fun RestaurantCard(
                     text = restaurant.name,
                     fontFamily = Jersey10Family,
                     fontSize = 24.sp,
-                    // FR: Force une hauteur constante de 2 lignes pour préserver l'alignement de la grille.
+                    // FR: Force une hauteur constante de 2 lignes pour preserver l'alignement de la grille.
                     // EN: Forces a stable 2-line height constraint to keep consistent grid row alignment.
                     minLines = 2,
                     maxLines = 2,
@@ -143,7 +143,7 @@ fun RestaurantCard(
 }
 
 /**
- * FR: Formate intelligemment la distance métrique en paliers ou bascule sur la zone globale de l'API.
+ * FR: Formate intelligemment la distance metrique en paliers ou bascule sur la zone globale de l'API.
  * EN: Intelligently formats metric distances into increments or falls back to generic API zone values.
  */
 private fun formatDistance(context: Context, distanceInMeters: Float?, defaultZone: String, isPrecisionExact: Boolean): String {
@@ -157,7 +157,7 @@ private fun formatDistance(context: Context, distanceInMeters: Float?, defaultZo
 
     return if (isPrecisionExact) {
         if (distanceInMeters < 1000f) {
-            // FR: Arrondi propre par tranche de 10 mètres pour l'affichage de proximité immédiate.
+            // FR: Arrondi propre par tranche de 10 metres pour l'affichage de proximite immediate.
             // EN: Clean grouping rounded down to 10-meter boundaries for immediate proximity displays.
             val roundedMeters = (distanceInMeters / 10f).roundToInt() * 10
             "$roundedMeters m"
@@ -171,7 +171,7 @@ private fun formatDistance(context: Context, distanceInMeters: Float?, defaultZo
 }
 
 /**
- * FR: Badge compact de statut stylisé indiquant si l'établissement est ouvert ou fermé.
+ * FR: Badge compact de statut stylise indiquant si l'etablissement est ouvert ou ferme.
  * EN: Mini stylized status indicator pill stating if the facility is currently open or closed.
  */
 @Composable
@@ -196,7 +196,7 @@ fun StatusChip(isOpen: Boolean) {
 }
 
 /**
- * FR: Squelette d'attente (Skeleton) répliquant l'anatomie de la carte avec une animation Shimmer.
+ * FR: Squelette d'attente (Skeleton) repliquant l'anatomie de la carte avec une animation Shimmer.
  * EN: Placeholder skeleton replicating the exact card blueprint tied to a fluid Shimmer animation.
  */
 @Composable
@@ -261,7 +261,7 @@ fun RestaurantCardSkeleton(brush: Brush) {
 }
 
 /**
- * FR: Initialise et anime un Brush de gradient linéaire infini simulant un effet Shimmer scintillant.
+ * FR: Initialise et anime un Brush de gradient lineaire infini simulant un effet Shimmer scintillant.
  * EN: Remembers and drives an infinite linear gradient Brush simulating a glossy sweep shimmer effect.
  */
 @Composable
@@ -291,7 +291,7 @@ fun rememberShimmerBrush(): Brush {
 }
 
 /**
- * FR: Modificateur d'extension appliquant le pinceau de scintillement sur l'arrière-plan du composant.
+ * FR: Modificateur d'extension appliquant le pinceau de scintillement sur l'arriere-plan du composant.
  * EN: Extension Modifier node piping the shimmer sweep brush across the element's background surface.
  */
 fun Modifier.shimmer(brush: Brush): Modifier = this.background(brush)

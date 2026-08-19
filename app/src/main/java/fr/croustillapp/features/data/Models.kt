@@ -10,8 +10,8 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 /**
- * Entité de persistance locale représentant la structure d'un restaurant stockée dans Room.
- * Local Room persistent entity structure defining a cached restaurant row.
+ * FR: Entite de persistance locale representant la structure d'un restaurant stockee dans Room.
+ * EN: Local Room persistent entity structure defining a cached restaurant row.
  */
 @Entity(tableName = "restaurants")
 data class RestaurantEntity(
@@ -35,8 +35,8 @@ data class RestaurantEntity(
 )
 
 /**
- * Modèle de données métier (Domaine) optimisé pour Compose avec l'annotation @Immutable.
- * UI Domain business model tagged as @Immutable for optimal Jetpack Compose recomposition metrics.
+ * FR: Modele de donnees metier (Domaine) optimise pour Compose avec l'annotation @Immutable.
+ * EN: UI Domain business model tagged as @Immutable for optimal Jetpack Compose recomposition metrics.
  */
 @Immutable
 @Parcelize
@@ -67,7 +67,6 @@ data class JourOuvert(val jour: String, val ouverture: Ouverture) : Parcelable
 @Parcelize
 data class Ouverture(val matin: Boolean, val midi: Boolean, val soir: Boolean) : Parcelable
 
-// Réseau / Network DTO declarations
 @Serializable
 data class ApiResponse(
     val success: Boolean,
@@ -112,8 +111,8 @@ data class JourOuvertDto(val jour: String, val ouverture: OuvertureDto)
 data class OuvertureDto(val matin: Boolean, val midi: Boolean, val soir: Boolean)
 
 /**
- * Parseur JSON configuré globalement pour ignorer les clés inconnues renvoyées par l'API.
- * Shared Json parser setup resilient against newly appended unknown backend attributes.
+ * FR: Parseur JSON configure globalement pour ignorer les cles inconnues renvoyees par l'API.
+ * EN: Shared Json parser setup resilient against newly appended unknown backend attributes.
  */
 val MyJsonParser = Json {
     ignoreUnknownKeys = true
@@ -121,8 +120,8 @@ val MyJsonParser = Json {
 }
 
 /**
- * Transforme un objet de transfert réseau (DTO) en entité stockable localement (Room).
- * Map network data DTO models smoothly into flat storage-ready database entities.
+ * FR: Transforme un objet de transfert reseau (DTO) en entite stockable localement (Room).
+ * EN: Map network data DTO models smoothly into flat storage-ready database entities.
  */
 fun RestaurantDto.toEntity(): RestaurantEntity {
     return RestaurantEntity(
@@ -147,8 +146,8 @@ fun RestaurantDto.toEntity(): RestaurantEntity {
 }
 
 /**
- * Convertit une entité de base de données locale en modèle de domaine consommé par l'UI.
- * Converts local entity rows back into clear rich typed domain UI models.
+ * FR: Convertit une entite de base de donnees locale en modele de domaine consomme par l'UI.
+ * EN: Converts local entity rows back into clear rich typed domain UI models.
  */
 fun RestaurantEntity.toDomain(): Restaurant {
     return Restaurant(
