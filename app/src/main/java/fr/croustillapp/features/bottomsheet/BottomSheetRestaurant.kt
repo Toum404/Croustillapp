@@ -500,7 +500,13 @@ fun RestaurantBottomSheet(
                                     R.drawable.ic_ddm_browse
                                 ) {
                                     try {
-                                        val webIntent = Intent(Intent.ACTION_VIEW, shareUrl.toUri())
+                                        val webIntent = Intent.makeMainSelectorActivity(
+                                            Intent.ACTION_MAIN,
+                                            Intent.CATEGORY_APP_BROWSER
+                                        ).apply {
+                                            data = shareUrl.toUri()
+                                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                        }
                                         context.startActivity(webIntent)
                                     } catch (_: Exception) {
                                         Toast.makeText(

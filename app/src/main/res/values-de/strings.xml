@@ -14,7 +14,6 @@
     <string name="action_fermer">Schließen</string>
     <string name="action_favoriser">Favorit</string>
     <string name="action_visiter">%1$s besuchen</string>
-    <string name="action_rejoindre">Dem Discord beitreten</string>
 
     <string name="action_effacer">Löschen</string>
 
@@ -26,10 +25,10 @@
     <string name="label_region">Region</string>
 
     <string name="label_tout">Alle</string>
-    <string name="recherche">Einrichtung suchen…</string>
+    <string name="recherche">Restaurant suchen…</string>
     <string name="toast_favoris">Maximal %d Favoriten</string>
 
-    <string name="inconnu_titre">Keine Einrichtungen gefunden</string>
+    <string name="inconnu_titre">Keine Restaurant gefunden</string>
     <string name="inconnu_description">Versuchen Sie, Filter zu entfernen oder Ihre Suche zu ändern.</string>
 
     <string name="connexion_titre">Keine Verbindung</string>
@@ -50,13 +49,14 @@
     <string name="menu_act_export">Exportieren (png)</string>
     <string name="menu_act_copy">Alles kopieren</string>
     <string name="menu_act_error">Ein Fehler ist aufgetreten</string>
+    <string name="menu_title_share">Menü teilen</string>
 
     <string name="label_btn_adresse">Adresse</string>
     <string name="label_btn_telephone">Telefon</string>
     <string name="label_btn_courriel">E-Mail</string>
     <string name="label_btn_plus">Mehr</string>
 
-    <string name="action_btn_carte">Öffnen</string>
+    <string name="action_btn_carte">Karte</string>
     <string name="action_btn_telephoner">Anrufen</string>
     <string name="action_btn_courriel">Schreiben</string>
     <string name="action_btn_partager">Teilen</string>
@@ -68,6 +68,7 @@
     <string name="toast_non_courriel">Kein E-Mail-Dienst verfügbar</string>
     <string name="toast_non_partage">Teilen nicht möglich</string>
     <string name="toast_non_web">Kein Webbrowser</string>
+
     <string name="toast_non_widget">Widget konnte nicht hinzugefügt werden</string>
 
     <string name="titre_horaires">Öffnungszeiten</string>
@@ -138,8 +139,8 @@
     <string name="location_card_title_none">Standortzugriff erlauben</string>
 
     <string name="location_card_desc_fine">Die Restaurants werden präzise nach Nähe sortiert. Die Entfernungen werden intern berechnet: %1$s teilt Ihre Daten nicht.</string>
-    <string name="location_card_desc_coarse">Die App sortiert die Restaurants nach einem geschätzten Standort. Wechseln Sie zum genauen Standort, um Entfernungen unter 5 Kilometern anzuzeigen.</string>
-    <string name="location_card_desc_none">Erlauben Sie den Zugriff auf Ihren Standort, um die nächstgelegenen Restaurants und deren Entfernungen anzuzeigen. Ihr Standort wird nicht an Dritte weitergegeben.</string>
+    <string name="location_card_desc_coarse">Sortierung nach ungefährem Standort. Genaue Ortung aktivieren für Entfernungen unter 5 km.</string>
+    <string name="location_card_desc_none">Erlaube den Zugriff auf deinen Standort, um Restaurants nach ihrer Nähe zu sortieren und zu sehen, wie weit sie entfernt sind.</string>
 
     <string name="location_card_button_fine">Zugriff gewährt!</string>
     <string name="location_card_button_coarse">Mein Standort ändern</string>
@@ -147,6 +148,7 @@
     <string name="localisation_desactivee">Standort deaktiviert</string>
 
     <string name="bts_cache">Offline-Anzeige</string>
+    <string name="bts_position">Standort deaktiviert</string>
 
     <string name="widget_info">Um ein Croustillapp-Widget hinzuzufügen:\n\n1. Wähle ein Restaurant aus\n\n2. Tippe auf „Mehr“\n\n3. Tippe auf „Widget“</string>
     <string name="widget_chargement">Wird geladen…</string>

@@ -78,11 +78,15 @@ fun copyToClipboard(
     text: String
 ) {
     scope.launch {
-        val clipData = ClipData.newPlainText("txt", text)
+        try {
+            val clipData = ClipData.newPlainText("txt", text)
+            clipboard.setClipEntry(ClipEntry(clipData))
 
-        clipboard.setClipEntry(ClipEntry(clipData))
-
-        val message = context.getString(R.string.copie_toast)
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            val message = context.getString(R.string.copie_toast)
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        } catch (_: Exception) {
+            val error = context.getString(R.string.menu_act_error)
+            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -81,8 +81,8 @@ class RestaurantViewModel(application: Application) : AndroidViewModel(applicati
     private val _errorType = MutableStateFlow<ErrorType>(ErrorType.None)
     val errorType = _errorType.asStateFlow()
 
-    // Etats de l'interface pour les filtres (recherche, region, type, options)
-    // UI states for filters (search query, region, type, options)
+    // FR: Etats de l'interface pour les filtres (recherche, region, type, options)
+    // EN: UI states for filters (search query, region, type, options)
     private val _searchText = MutableStateFlow("")
     private val _selectedRegion = MutableStateFlow("Toutes")
     private val _selectedType = MutableStateFlow("Tous")
@@ -230,7 +230,7 @@ class RestaurantViewModel(application: Application) : AndroidViewModel(applicati
     init {
         // Ecoute les changements d'etat du GPS / Listens to GPS provider status changes
         locationReceiver = locationRepository.registerProviderReceiver {
-            if (locationRepository.isGpsProviderEnabled()) {
+            if (locationRepository.isLocationEnabled()) {
                 checkLocationPermissionAndFetch()
             }
         }
@@ -399,7 +399,7 @@ class RestaurantViewModel(application: Application) : AndroidViewModel(applicati
 
         if (hasPermission) {
             _isPrecisionExact.value = locationRepository.isFineLocationGranted()
-            val isEnabled = locationRepository.isGpsProviderEnabled()
+            val isEnabled = locationRepository.isLocationEnabled()
             _isLocationEnabledOnDevice.value = isEnabled
 
             if (!isEnabled) {
@@ -417,5 +417,23 @@ class RestaurantViewModel(application: Application) : AndroidViewModel(applicati
             _userLocation.value = null
             _isPrecisionExact.value = false
         }
+    }
+
+    private val _hasLocationPermissions = MutableStateFlow(locationRepository.hasLocationPermissions())
+
+    val showGpsOffAlert: StateFlow<Boolean> = combine(
+        _isLocationEnabledOnDevice,
+        _hasLocationPermissions
+    ) { isGpsEnabled, hasPermission ->
+        hasPermission && !isGpsEnabled
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = false
+    )
+
+    fun refreshLocationPermissions() {
+        _hasLocationPermissions.value = locationRepository.hasLocationPermissions()
+        checkLocationPermissionAndFetch()
     }
 }

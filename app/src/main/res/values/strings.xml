@@ -14,13 +14,12 @@
     <string name="restaurants_found">%d restaurant(s) trouvé(s)</string>
 
     <string name="url_github" translatable="false">https://github.com/Toum404/Croustillapp</string>
-    <string name="url_discord" translatable="false">>https://discord.com/invite/yG6FjqbWtk</string>
+    <string name="url_discord" translatable="false">https://discord.com/invite/yG6FjqbWtk</string>
     <string name="url_application">https://croustillant.menu/fr/mobile/android</string>
 
     <string name="action_fermer">Fermer</string>
     <string name="action_favoriser">Favori</string>
     <string name="action_visiter">Visiter %1$s</string>
-    <string name="action_rejoindre">Rejoignez le Discord</string>
 
     <string name="action_effacer">Effacer</string>
 
@@ -32,10 +31,10 @@
     <string name="label_region">Région</string>
 
     <string name="label_tout">Tout</string>
-    <string name="recherche">Chercher un établissement…</string>
+    <string name="recherche">Chercher un restaurant…</string>
     <string name="toast_favoris">Maximum %d favoris</string>
 
-    <string name="inconnu_titre">Aucun établissement trouvé</string>
+    <string name="inconnu_titre">Aucun restaurant trouvé</string>
     <string name="inconnu_description">Essayez de retirer des filtres ou de modifier votre recherche.</string>
 
     <string name="connexion_titre">Aucune connexion</string>
@@ -56,13 +55,14 @@
     <string name="menu_act_export">Exporter (png)</string>
     <string name="menu_act_copy">Tout copier</string>
     <string name="menu_act_error">Une erreur est survenue</string>
+    <string name="menu_title_share">Partager le menu</string>
 
     <string name="label_btn_adresse">Adresse</string>
     <string name="label_btn_telephone">Téléphone</string>
     <string name="label_btn_courriel">Courriel</string>
     <string name="label_btn_plus">Plus</string>
 
-    <string name="action_btn_carte">Ouvrir</string>
+    <string name="action_btn_carte">Carte</string>
     <string name="action_btn_telephoner">Téléphoner</string>
     <string name="action_btn_courriel">Écrire</string>
     <string name="action_btn_partager">Partager</string>
@@ -74,6 +74,7 @@
     <string name="toast_non_courriel">Aucun service courriel</string>
     <string name="toast_non_partage">Impossible de partager</string>
     <string name="toast_non_web">Aucun navigateur internet</string>
+
     <string name="toast_non_widget">Impossible d\'ajouter le widget</string>
 
     <string name="titre_horaires">Horaires</string>
@@ -144,8 +145,8 @@
     <string name="location_card_title_none">Autorisez la géolocalisation</string>
 
     <string name="location_card_desc_fine">Les restaurants sont triés par proximité avec précision. Les distances sont calculées en interne : %1$s ne partage pas vos données.</string>
-    <string name="location_card_desc_coarse">L’application trie les restaurants selon une position estimée. Passez à la position précise pour afficher les distances inférieures à 5 kilomètres.</string>
-    <string name="location_card_desc_none">Autorisez l’accès à votre position pour afficher les restaurants les plus proches et leurs distances. Votre position n’est partagée avec aucun tiers.</string>
+    <string name="location_card_desc_coarse">Les restaurants sont triés une position estimée. Activez la position précise pour afficher les distances de moins de 5 kilomètres.</string>
+    <string name="location_card_desc_none">Autorisez l’accès à votre position pour trier les restaurants selon leur proximité, et afficher à quelle distance ils se situent.</string>
 
     <string name="location_card_button_fine">Accès accordé !</string>
     <string name="location_card_button_coarse">Modifier ma position</string>
@@ -153,6 +154,7 @@
     <string name="localisation_desactivee">Localisation désactivée</string>
 
     <string name="bts_cache">Affichage hors-ligne</string>
+    <string name="bts_position">Localisation désactivée</string>
 
     <string name="widget_info">Pour ajouter un widget Croustillapp :\n\n1. Sélectionnez un restaurant\n\n2. Appuyez sur « Plus »\n\n3. Appuyez sur « Widget »</string>
     <string name="widget_chargement">Chargement en cours…</string>

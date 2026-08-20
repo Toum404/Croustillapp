@@ -92,6 +92,10 @@ fun MenuSection(
     val actionExport = stringResource(R.string.menu_act_export)
     val actionCopy = stringResource(R.string.menu_act_copy)
 
+    val titleShare = stringResource(R.string.menu_title_share)
+    val success = stringResource(R.string.copie_toast)
+    val error = stringResource(R.string.menu_act_error)
+
     var selectedSegment by remember { mutableIntStateOf(0) }
     var showDatePicker by remember { mutableStateOf(false) }
     var customSelectedDateIndex by remember { mutableStateOf<Int?>(null) }
@@ -389,12 +393,12 @@ fun MenuSection(
                                                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                                                 }
 
-                                                val shareIntent = Intent.createChooser(sendIntent, "Partager le menu")
+                                                val shareIntent = Intent.createChooser(sendIntent, titleShare)
                                                 context.startActivity(shareIntent)
 
                                             } catch (e: Exception) {
                                                 e.printStackTrace()
-                                                Toast.makeText(context, "Impossible de préparer le partage du menu", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
                                             }
                                         }
                                     }
@@ -428,9 +432,14 @@ fun MenuSection(
                                         val textToCopy = stringBuilder.toString().trim()
 
                                         coroutineScope.launch {
-                                            clipboard.setClipEntry(
-                                                ClipData.newPlainText("Menu", textToCopy).toClipEntry()
-                                            )
+                                            try {
+                                                clipboard.setClipEntry(
+                                                    ClipData.newPlainText("Menu", textToCopy).toClipEntry()
+                                                )
+                                                Toast.makeText(context, success, Toast.LENGTH_SHORT).show()
+                                            } catch (_: Exception) {
+                                                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+                                            }
                                         }
                                     }
                                 },

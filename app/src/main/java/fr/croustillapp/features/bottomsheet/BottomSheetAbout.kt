@@ -8,6 +8,11 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.border
@@ -39,10 +44,12 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -60,15 +67,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import fr.croustillapp.R
+import fr.croustillapp.features.elements.RestaurantViewModel
 import fr.croustillapp.ui.theme.Jersey10Family
 import kotlinx.coroutines.launch
 
@@ -78,7 +88,10 @@ import kotlinx.coroutines.launch
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Unit) {
+fun BottomSheetInformation(
+    viewModel: RestaurantViewModel = viewModel(),
+    onDismiss: () -> Unit,
+    onPermissionGranted: () -> Unit) {
 
     val sheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
@@ -91,8 +104,9 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
     val sheetColor = BottomSheetDefaults.ContainerColor
     val context = LocalContext.current
 
-    val gitHubUrl = stringResource(R.string.url_github)
+    val showGpsOffAlert by viewModel.showGpsOffAlert.collectAsState()
 
+    val gitHubUrl = stringResource(R.string.url_github)
     val discordUrl = stringResource(R.string.url_discord)
     val webSiteUrl = stringResource(R.string.url_api)
     val appUrl = stringResource(R.string.url_application)
@@ -130,6 +144,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
                     isCoarseGranted = coarse
                     if (fine || coarse) {
                         triggerRadarAnimation = true
+                        viewModel.refreshLocationPermissions()
                         onPermissionGranted()
                     }
                 }
@@ -149,6 +164,7 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
 
         if (isCoarseGranted || isFineGranted) {
             triggerRadarAnimation = true
+            viewModel.refreshLocationPermissions()
             onPermissionGranted()
         }
     }
@@ -423,6 +439,34 @@ fun BottomSheetInformation(onDismiss: () -> Unit, onPermissionGranted: () -> Uni
                     }
                     .padding(8.dp)
             )
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .padding(top = 16.dp)
+            ) {
+                AnimatedVisibility(
+                    visible = showGpsOffAlert,
+                    enter = fadeIn() + scaleIn(initialScale = 0.92f),
+                    exit = fadeOut() + scaleOut(targetScale = 0.92f)
+                ) {
+                    Surface(
+                        shape = RoundedCornerShape(50),
+                        color = MaterialTheme.colorScheme.surface,
+                        contentColor = MaterialTheme.colorScheme.primary,
+                        shadowElevation = 2.dp
+                    ) {
+                        Text(
+                            text = stringResource(R.string.bts_position),
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.padding(horizontal = 50.dp, vertical = 10.dp)
+                        )
+                    }
+                }
+            }
 
             Icon(
                 painter = painterResource(

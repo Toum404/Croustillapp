@@ -14,7 +14,6 @@
     <string name="action_fermer">Cerrar</string>
     <string name="action_favoriser">Favorito</string>
     <string name="action_visiter">Visitar %1$s</string>
-    <string name="action_rejoindre">Únete al Discord</string>
 
     <string name="action_effacer">Borrar</string>
 
@@ -26,10 +25,10 @@
     <string name="label_region">Región</string>
 
     <string name="label_tout">Todo</string>
-    <string name="recherche">Buscar un establecimiento…</string>
+    <string name="recherche">Buscar un restaurante…</string>
     <string name="toast_favoris">Máximo %d favoritos</string>
 
-    <string name="inconnu_titre">No se encontraron establecimientos</string>
+    <string name="inconnu_titre">No se encontraron restaurantes</string>
     <string name="inconnu_description">Prueba a quitar filtros o a modificar tu búsqueda.</string>
 
     <string name="connexion_titre">Sin conexión</string>
@@ -50,13 +49,14 @@
     <string name="menu_act_export">Exportar (png)</string>
     <string name="menu_act_copy">Copiar todo</string>
     <string name="menu_act_error">Ha ocurrido un error</string>
+    <string name="menu_title_share">Compartir menú</string>
 
     <string name="label_btn_adresse">Dirección</string>
     <string name="label_btn_telephone">Teléfono</string>
     <string name="label_btn_courriel">Correo</string>
     <string name="label_btn_plus">Más</string>
 
-    <string name="action_btn_carte">Abrir</string>
+    <string name="action_btn_carte">Mapa</string>
     <string name="action_btn_telephoner">Llamar</string>
     <string name="action_btn_courriel">Escribir</string>
     <string name="action_btn_partager">Compartir</string>
@@ -68,6 +68,7 @@
     <string name="toast_non_courriel">No hay ningún servicio de correo disponible</string>
     <string name="toast_non_partage">No se pudo compartir</string>
     <string name="toast_non_web">Ningún navegador web</string>
+
     <string name="toast_non_widget">No se puede añadir el widget</string>
 
     <string name="titre_horaires">Horarios</string>
@@ -138,8 +139,8 @@
     <string name="location_card_title_none">Permitir la geolocalización</string>
 
     <string name="location_card_desc_fine">Los restaurantes se ordenan por proximidad con precisión. Las distancias se calculan internamente: %1$s no comparte tus datos.</string>
-    <string name="location_card_desc_coarse">La aplicación ordena los restaurantes según una ubicación estimada. Cambia a la ubicación precisa para ver las distancias inferiores a 5 kilómetros.</string>
-    <string name="location_card_desc_none">Permite el acceso a tu ubicación para mostrar los restaurantes más cercanos y sus distancias. Tu ubicación no se comparte con ningún tercero.</string>
+    <string name="location_card_desc_coarse">Los restaurantes se ordenan según una ubicación estimada. Activa la ubicación precisa para mostrar distancias de menos de 5 kilómetros.</string>
+    <string name="location_card_desc_none">Permite el acceso a tu ubicación para ordenar los restaurantes por proximidad y ver a qué distancia se encuentran.</string>
 
     <string name="location_card_button_fine">¡Acceso concedido!</string>
     <string name="location_card_button_coarse">Modificar mi ubicación</string>
@@ -147,6 +148,7 @@
     <string name="localisation_desactivee">Ubicación desactivada</string>
 
     <string name="bts_cache">Vista sin conexión</string>
+    <string name="bts_position">Ubicación desactivada</string>
 
     <string name="widget_info">Para añadir un widget de Croustillapp:\n\n1. Selecciona un restaurante\n\n2. Pulsa "Más"\n\n3. Pulsa "Widget"</string>
     <string name="widget_chargement">Cargando…</string>
