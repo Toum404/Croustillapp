@@ -30,6 +30,8 @@
   <p>Cette application n'est <strong>PAS</strong> l'application officielle du projet CROUStillant, et elle n'est <strong>AUCUNEMENT</strong> reconnue par le CROUS et ses services.</p>
 </div>
 
+[<img src="https://f-droid.org/badge/get-it-on-fr.png" alt="Disponible sur F-Droid" height="80">](https://f-droid.org/fr/packages/fr.croustillapp/) [<img src="images/download.png" alt="Télécharger le fichier" height="80">](https://github.com/Toum404/Croustillapp/releases/latest/download/app-release.apk)
+
 <table>
   <tr>
     <td width="40%">
