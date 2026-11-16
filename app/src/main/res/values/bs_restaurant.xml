@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="card_statut_new">Nouveau !</string>
+
+    <string name="restaurant_statut_proche">À proximité</string>
+    <string name="restaurant_statut_inconnu">Localisation désactivée</string>
+
+    <string name="bs_statut_tit">Actuellement %1$s</string>
+    <string name="bs_statut_on">Ouvert</string>
+    <string name="bs_statut_off">Fermé</string>
+
+    <string name="distance_meters">À %1$d m</string>
+    <string name="distance_kilometers">À %1$.1f km</string>
+
+    <string name="bs_label_horaires">Horaires</string>
+    <string name="bs_aucun_horaire">Horaires non communiqués</string>
+    <string name="bs_info_horaires">Généré automatiquement. Horaires indicatifs.</string>
+
+    <string name="bs_alert_ajd">Aujourd’hui : %1$s</string>
+    <string name="bs_alert_dem">Demain : %1$s</string>
+
+    <string name="bs_colonne_matin">Matin</string>
+    <string name="bs_colonne_midi">Midi</string>
+    <string name="bs_colonne_soir">Soir</string>
+
+    <string name="bs_menu_empty">Aucun menu à afficher</string>
+    <string name="bs_menu_select">Sélectionnez un jour</string>
+
+    <string name="bs_label_menu">Menu</string>
+    <string name="bs_aucun_menu">Aucun menu communiqué</string>
+    <string name="bs_erreur_menu">En attente de connexion</string>
+
+    <string name="bs_menu_pts">pts</string>
+
+    <string name="bs_chp_ajd">Auj.</string>
+    <string name="bs_chip_dem">Dem.</string>
+
+    <string name="bs_btn_1">Fermer</string>
+    <string name="bs_btn_2">Favori</string>
+    <string name="bs_btn_3">Sélectionner</string>
+
+    <string name="bas_info_code">Code</string>
+</resources>

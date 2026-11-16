@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_mention">"Data provided by "</string>
+
+    <string name="info_api_discord">Discord</string>
+    <string name="info_api_app">App</string>
+    <string name="info_api_website">Website</string>
+
+
+    <string name="bloc_interface">Interface</string>
+
+    <string name="switch_ergonomique">Ergonomic mode</string>
+    <string name="switch_ergonomique_desc">Hides the navigation bar</string>
+
+
+    <string name="bloc_langage">Language</string>
+
+    <string name="ddm_app">App language</string>
+    <string name="ddm_app_desc">Menus are not translated</string>
+
+    <string name="ddm_link">Link language</string>
+    <string name="ddm_link_desc">Language used for generating links</string>
+
+
+    <string name="bloc_apparence">Appearance</string>
+
+    <string name="ddm_theme">App theme</string>
+    <string name="ddm_theme_desc">System, light, or dark</string>
+
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+
+    <string name="switch_noir">Pure black</string>
+    <string name="switch_noir_desc">Background optimized for AMOLED screens</string>
+
+    <string name="switch_dynamique">Dynamic colors</string>
+    <string name="switch_dynamique_desc">Tints matching your wallpaper</string>
+
+    <string name="sb_contraste">Contrast level</string>
+    <string name="sb_contraste_1">Medium contrast</string>
+    <string name="sb_contraste_2">High contrast</string>
+    <string name="sb_contraste_0">Standard contrast</string>
+
+
+    <string name="bloc_localisation">Location</string>
+
+    <string name="sb_position">Accuracy level</string>
+    <string name="sb_position_1">Approximate location access</string>
+    <string name="sb_position_2">Precise location access</string>
+    <string name="sb_position_0">Location access denied (Alphabetical sort)</string>
+    <string name="sb_position_X">The set location takes priority</string>
+
+    <string name="switch_manu">Custom location</string>
+    <string name="switch_manu_desc">Custom coordinates</string>
+
+
+    <string name="bloc_carte">Map</string>
+
+    <string name="switch_boutons">Accessibility buttons</string>
+    <string name="switch_boutons_desc">- | + buttons on the map</string>
+
+    <string name="switch_noms">Old region names</string>
+    <string name="switch_noms_desc">Region names prior to 2016</string>
+</resources>

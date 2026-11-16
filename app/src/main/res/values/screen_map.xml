@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="carte_erreur">Erreur</string>
+
+    <string name="act_zoom_moins">Rétrécir</string>
+    <string name="act_zoom_plus">Agrandir</string>
+
+    <string name="carte_vide_titre">Touchez pour sélectionner</string>
+    <string name="carte_vide_description">Vous pouvez agrandir et vous déplacer sur la carte pour choisir une région</string>
+</resources>

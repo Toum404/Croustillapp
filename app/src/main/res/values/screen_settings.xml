@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_mention">"Données fournies par "</string>
+
+    <string name="info_api_discord">Discord</string>
+    <string name="info_api_app">Appli</string>
+    <string name="info_api_website">Site</string>
+
+
+    <string name="bloc_interface">Interface</string>
+
+    <string name="switch_ergonomique">Mode ergonomique</string>
+    <string name="switch_ergonomique_desc">Masque la barre de navigation</string>
+
+
+    <string name="bloc_langage">Langage</string>
+
+    <string name="ddm_app">Langue de l\'application</string>
+    <string name="ddm_app_desc">Les menus ne sont pas traduis</string>
+
+    <string name="ddm_link">Langue des liens</string>
+    <string name="ddm_link_desc">Langue de génération des liens</string>
+
+
+    <string name="bloc_apparence">Apparence</string>
+
+    <string name="ddm_theme">Thème de l\'application</string>
+    <string name="ddm_theme_desc">Système, clair ou sombre</string>
+
+    <string name="theme_system">Système</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
+
+    <string name="switch_noir">Noir absolu</string>
+    <string name="switch_noir_desc">Fond adapté aux écrans AMOLED</string>
+
+    <string name="switch_dynamique">Couleurs dynamiques</string>
+    <string name="switch_dynamique_desc">Teintes adaptées au fond d\'écran</string>
+
+    <string name="sb_contraste">Niveau de contraste</string>
+    <string name="sb_contraste_1">Contraste moyen</string>
+    <string name="sb_contraste_2">Contraste élevé</string>
+    <string name="sb_contraste_0">Contraste standard</string>
+
+
+    <string name="bloc_localisation">Localisation</string>
+
+    <string name="sb_position">Niveau de précision</string>
+    <string name="sb_position_1">Accès à la position approximative</string>
+    <string name="sb_position_2">Accès à la position précise</string>
+    <string name="sb_position_0">Accès à la position refusé (Tri alphabétique)</string>
+    <string name="sb_position_X">La position définie est prioritaire</string>
+
+    <string name="switch_manu">Position définie</string>
+    <string name="switch_manu_desc">Coordonnées personnalisées</string>
+
+
+    <string name="bloc_carte">Carte</string>
+
+    <string name="switch_boutons">Boutons d\'accessibilité</string>
+    <string name="switch_boutons_desc">Boutons - | + sur la carte</string>
+
+    <string name="switch_noms">Anciens noms de région</string>
+    <string name="switch_noms_desc">Noms des régions d\'avant 2016</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_menu_plus">More</string>
+    <string name="dialog_menu_moins">Less</string>
+
+    <string name="dialog_tit_adresse">Address</string>
+    <string name="dialog_btn_carte">Map</string>
+    <string name="dialog_non_carte">No map service available</string>
+
+    <string name="dialog_tit_telephone">Phone</string>
+    <string name="dialog_btn_telephone">Call</string>
+    <string name="dialog_non_telephone">No phone service available</string>
+
+    <string name="dialog_tit_courriel">Email</string>
+    <string name="dialog_btn_courriel">Write</string>
+    <string name="dialog_non_courriel">No email service available</string>
+
+    <string name="dialog_btn_partager">Share</string>
+    <string name="dialog_non_partage">Unable to share</string>
+
+    <string name="dialog_btn_web">Online</string>
+    <string name="dialog_non_web">No web browser</string>
+
+    <string name="dialog_btn_widget">Widget</string>
+    <string name="dialog_tit_widget">Preview</string>
+    <string name="dialog_act_widget_0">Error</string>
+    <string name="dialog_act_widget_1">Add</string>
+    <string name="dialog_act_widget_2">Widget created</string>
+
+    <string name="dialog_tit_position">Position</string>
+    <string name="dialog_txt_lat">Latitude (-90 to 90)</string>
+    <string name="dialog_txt_lon">Longitude (-180 to 180)</string>
+    <string name="dialog_btn_appliquer">Apply</string>
+    <string name="dialog_btn_effacer">Clear</string>
+
+    <string name="dialog_btn_ics">ICS</string>
+    <string name="dialog_minimal_titre">Short events</string>
+    <string name="dialog_minimal_description">Shows 15-minute events (8am, 12pm, 7pm) instead of the opening hours, to keep your calendar tidy.</string>
+    <string name="dialog_btn_agenda">Add to Google Calendar</string>
+    <string name="dialog_btn_copy">Copy link</string>
+
+    <string name="dialog_checkbox_on">Selected</string>
+    <string name="dialog_checkbox_off">Unselected</string>
+</resources>

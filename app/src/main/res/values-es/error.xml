@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_cache">Vista sin conexión</string>
+
+    <string name="error_favoris_max">Limitado a %d favoritos</string>
+
+    <string name="error_empty_tit">No se encontraron restaurantes</string>
+    <string name="error_empty_txt">Prueba a quitar filtros o a modificar tu búsqueda.</string>
+
+    <string name="error_parametres">No es posible abrir la configuración</string>
+
+    <string name="error_calendrier">Ninguna aplicación compatible</string>
+
+    <string name="error_restaurant_tit">¡Vaya!</string>
+    <string name="error_restaurant_txt">Este restaurante no existe o aún no está disponible en la aplicación.</string>
+    <string name="error_solution">Resultados similares</string>
+</resources>

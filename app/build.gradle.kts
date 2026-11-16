@@ -29,8 +29,8 @@ android {
         applicationId = "fr.croustillapp"
         minSdk = 33
         targetSdk = 36
-        versionCode = 7
-        versionName = "2.0.1"
+        versionCode = 8
+        versionName = "3.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -66,42 +66,54 @@ android {
 }
 
 dependencies {
+    // --- 1. AndroidX & UI / Compose ---
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui.text)
-    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.material3)
+    implementation(libs.material)
+
+    // --- 2. Architecture & Lifecycle ---
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.datastore.preferences)
+
+    // --- 3. Réseau & Sérialisation ---
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.okhttp)
+    implementation(libs.kotlinx.serialization.json)
+
+    // --- 4. Base de données (Room) ---
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+
+    // --- 5. Autres (Widgets, Images...) ---
+    implementation(libs.androidx.glance.appwidget)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.gif)
+
+    // --- 6. Processeurs de annotations (KSP) ---
+    ksp(libs.androidx.room.compiler)
+
+    // --- 7. Tests Unitaires ---
     testImplementation(libs.junit)
+
+    // --- 8. Tests d'Instrumentation ---
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+
+    // --- 9. Debug (LeakCanary, Outils UI) ---
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-    implementation(libs.coil.compose)
-    implementation(libs.coil.gif)
-
-    implementation(libs.kotlinx.serialization.json)
-
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-
-    implementation(libs.androidx.datastore.preferences)
-
-    implementation(libs.retrofit)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.okhttp)
-
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
-
-    implementation(libs.androidx.lifecycle.runtime.compose)
-
-    implementation(libs.androidx.glance.appwidget)
+    debugImplementation(libs.leakcanary.android)
 }

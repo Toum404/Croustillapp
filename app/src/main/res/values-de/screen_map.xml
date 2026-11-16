@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="carte_erreur">Fehler</string>
+
+    <string name="act_zoom_moins">Herauszoomen</string>
+    <string name="act_zoom_plus">Heranzoomen</string>
+
+    <string name="carte_vide_titre">Zum Auswählen tippen</string>
+    <string name="carte_vide_description">Du kannst in die Karte hineinzoomen und dich bewegen, um eine Region auszuwählen</string>
+</resources>

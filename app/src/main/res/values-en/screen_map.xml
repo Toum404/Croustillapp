@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="carte_erreur">Error</string>
+
+    <string name="act_zoom_moins">Zoom out</string>
+    <string name="act_zoom_plus">Zoom in</string>
+
+    <string name="carte_vide_titre">Tap to select</string>
+    <string name="carte_vide_description">You can zoom in and move around the map to choose a region</string>
+</resources>

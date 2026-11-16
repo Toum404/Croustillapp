@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ferie_nouvelAn">Jour de l’an</string>
+
+    <string name="ferie_premierMai">Fête du Travail</string>
+
+    <string name="ferie_victoire2GM">Victoire 1945</string>
+
+    <string name="ferie_feteNationale">Prise de la Bastille</string>
+
+    <string name="ferie_assomption">Assomption</string>
+
+    <string name="ferie_toussaint">Toussaint</string>
+
+    <string name="ferie_armistice">Armistice de 1918</string>
+
+    <string name="ferie_noel">Noël</string>
+
+    <string name="ferie_paque">Lundi de Pâques</string>
+
+    <string name="ferie_ascension">Ascension</string>
+
+    <string name="ferie_pentecote">Lundi de Pentecôte</string>
+
+    <string name="ferie_vendrediSaint">Vendredi Saint</string>
+
+    <string name="ferie_saintEtienne">Saint-Étienne</string>
+</resources>

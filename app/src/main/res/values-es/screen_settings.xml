@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_mention">"Datos proporcionados por "</string>
+
+    <string name="info_api_discord">Discord</string>
+    <string name="info_api_app">Aplicación</string>
+    <string name="info_api_website">Sitio web</string>
+
+
+    <string name="bloc_interface">Interfaz</string>
+
+    <string name="switch_ergonomique">Modo ergonómico</string>
+    <string name="switch_ergonomique_desc">Oculta la barra de navegación</string>
+
+
+    <string name="bloc_langage">Idioma</string>
+
+    <string name="ddm_app">Idioma de la aplicación</string>
+    <string name="ddm_app_desc">Los menús no están traducidos</string>
+
+    <string name="ddm_link">Idioma de los enlaces</string>
+    <string name="ddm_link_desc">Idioma de generación de enlaces</string>
+
+
+    <string name="bloc_apparence">Apariencia</string>
+
+    <string name="ddm_theme">Tema de la aplicación</string>
+    <string name="ddm_theme_desc">Sistema, claro u oscuro</string>
+
+    <string name="theme_system">Sistema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+
+    <string name="switch_noir">Negro puro</string>
+    <string name="switch_noir_desc">Fondo adaptado a pantallas AMOLED</string>
+
+    <string name="switch_dynamique">Colores dinámicos</string>
+    <string name="switch_dynamique_desc">Tonos adaptados al fondo de pantalla</string>
+
+    <string name="sb_contraste">Nivel de contraste</string>
+    <string name="sb_contraste_1">Contraste medio</string>
+    <string name="sb_contraste_2">Contraste alto</string>
+    <string name="sb_contraste_0">Contraste estándar</string>
+
+
+    <string name="bloc_localisation">Ubicación</string>
+
+    <string name="sb_position">Nivel de precisión</string>
+    <string name="sb_position_1">Acceso a la ubicación aproximada</string>
+    <string name="sb_position_2">Acceso a la ubicación precisa</string>
+    <string name="sb_position_0">Acceso a la ubicación denegado (Orden alfabético)</string>
+    <string name="sb_position_X">La ubicación establecida es prioritaria</string>
+
+    <string name="switch_manu">Ubicación definida</string>
+    <string name="switch_manu_desc">Coordenadas personalizadas</string>
+
+
+    <string name="bloc_carte">Mapa</string>
+
+    <string name="switch_boutons">Botones de accesibilidad</string>
+    <string name="switch_boutons_desc">Botones - | + en el mapa</string>
+
+    <string name="switch_noms">Antiguos nombres de regiones</string>
+    <string name="switch_noms_desc">Nombres de las regiones anteriores a 2016</string>
+</resources>

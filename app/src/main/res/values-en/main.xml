@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navbar_1_map">Map</string>
+    <string name="navbar_2_home">Home</string>
+    <string name="navbar_3_settings">Settings</string>
+</resources>

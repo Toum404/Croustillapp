@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="type">All</string>
+
+    <string name="type_brasserie">Brasserie</string>
+
+    <string name="type_cafeteria">Cafeteria</string>
+
+    <string name="type_coffee">Coffee corner</string>
+
+    <string name="type_kiosque">Kiosk</string>
+
+    <string name="type_libre_service">Self-service</string>
+
+    <string name="type_pizzeria">Pizzeria</string>
+
+    <string name="type_restaurant">Restaurant</string>
+
+    <string name="type_resto_admin">Administrative restaurant</string>
+
+    <string name="type_resto_agree">Partner restaurant</string>
+
+    <string name="type_resto_gere">Managed restaurant</string>
+
+    <string name="type_sandwicherie">Sandwich bar</string>
+
+    <string name="type_triporteur">Food cart</string>
+
+    <string name="type_epicerie">Grocery store</string>
+</resources>

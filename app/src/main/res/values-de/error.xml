@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_cache">Offline-Anzeige</string>
+
+    <string name="error_favoris_max">Auf %d Favoriten begrenzt</string>
+
+    <string name="error_empty_tit">Keine Restaurant gefunden</string>
+    <string name="error_empty_txt">Versuchen Sie, Filter zu entfernen oder Ihre Suche zu ändern.</string>
+
+    <string name="error_parametres">Einstellungen können nicht geöffnet werden</string>
+
+    <string name="error_calendrier">Keine kompatible Anwendung</string>
+
+    <string name="error_restaurant_tit">Ups!</string>
+    <string name="error_restaurant_txt">Dieses Restaurant existiert nicht oder ist in der App noch nicht verfügbar.</string>
+    <string name="error_solution">Ähnliche Ergebnisse</string>
+</resources>

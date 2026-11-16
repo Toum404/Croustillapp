@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ferie_nouvelAn">New Year’s Day</string>
+
+    <string name="ferie_premierMai">Labour Day</string>
+
+    <string name="ferie_victoire2GM">Victory in Europe Day</string>
+
+    <string name="ferie_feteNationale">Bastille Day</string>
+
+    <string name="ferie_assomption">Assumption of Mary</string>
+
+    <string name="ferie_toussaint">All Saints’ Day</string>
+
+    <string name="ferie_armistice">Armistice Day</string>
+
+    <string name="ferie_noel">Christmas Day</string>
+
+    <string name="ferie_paque">Easter Monday</string>
+
+    <string name="ferie_ascension">Ascension Day</string>
+
+    <string name="ferie_pentecote">Whit Monday</string>
+
+    <string name="ferie_vendrediSaint">Good Friday</string>
+
+    <string name="ferie_saintEtienne">St. Stephen’s Day</string>
+</resources>

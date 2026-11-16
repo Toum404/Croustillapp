@@ -1,156 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="statut_code">Code</string>
 
-    <string name="service_description">CROUStillant ist ein Projekt, das darauf abzielt, die Menüs von Mensen in Frankreich und den Überseegebieten bereitzustellen.</string>
-
-    <string name="api_mention">"Daten bereitgestellt von "</string>
+    <string name="api_exclu">Von %1$s</string>
     <string name="url_api">https://croustillant.menu/en</string>
     <string name="url_action_erreur">Link konnte nicht geöffnet werden</string>
-    <string name="restaurants_found">%d Restaurant(s) gefunden</string>
 
-    <string name="url_application">https://croustillant.menu/en/mobile/android</string>
-
-    <string name="action_fermer">Schließen</string>
-    <string name="action_favoriser">Favorit</string>
-    <string name="action_visiter">%1$s besuchen</string>
 
     <string name="action_effacer">Löschen</string>
 
-    <string name="statut_actuellement">Aktuell %1$s</string>
-    <string name="statut_ouvert">Offen</string>
-    <string name="statut_ferme">Geschlossen</string>
-
-    <string name="label_type">Typ</string>
-    <string name="label_region">Region</string>
-
-    <string name="label_tout">Alle</string>
-    <string name="recherche">Restaurant suchen…</string>
-    <string name="toast_favoris">Maximal %d Favoriten</string>
-
-    <string name="inconnu_titre">Keine Restaurant gefunden</string>
-    <string name="inconnu_description">Versuchen Sie, Filter zu entfernen oder Ihre Suche zu ändern.</string>
-
-    <string name="connexion_titre">Keine Verbindung</string>
-    <string name="connexion_description">Kein Internetzugang möglich. Bitte überprüfen Sie Ihr WLAN oder Ihre mobilen Daten.</string>
-
-    <string name="serveur_titre">Anfrage unterbrochen</string>
-    <string name="serveur_description">Der Server ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später noch einmal.</string>
-
-    <string name="description_informations">Informationen</string>
-    <string name="description_app">%1$s ist eine freie und Open-Source-Anwendung, die auf der öffentlichen API von %2$s basiert. %1$s ist keine offizielle Anwendung des %2$s-Projekts und steht in keiner Verbindung zu %3$s und dessen Diensten.</string>
-    <string name="info_api_discord">Discord</string>
-    <string name="info_api_website">Webseite</string>
-    <string name="info_api_app">App</string>
 
     <string name="copie_toast">In Zwischenablage kopiert!</string>
     <string name="copie_action">Kopieren</string>
 
-    <string name="menu_act_export">Exportieren (png)</string>
-    <string name="menu_act_copy">Alles kopieren</string>
+    <string name="menu_act_export">Exportieren</string>
+    <string name="menu_act_event">Termin</string> <!-- "Termin" ou "Ereignis", mais "Termin" est plus naturel pour un calendrier -->
+    <string name="menu_act_copy">Kopieren</string>
     <string name="menu_act_error">Ein Fehler ist aufgetreten</string>
     <string name="menu_title_share">Menü teilen</string>
 
-    <string name="label_btn_adresse">Adresse</string>
-    <string name="label_btn_telephone">Telefon</string>
-    <string name="label_btn_courriel">E-Mail</string>
-    <string name="label_btn_plus">Mehr</string>
-
-    <string name="action_btn_carte">Karte</string>
-    <string name="action_btn_telephoner">Anrufen</string>
-    <string name="action_btn_courriel">Schreiben</string>
-    <string name="action_btn_partager">Teilen</string>
-    <string name="action_btn_web">Online ansehen</string>
-    <string name="action_btn_widget">Widget</string>
-
-    <string name="toast_non_carte">Kein Kartendienst verfügbar</string>
-    <string name="toast_non_telephone">Kein Telefondienst verfügbar</string>
-    <string name="toast_non_courriel">Kein E-Mail-Dienst verfügbar</string>
-    <string name="toast_non_partage">Teilen nicht möglich</string>
-    <string name="toast_non_web">Kein Webbrowser</string>
-
-    <string name="toast_non_widget">Widget konnte nicht hinzugefügt werden</string>
-
-    <string name="titre_horaires">Öffnungszeiten</string>
-    <string name="horaires_non_disponibles">Öffnungszeiten nicht bekannt gegeben</string>
-    <string name="info_horaires">Automatisch generiert. Unverbindliche Zeiten.</string>
-
-    <string name="colonne_matin">Morgens</string>
-    <string name="colonne_midi">Mittags</string>
-    <string name="colonne_soir">Abends</string>
-
-    <string name="label_menu">Menü</string>
-    <string name="aucun_menu">Kein Menü mitgeteilt</string>
-
-    <string name="menu_empty">Kein Menü zum Anzeigen</string>
-    <string name="menu_select">Wählen Sie einen Tag aus</string>
-
-    <string name="erreur_menu">Menü konnte nicht geladen werden</string>
-    <string name="recharger_menu">Zum Wiederholen tippen</string>
-
-    <string name="holiday_alert_today">Heute: %1$s</string>
-    <string name="holiday_alert_tomorrow">Morgen: %1$s</string>
-
-    <string name="date_today">Heute</string>
-    <string name="date_tomorrow">Morgen</string>
-
-    <string name="cancel">Abbrechen</string>
-    <string name="select">Auswählen</string>
-
-    <string name="holiday_new_year">Neujahr</string>
-    <string name="holiday_labor_day">Tag der Arbeit</string>
-    <string name="holiday_victory_1945">Tag des Sieges 1945</string>
-    <string name="holiday_national_day">Nationalfeiertag</string>
-    <string name="holiday_assumption">Mariä Himmelfahrt</string>
-    <string name="holiday_all_saints">Allerheiligen</string>
-    <string name="holiday_armistice_1918">Waffenstillstand von 1918</string>
-    <string name="holiday_christmas">Weihnachten</string>
-    <string name="holiday_easter_monday">Ostermontag</string>
-    <string name="holiday_ascension">Christi Himmelfahrt</string>
-    <string name="holiday_whit_monday">Pfingstmontag</string>
-    <string name="holiday_good_friday">Karfreitag</string>
-    <string name="holiday_boxing_day">Zweiter Weihnachtsfeiertag</string>
-
-    <string name="filtre_tous">Alle</string>
-    <string name="type_brasserie">Brasserie</string>
-    <string name="type_cafeteria">Cafeteria</string>
-    <string name="type_coffee">Café</string>
-    <string name="type_kiosque">Kiosk</string>
-    <string name="type_libre_service">Selbstbedienung</string>
-    <string name="type_pizzeria">Pizzeria</string>
-    <string name="type_restaurant">Restaurant</string>
-    <string name="type_resto_admin">Verwaltungsrestaurant</string>
-    <string name="type_resto_agree">Partner-Restaurant</string>
-    <string name="type_resto_gere">Geführtes Restaurant</string>
-    <string name="type_sandwicherie">Sandwichbar</string>
-    <string name="type_triporteur">Verkaufswagen</string>
-    <string name="type_epicerie">Lebensmittelgeschäft</string>
-
-    <string name="oups">Ups!</string>
-    <string name="deeplink_error_not_found">Dieses Restaurant existiert nicht oder ist in der App noch nicht verfügbar.</string>
-
-    <string name="mini_distance">In der Nähe</string>
-
-    <string name="distance_meters">In %1$d m</string>
-    <string name="distance_kilometers">In %1$.1f km</string>
-
-    <string name="location_card_title_fine">Genauer Standort aktiv</string>
-    <string name="location_card_title_coarse">Ungefährer Standort aktiv</string>
-    <string name="location_card_title_none">Standortzugriff erlauben</string>
-
-    <string name="location_card_desc_fine">Die Restaurants werden präzise nach Nähe sortiert. Die Entfernungen werden intern berechnet: %1$s teilt Ihre Daten nicht.</string>
-    <string name="location_card_desc_coarse">Sortierung nach ungefährem Standort. Genaue Ortung aktivieren für Entfernungen unter 5 km.</string>
-    <string name="location_card_desc_none">Erlaube den Zugriff auf deinen Standort, um Restaurants nach ihrer Nähe zu sortieren und zu sehen, wie weit sie entfernt sind.</string>
-
-    <string name="location_card_button_fine">Zugriff gewährt!</string>
-    <string name="location_card_button_coarse">Mein Standort ändern</string>
-    <string name="location_card_button_none">Zugriff erlauben</string>
-    <string name="localisation_desactivee">Standort deaktiviert</string>
-
-    <string name="bts_cache">Offline-Anzeige</string>
-    <string name="bts_position">Standort deaktiviert</string>
-
-    <string name="widget_info">Um ein Croustillapp-Widget hinzuzufügen:\n\n1. Wähle ein Restaurant aus\n\n2. Tippe auf „Mehr“\n\n3. Tippe auf „Widget“</string>
-    <string name="widget_chargement">Wird geladen…</string>
-    <string name="widget_erreur">Menü konnte nicht geladen werden</string>
 </resources>

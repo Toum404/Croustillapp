@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navbar_1_map">Karte</string>
+    <string name="navbar_2_home">Startseite</string>
+    <string name="navbar_3_settings">Einstellungen</string>
+</resources>

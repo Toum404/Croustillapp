@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_info">Pour ajouter un widget Croustillapp :\n\n1. Sélectionnez un restaurant\n\n2. Appuyez sur « Plus »\n\n3. Appuyez sur « Widget »</string>
+
+    <string name="widget_chargement">Chargement en cours…</string>
+
+    <string name="widget_erreur">Impossible de charger le menu</string>
+</resources>

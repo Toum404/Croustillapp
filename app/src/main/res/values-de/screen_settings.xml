@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_mention">"Daten bereitgestellt von "</string>
+
+    <string name="info_api_discord">Discord</string>
+    <string name="info_api_app">App</string>
+    <string name="info_api_website">Webseite</string>
+
+
+    <string name="bloc_interface">Benutzeroberfläche</string>
+
+    <string name="switch_ergonomique">Ergonomischer Modus</string>
+    <string name="switch_ergonomique_desc">Navigationsleiste ausblenden</string>
+
+
+    <string name="bloc_langage">Sprache</string>
+
+    <string name="ddm_app">App-Sprache</string>
+    <string name="ddm_app_desc">Menüs sind nicht übersetzt</string>
+
+    <string name="ddm_link">Link-Sprache</string>
+    <string name="ddm_link_desc">Sprache zur Generierung von Links</string>
+
+
+    <string name="bloc_apparence">Erscheinungsbild</string>
+
+    <string name="ddm_theme">App-Design</string>
+    <string name="ddm_theme_desc">System, hell oder dunkel</string>
+
+    <string name="theme_system">System</string>
+    <string name="theme_light">Hell</string>
+    <string name="theme_dark">Dunkel</string>
+
+    <string name="switch_noir">Reines Schwarz</string>
+    <string name="switch_noir_desc">Hintergrund optimiert für AMOLED-Bildschirme</string>
+
+    <string name="switch_dynamique">Dynamische Farben</string>
+    <string name="switch_dynamique_desc">An das Hintergrundbild angepasste Farbtöne</string>
+
+    <string name="sb_contraste">Kontraststufe</string>
+    <string name="sb_contraste_1">Mittlerer Kontrast</string>
+    <string name="sb_contraste_2">Hoher Kontrast</string>
+    <string name="sb_contraste_0">Standard-Kontrast</string>
+
+
+    <string name="bloc_localisation">Standort</string>
+
+    <string name="sb_position">Genauigkeitsstufe</string>
+    <string name="sb_position_1">Ungefährer Standortzugriff</string>
+    <string name="sb_position_2">Genauer Standortzugriff</string>
+    <string name="sb_position_0">Standortzugriff verweigert (Alphabetisch sortiert)</string>
+    <string name="sb_position_X">Der festgelegte Standort hat Vorrang</string>
+
+    <string name="switch_manu">Definierter Standort</string>
+    <string name="switch_manu_desc">Benutzerdefinierte Koordinaten</string>
+
+
+    <string name="bloc_carte">Karte</string>
+
+    <string name="switch_boutons">Barrierefreiheit-Schaltflächen</string>
+    <string name="switch_boutons_desc">- | + Schaltflächen auf der Karte</string>
+
+    <string name="switch_noms">Alte Regionsnamen</string>
+    <string name="switch_noms_desc">Regionsnamen vor 2016</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_menu_plus">Plus</string>
+    <string name="dialog_menu_moins">Moins</string>
+
+    <string name="dialog_tit_adresse">Adresse</string>
+    <string name="dialog_btn_carte">Carte</string>
+    <string name="dialog_non_carte">Aucun service cartographique</string>
+
+    <string name="dialog_tit_telephone">Téléphone</string>
+    <string name="dialog_btn_telephone">Téléphoner</string>
+    <string name="dialog_non_telephone">Aucun service téléphonique</string>
+
+    <string name="dialog_tit_courriel">Courriel</string>
+    <string name="dialog_btn_courriel">Écrire</string>
+    <string name="dialog_non_courriel">Aucun service courriel</string>
+
+    <string name="dialog_btn_partager">Partager</string>
+    <string name="dialog_non_partage">Impossible de partager</string>
+
+    <string name="dialog_btn_web">En ligne</string>
+    <string name="dialog_non_web">Aucun navigateur internet</string>
+
+    <string name="dialog_btn_widget">Widget</string>
+    <string name="dialog_tit_widget">Aperçu</string>
+    <string name="dialog_act_widget_0">Erreur</string>
+    <string name="dialog_act_widget_1">Ajouter</string>
+    <string name="dialog_act_widget_2">Widget crée</string>
+
+    <string name="dialog_tit_position">Position</string>
+    <string name="dialog_txt_lat">Latitude (-90 à 90)</string>
+    <string name="dialog_txt_lon">Longitude (-180 à 180)</string>
+    <string name="dialog_btn_appliquer">Appliquer</string>
+    <string name="dialog_btn_effacer">Effacer</string>
+
+    <string name="dialog_btn_ics">ICS</string>
+    <string name="dialog_minimal_titre">Mode minimal</string>
+    <string name="dialog_minimal_description">Affiche des événements de 15 minutes (8h, 12h, 19h) plutôt que les horaires d\'ouverture, pour ne pas encombrer votre agenda.</string>
+    <string name="dialog_btn_agenda">Ajouter à Google Agenda</string>
+    <string name="dialog_btn_copy">Copier le lien</string>
+
+    <string name="dialog_checkbox_on">Sélectionné</string>
+    <string name="dialog_checkbox_off">Non sélectionné</string>
+</resources>

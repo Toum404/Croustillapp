@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_search">Buscar un restaurante…</string>
+
+    <string name="filtre_region">Región</string>
+    <string name="filtre_type">Categoría</string>
+</resources>

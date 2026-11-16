@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ferie_nouvelAn">Neujahr</string>
+
+    <string name="ferie_premierMai">Tag der Arbeit</string>
+
+    <string name="ferie_victoire2GM">Tag des Sieges 1945</string>
+
+    <string name="ferie_feteNationale">Nationalfeiertag</string>
+
+    <string name="ferie_assomption">Mariä Himmelfahrt</string>
+
+    <string name="ferie_toussaint">Allerheiligen</string>
+
+    <string name="ferie_armistice">Waffenstillstand von 1918</string>
+
+    <string name="ferie_noel">Weihnachten</string>
+
+    <string name="ferie_paque">Ostermontag</string>
+
+    <string name="ferie_ascension">Christi Himmelfahrt</string>
+
+    <string name="ferie_pentecote">Pfingstmontag</string>
+
+    <string name="ferie_vendrediSaint">Karfreitag</string>
+
+    <string name="ferie_saintEtienne">Zweiter Weihnachtsfeiertag</string>
+</resources>

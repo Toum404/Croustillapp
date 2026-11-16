@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_menu_plus">Mehr</string>
+    <string name="dialog_menu_moins">Weniger</string>
+
+    <string name="dialog_tit_adresse">Adresse</string>
+    <string name="dialog_btn_carte">Karte</string>
+    <string name="dialog_non_carte">Kein Kartendienst verfügbar</string>
+
+    <string name="dialog_tit_telephone">Telefon</string>
+    <string name="dialog_btn_telephone">Anrufen</string>
+    <string name="dialog_non_telephone">Kein Telefondienst verfügbar</string>
+
+    <string name="dialog_tit_courriel">E-Mail</string>
+    <string name="dialog_btn_courriel">Schreiben</string>
+    <string name="dialog_non_courriel">Kein E-Mail-Dienst verfügbar</string>
+
+    <string name="dialog_btn_partager">Teilen</string>
+    <string name="dialog_non_partage">Teilen nicht möglich</string>
+
+    <string name="dialog_btn_web">Online</string>
+    <string name="dialog_non_web">Kein Webbrowser</string>
+
+    <string name="dialog_btn_widget">Widget</string>
+    <string name="dialog_tit_widget">Vorschau</string>
+    <string name="dialog_act_widget_0">Fehler</string>
+    <string name="dialog_act_widget_1">Hinzufügen</string>
+    <string name="dialog_act_widget_2">Widget erstellt</string>
+
+    <string name="dialog_tit_position">Position</string>
+    <string name="dialog_txt_lat">Breitengrad (-90 bis 90)</string>
+    <string name="dialog_txt_lon">Längengrad (-180 bis 180)</string>
+    <string name="dialog_btn_appliquer">Anwenden</string>
+    <string name="dialog_btn_effacer">Löschen</string>
+
+    <string name="dialog_btn_ics">ICS</string>
+    <string name="dialog_minimal_titre">Minimaler Modus</string>
+    <string name="dialog_minimal_description">Zeigt 15-minütige Ereignisse (8:00, 12:00, 19:00 Uhr) anstelle der Öffnungszeiten an, um Ihren Kalender übersichtlich zu halten.</string>
+    <string name="dialog_btn_agenda">Zu Google Kalender hinzufügen</string>
+    <string name="dialog_btn_copy">Link kopieren</string>
+
+    <string name="dialog_checkbox_on">Ausgewählt</string>
+    <string name="dialog_checkbox_off">Nicht ausgewählt</string>
+</resources>

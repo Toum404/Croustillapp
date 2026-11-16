@@ -1,59 +1,37 @@
 # 🔴 Croustillapp
 
-<table>
-  <tr>
-    <td width="30%" align="center" valign="middle">
-      <img src="images/preview.webp" width="100%">
-    </td>
-    <td width="35%" align="center" valign="middle">
-      <img src="images/vector_recherche.svg" width="10%">
-      <h3>Recherche rapide</h3>
-      <p>Triez les restaurants selon leur statut, leur accessiblité, leur catégorie, ou leur région.</p>
-      <img src="images/vector_cache.svg" width="10%">
-      <h3>Cache intelligent</h3>
-      <p>Utilisable hors-ligne : les données seront actualisées dès que la connexion sera rétablie.</p>
-    </td>
-    <td width="35%" align="center" valign="middle">
-      <img src="images/vector_radar.svg" width="10%">
-      <h3>Radar intégré</h3>
-      <p>Prise en charge de la géolocalisation pour afficher les restaurants selon la distance.</p>
-      <img src="images/vector_widget.svg" width="10%">
-      <h3>Widgets</h3>
-      <p>Ajoutez vos restaurants favoris sur votre écran d'accueil : actualisation auto toutes les 8 heures.</p>
-    </td>
-  </tr>
-</table>
-
-<div>
-  <h3>Informations</h3>
-  <p><strong>Croustillapp</strong> est une application libre basée sur l'API publique <a href="https://croustillant.menu" target="_blank">CROUStillant</a>. Cette application vous permet d'accéder au menu, à l'adresse et au contact de près de 1 000 restaurants CROUS référencés.</p>
-  <p>Cette application n'est <strong>PAS</strong> l'application officielle du projet CROUStillant, et elle n'est <strong>AUCUNEMENT</strong> reconnue par le CROUS et ses services.</p>
-</div>
-
-[<img src="https://f-droid.org/badge/get-it-on-fr.png" alt="Disponible sur F-Droid" height="80">](https://f-droid.org/fr/packages/fr.croustillapp/) [<img src="images/download.png" alt="Télécharger le fichier" height="80">](https://github.com/Toum404/Croustillapp/releases/latest/download/app-release.apk)
+<p align="center">
+  <img src="images/preview_g.webp" alt="Fonctionnalités de l'application" width="100%">
+</p>
 
 <table>
   <tr>
-    <td width="40%">
-      <img src="images/vector_securite.svg" width="10%">
+    <td width="30%" valign="top">
+      <img src="images/vector_securite.svg" width="28" alt="Sécurité">
       <h3>Sécurité</h3>
-      <p>L'application ne récolte ni ne partage aucune données personnelles. Elle n'utilise que des bibliothèques libres et connues.</p>
-      <img src="images/vector_code.svg" width="10%">
+      <p>L'application ne conserve ni ne partage aucune donnée personnelle. Elle n'utilise que des bibliothèques libres et connues.</p>
+      <img src="images/vector_code.svg" width="28" alt="Code libre">
       <h3>Code libre</h3>
       <p>Le code source de l'application est entièrement disponible sur le GitHub dédié et est consultable par tous.</p>
     </td>
-    <td width="60%">
-      <div>
-            <h3>Détails</h3>
-            <h4>Langues</h4>
-            <p>Français, English, Deutsch, Español</p>
-            <h4>Configuration</h4>
-            <p>Pensé pour Android 16. Requiert Android 13 minimum.</p>
-            <h4>Crédits API</h4>
-            <p><a href="https://github.com/CROUStillant-Developpement/CROUStillantAPI" target="_blank">CROUStillant</a> par <a href="https://github.com/PaulBayfield" target="_blank">Paul Bayfield</a>.</p>
-            <h4>License</h4>
-            <p><a href="LICENSE">Apache 2.0</a></p>
-        </div>
+    <td width="40%" valign="top">
+      <h3>Informations</h3>
+      <p><strong>Croustillapp</strong> est une interface open-source pour l'API publique <a href="https://croustillant.menu/fr" target="_blank">CROUStillant.menu</a>, vous permettant d'accéder aux informations de près de 1 000 restaurants universitaires référencés.</p>
+      <p>L'application vous accompagne au quotidien pour consulter les menus des restaurants qui comptent pour vous.</p>
+      <p>Croustillapp n'est pas l'application officielle du projet CROUStillant.</p>
+      <p align="center">
+        <a href="https://github.com/Toum404/Croustillapp/releases/latest/download/app-release.apk"><img src="images/github.svg" alt="Télécharger sur GitHub" height="75"></a>
+        <a href="https://f-droid.org/fr/packages/fr.croustillapp/"><img src="https://f-droid.org/badge/get-it-on-fr.png" alt="Disponible sur F-Droid" height="60"></a>
+      </p>
+    </td>
+    <td width="30%" valign="top">
+      <h3>Détails</h3>
+      <h4>Configuration</h4>
+      <p>Pensé pour Android 16. Fonctionne dès Android 13.</p>
+      <h4>Crédits</h4>
+      <p>App réalisée avec <a href="https://github.com/CROUStillant-Developpement/CROUStillantAPI" target="_blank">CROUStillant</a> de <a href="https://github.com/PaulBayfield" target="_blank">Paul Bayfield</a>.</p>
+      <h4>Licence</h4>
+      <p><a href="LICENSE">Apache 2.0</a></p>
     </td>
   </tr>
 </table>

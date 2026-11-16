@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ferie_nouvelAn">Año Nuevo</string>
+
+    <string name="ferie_premierMai">Día del Trabajo</string>
+
+    <string name="ferie_victoire2GM">Día de la Victoria</string>
+
+    <string name="ferie_feteNationale">Día de la Bastilla</string>
+
+    <string name="ferie_assomption">Asunción de la Virgen</string>
+
+    <string name="ferie_toussaint">Día de Todos los Santos</string>
+
+    <string name="ferie_armistice">Día del Armisticio</string>
+
+    <string name="ferie_noel">Navidad</string>
+
+    <string name="ferie_paque">Lunes de Pascua</string>
+
+    <string name="ferie_ascension">Día de la Ascensión</string>
+
+    <string name="ferie_pentecote">Lunes de Pentecostés</string>
+
+    <string name="ferie_vendrediSaint">Viernes Santo</string>
+
+    <string name="ferie_saintEtienne">Día de San Esteban</string>
+</resources>

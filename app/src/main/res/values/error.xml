@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_cache">Affichage hors-ligne</string>
+
+    <string name="error_favoris_max">Limité à %d favoris</string>
+
+    <string name="error_empty_tit">Aucun restaurant trouvé</string>
+    <string name="error_empty_txt">Essayez de retirer des filtres ou de modifier votre recherche.</string>
+
+    <string name="error_parametres">Impossible d\'ouvrir les paramètres</string>
+
+    <string name="error_calendrier">Aucune application compatible</string>
+
+    <string name="error_restaurant_tit">Oups !</string>
+    <string name="error_restaurant_txt">Ce restaurant n\'existe pas ou n\'est pas encore disponible dans l\'application.</string>
+    <string name="error_solution">Résultats similaires</string>
+</resources>
