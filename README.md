@@ -20,9 +20,9 @@
       <p>L'application vous accompagne au quotidien pour consulter les menus des restaurants qui comptent pour vous.</p>
       <p>Croustillapp n'est pas l'application officielle du projet CROUStillant.</p>
       <p align="center">
-        <a href="https://github.com/Toum404/Croustillapp/releases/latest/download/app-release.apk"><img src="images/github.svg" alt="Télécharger sur GitHub" height="50"></a>
-        <a href="https://f-droid.org/fr/packages/fr.croustillapp/"><img src="https://f-droid.org/badge/get-it-on-fr.png" alt="Disponible sur F-Droid" height="50"></a>
-      </p>
+  <a href="https://github.com/Toum404/Croustillapp/releases/latest/download/app-release.apk"><img src="images/github.svg" alt="Télécharger sur GitHub" height="44"></a>
+  <a href="https://f-droid.org/fr/packages/fr.croustillapp/"><img src="https://f-droid.org/badge/get-it-on-fr.png" alt="Disponible sur F-Droid" height="60"></a>
+</p>
     </td>
     <td width="30%" valign="top">
       <h3>Détails</h3>
