@@ -20,7 +20,7 @@
       <p align="center">
         <a href="https://github.com/Toum404/Croustillapp/releases/latest/download/app-release.apk"><img src="images/github.svg" alt="Télécharger sur GitHub" height="45"></a>
         <br>
-        <a href="https://f-direct.org/fr/packages/fr.croustillapp/"><img src="https://f-droid.org/badge/get-it-on-fr.png" alt="Disponible sur F-Droid" height="70"></a>
+        <a href="https://f-droid.org/fr/packages/fr.croustillapp/"><img src="https://f-droid.org/badge/get-it-on-fr.png" alt="Disponible sur F-Droid" height="70"></a>
 </p>
     </td>
     <td width="30%" valign="top">
